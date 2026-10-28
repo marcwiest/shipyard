@@ -20,6 +20,12 @@ Glossary for shipyard. One entry per term, one or two sentences each. `docs/init
 - **House rules**: Opinions a person or an adopting repo layers on top of the workflows. Shipyard ships the maintainer's as an example. _Avoid_: preferences.
 - **Adopting repo**: A repo that uses shipyard. _Avoid_: host repo, consuming repo, product repo.
 - **CI workflow**: A GitHub Actions workflow. Always called this, never just "workflow".
+- **Skill**: Instructions an agent loads and runs, kept in a `SKILL.md` file. The form in which shipyard reaches agents.
+- **Template**: A file an adopting repo copies from shipyard and then owns.
+- **CI piece**: A CI workflow shipyard ships for adopting repos to call or copy. _Avoid_: shared workflow.
+- **Platform**: The code host shipyard assumes: GitHub. Not a tool, so never in a role mapping.
+- **Release**: A tagged version of shipyard with a changelog entry, numbered by semver.
+- **Version record**: The note in an adopting repo naming the release its shipyard files came from.
 - **Bootstrap**: The workflow that starts or straightens out a codebase by working through ordered questions into its specs and agent rules.
 
 ## Specs and plans

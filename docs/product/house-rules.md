@@ -9,6 +9,7 @@ House rules are opinions that a person or an adopting repo layers on top of the 
 Shipyard ships these as an example:
 
 - The bots and vendors in the maintainer's role mapping; CDP for browser verification, not Playwright.
+- pstack's verification skills to create and maintain each repo's verification skill.
 - Only a human merges; a release after each merged plan; a tag push deploys.
 - Trunk only, squash merges, the `plan/<slug>` and `work/<slug>` branch names.
 - Inside a phase: spec, then tests, then code; the restatement step.
