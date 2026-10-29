@@ -1,8 +1,8 @@
 # House rules
 
-House rules are opinions that a person or an adopting repo layers on top of the workflows. An adopting repo can apply house rules without changing any workflow, PR shape or practice.
+House rules are opinions that a person or an adopting repo layers on top of the workflows. An adopting repo can apply house rules without changing any workflow, PR shape or practice. It keeps them in its own agent rules, and sets the conventions skills read in its settings file (see [adoption](adoption.md)).
 
-**Today:** where house rules live and how an adopting repo applies them is not decided yet.
+**Today:** the maintainer's house rules are listed below; they are to ship as a template.
 
 ## The maintainer's house rules
 

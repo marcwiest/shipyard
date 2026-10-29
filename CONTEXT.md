@@ -22,10 +22,16 @@ Glossary for shipyard. One entry per term, one or two sentences each. `docs/init
 - **CI workflow**: A GitHub Actions workflow. Always called this, never just "workflow".
 - **Skill**: Instructions an agent loads and runs, kept in a `SKILL.md` file. The form in which shipyard reaches agents.
 - **Template**: A file an adopting repo copies from shipyard and then owns.
-- **CI piece**: A CI workflow shipyard ships for adopting repos to call or copy. _Avoid_: shared workflow.
+- **CI piece**: A CI workflow shipyard ships for adopting repos to call at a release tag. _Avoid_: shared workflow.
 - **Platform**: The code host shipyard assumes: GitHub. Not a tool, so never in a role mapping.
 - **Release**: A tagged version of shipyard with a changelog entry, numbered by semver.
-- **Version record**: The note in an adopting repo naming the release its shipyard files came from.
+- **Version record**: The note in an adopting repo naming the release its shipyard files came from, with a checksum per managed file.
+- **Core**: The part of shipyard every adopting repo takes; it works with a human and a planning agent alone.
+- **Module**: An optional part of shipyard an adopting repo takes or leaves, such as building or verification. Each names what it needs.
+- **Managed file**: A file shipyard owns in an adopting repo. Updates replace it, so the repo never edits it.
+- **Repo-owned file**: A file the adopting repo owns, such as a copied template or its specs. Shipyard never touches it after copying.
+- **Settings file**: The repo-owned file stating an adopting repo's conventions, such as role mapping, branch names and folder paths, which skills read.
+- **Guide**: Shipyard's how-tos for people adopting it, in `docs/guide/`. Never copied into an adopting repo.
 - **Bootstrap**: The workflow that starts or straightens out a codebase by working through ordered questions into its specs and agent rules.
 
 ## Specs and plans
