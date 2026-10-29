@@ -2,7 +2,7 @@
 
 | Role | Does |
 | --- | --- |
-| Human | Writes plans with the planning agent, answers spec questions, merges, releases. |
+| Human | Writes plans with the planning agent, gives the go with a trigger label, answers human steps and spec questions, merges, releases. |
 | Planning agent | Drafts the plan with the human in an interactive session. |
 | Orchestrator bot | Runs intake, writes phase briefs, launches the builder bot, gives the phase verdict, keeps the plan record and the status comment, escalates to the plan's human. |
 | Builder bot | Builds one phase: restatement, spec, tests, code, verification, phase report. |
@@ -14,7 +14,7 @@ Bots run unattended. The human and the planning agent work together interactivel
 
 ## Role mapping
 
-An adopting repo states which tool fills each role. Shipyard ships the maintainer's role mapping as an example:
+An adopting repo states which tool fills each role and how each tool is started, in its settings file. Each role lists the capabilities its tool needs (see [agent use](agent-use.md)). Shipyard ships the maintainer's role mapping as an example:
 
 | Role | Tool |
 | --- | --- |

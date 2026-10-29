@@ -19,6 +19,7 @@ Promise: a workflow kit built around roles. It fits into any repo, agents can wo
 3. [House rules](house-rules.md)
 4. [Shape](shape.md)
 5. [Adoption](adoption.md)
-6. [Later](later.md)
+6. [Agent use](agent-use.md)
+7. [Later](later.md)
 
 Terms are defined in the root `CONTEXT.md`.

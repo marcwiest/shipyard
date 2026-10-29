@@ -16,7 +16,7 @@ A plugin for one agent tool may later wrap the same files. It never becomes the 
 
 ## Platform
 
-Shipyard assumes GitHub: PRs, PR comments, CI workflows, branch rules and tag rules. GitHub is the platform, not a role, so it never appears in a role mapping.
+Shipyard assumes GitHub: PRs, PR comments, labels, CI workflows, branch rules and tag rules. GitHub is the platform, not a role, so it never appears in a role mapping.
 
 ## Outside skills
 

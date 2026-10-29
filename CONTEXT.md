@@ -9,12 +9,19 @@ Glossary for shipyard. One entry per term, one or two sentences each. `docs/init
 - **Orchestrator bot**: The bot that runs intake, briefs the builder bot for each phase, gives the phase verdict and keeps the plan record. _Avoid_: Coding bot, orchestrator.
 - **Builder bot**: The bot that builds one phase. _Avoid_: cloud agent, build agent, phase agent.
 - **Reviewer bot**: The bot that runs preflight and reviews each phase; its review is advisory. _Avoid_: Claude review.
-- **Role mapping**: A table naming the tool that fills each role in one setup. _Avoid_: reference setup.
+- **Role mapping**: A table naming the tool that fills each role in one setup, and how each tool is started. _Avoid_: reference setup.
 
 ## Structure
 
 - **Workflow**: A process from a trigger to an outcome, such as planning, building or bootstrap. It produces PRs of one or more PR shapes.
 - **Trigger**: The event that starts a workflow; each workflow names its own. _Avoid_: go.
+- **Trigger label**: A PR label that names the workflow to run; a human adding it is the go. It stays until merge.
+- **Hold label**: A label a human adds to stop a PR's work at the next done condition; removing it resumes.
+- **Waiting label**: The label a bot adds when work stops at a human step; the human's removal resumes it.
+- **Dispatcher**: The CI piece that hears label events and starts the role the role mapping names.
+- **Human step**: A skill step that waits for the plan's human. Agents ask nothing outside human steps and spec questions.
+- **Done condition**: What a skill step leaves visible in the repo or on the PR to mark it finished, such as a commit or a headed comment.
+- **Answer skill**: The skill any interactive agent runs to show the human's waiting questions, post the answers and remove the waiting labels.
 - **PR shape**: The structure of one kind of PR, given by the same fields for every shape: who opens it, branch, what it may touch, review, verification evidence and merge.
 - **Practice**: Rules shared by all workflows, such as git, testing or verification.
 - **House rules**: Opinions a person or an adopting repo layers on top of the workflows. Shipyard ships the maintainer's as an example. _Avoid_: preferences.

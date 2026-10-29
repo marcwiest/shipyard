@@ -11,6 +11,7 @@ Workflows, PR shapes and practices hold only mechanics. Opinions go into [house 
 ## Mechanics
 
 - The plan format, which names the plan's human, and the plan check.
+- Trigger, hold and waiting labels, and the dispatcher (see [agent use](agent-use.md)). A plan is built on the PR that holds it.
 - Commits tagged by phase, so each phase can be reviewed on its own.
 - PR comment conventions: one status comment edited in place, fixed phase headers (`Phase N · preflight`, `Phase N · verification`, `Phase N · review`, `Handoff`), and a handoff comment.
 - Fix rules: a blocking finding cites a plan or spec line, and a spec question stops the work.

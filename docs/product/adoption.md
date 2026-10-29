@@ -19,7 +19,7 @@ How shipyard gets into an adopting repo and stays current there.
 
 - **Managed files**: skills, discovery stubs, workflows, PR shapes and practices. Shipyard owns them; the adopting repo never edits them.
 - **Repo-owned files**: copied templates, the settings file, and the repo's specs, agent rules and house rules. Shipyard never touches them after copying.
-- **Settings file**: the repo's conventions, which skills read instead of hardcoding: role mapping, branch names, commands, seams, verification surfaces, and the spec and agent rules folders (by default `docs/product/` and `docs/agents/`). CI pieces take the same values as inputs.
+- **Settings file**: the repo's conventions, which skills read instead of hardcoding: role mapping, label prefix, who may add trigger labels, how the human is notified, branch names, commands, seams, verification surfaces, and the spec and agent rules folders (by default `docs/product/` and `docs/agents/`). CI pieces take the same values as inputs.
 - An adopting repo keeps its house rules in its own agent rules.
 
 ## Updates
