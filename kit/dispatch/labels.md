@@ -27,4 +27,4 @@ For a bot the dispatcher starts:
 - It is told its skill, its PR and the PR's trigger label. It reads the PR's state, finds the last done condition, and starts at the next step (see core's [human steps and done conditions](../core/human-steps.md)).
 - Before each step it checks for the hold and waiting labels. If either is on the PR, it stops without starting the step and changes nothing more. A step already under way runs to its done condition first.
 - At a human step it adds the waiting label, as [human steps on a PR](human-steps.md) says.
-- It commits, comments and adds or removes labels under its own identity, never with the CI workflow's token. It never adds or removes a trigger label or the hold label.
+- It adds and removes labels under its own identity, never with the CI workflow's token, and never adds or removes a trigger label or the hold label.
