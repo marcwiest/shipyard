@@ -55,7 +55,7 @@ Checks on every phase, not listed per Change: relative links resolve; no retired
 
 ## Changes
 
-- [ ] 1. Spec: `adoption.md` links to each part's index in `kit/` instead of describing its contents, and `shape.md`'s layout carries no Today note for `kit/`. · Evidence: scratch run in which the agent, given only `kit/`, names the folders to copy for a human-and-planning-agent setup and for one with building.
+- [x] 1. Spec: `adoption.md` links to each part's index in `kit/` instead of describing its contents, and `shape.md`'s layout carries no Today note for `kit/`. · Evidence: scratch run in which the agent, given only `kit/`, names the folders to copy for a human-and-planning-agent setup and for one with building.
 - [ ] 2. Spec: core holds the roles, the practices (git, testing, verification), the plan format and plan check, the PR shape fields, the docs-only and hotfix PR shapes, the spec writing rules, human steps and done conditions, where house rules go, and the templates (plan, settings file, AGENTS.md block, spec index, agent rules index with an empty house rules section, `CONTEXT.md`). `roles.md` and `workflows.md` are removed. · Evidence: scratch run with `kit/core/` and a filled settings file, in which the planning agent drafts a plan for a small change; transcript and the plan, which carries every required item.
 - [ ] 3. Spec: the building module holds the build workflow from intake to handoff, the phased PR shape (holding its own plan), the phase brief, restatement, fix rules, the spec rule, PR comment conventions, spikes, run handling and the Sizing log columns. · Evidence: scratch run with core, building and the plan from Change 2, in which the agent, as orchestrator bot, writes the phases and phase 1's brief, naming roles and never tools.
 - [ ] 4. Spec: the dispatch module holds the labels, what each means to whoever adds or removes it, and the answer skill's steps as reference text. `agent-use.md` keeps only the dispatcher and the properties of managed files. · Evidence: scratch run with core and dispatch, in which the agent says what it does at a human step and how a held PR resumes.
@@ -72,8 +72,10 @@ Checks on every phase, not listed per Change: relative links resolve; no retired
 Written by the planning agent. The orchestrating agent may split a phase that runs long and notes it. The plan format's Tests and Code boxes don't fit docs-only work, so phases use Work and Evidence boxes (a finding for the friction audit).
 
 ### Phase 1: kit skeleton and glossary split · delivers Change 1, 9
-- [ ] Work: `kit/` folders with an index each; terms sorted into `kit/core/glossary.md` and `CONTEXT.md`; roles into core
-- [ ] Evidence: the Change 1 run
+- [x] Work: `kit/` folders with an index each; terms sorted into `kit/core/glossary.md` and `CONTEXT.md`; roles into core
+- [x] Evidence: the Change 1 run
+
+Notes: Change 1 run: given only `kit/`, the agent named `kit/core/` for a human-and-planning-agent setup and core, dispatch and building for one with building, citing each index's Needs line. It also found: no top-level kit index (the guide's job, Change 10), modules still empty, no plan template (Phase 2), and that neither building nor the weekly drift check lists verification as a need. Change 9 stays unticked until its evidence, the Change 2 run. Deviations: `roles.md` is removed here, not in Phase 2, since this phase moves the roles; the maintainer's role mapping moved to the house rules list until the example setup exists. Judgment calls: `CONTEXT.md` keeps platform, example setup, guide and bootstrap, and its _Avoid_ names became a retired-names table, since the kit glossary carries none; adopting repo, release and discovery stub moved to the kit glossary; the roles gained a column for what each role's tool needs (`agent-use.md` asks for it); every CI piece got its folder now, named after its glossary term. New terms, proposed: agent rules, AGENTS.md block. Plan format finding: a Change whose Evidence line runs in a later phase (Change 9) can't be ticked by the phase that delivers it.
 
 ### Phase 2: core · delivers Change 2
 - [ ] Work: practices, plan format and check, PR shape fields, docs-only and hotfix PR shapes, spec writing rules, templates, from `knowledge-and-planning.md`, `git-workflow.md`, `testing-workflow.md` and the evidence part of `verification-workflow.md`
