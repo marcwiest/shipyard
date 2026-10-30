@@ -1,8 +1,8 @@
 # Shipyard settings for this repo. Repo-owned: edit freely.
 # Skills and CI pieces read this file. CI pieces read it from the default branch.
 
-# Which tool fills each role, and how it is started.
-# Leave a role empty if no module this repo takes uses it.
+# Which tool fills each role, and how it is started: a shell command or a plain
+# description. Leave a role empty if no module this repo takes uses it.
 roles:
   planning-agent:
     tool: ""
@@ -30,19 +30,23 @@ paths:
     - "docs/**"
     - "**/*.md"
 
+# Settings no part this repo takes reads, such as drift-check or labels without
+# those modules, do nothing: keep their defaults or delete them.
+
 branches:
   default: main
   plan: plan/<slug>       # one branch per plan, holding the plan and its work
   hotfix: hotfix/<slug>
   drift-check: drift/<date>   # read by the weekly drift check
 
-# The repo's own commands.
+# The repo's own commands. Leave one empty until it exists.
 commands:
   install: ""
   check: ""               # types, lint, build
   test: ""
 
-# Where tests touch the code, such as "package exports" or "HTTP routes".
+# Where tests touch the code, one short phrase each, such as "package exports",
+# "HTTP routes" or "the CLI: arguments in, stdout, stderr and exit code out".
 seams: []
 
 # The surfaces verification drives, such as web page, API, library or CLI.

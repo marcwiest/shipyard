@@ -11,13 +11,15 @@ Terms in this guide are defined in the [kit glossary](../../kit/core/glossary.md
 - **Verification** is reference text an agent can follow to write your repo's verification skill.
 - **The CI pieces** state their interface but have no action code, so a CI workflow can't call them yet.
 
+Shipyard assumes a GitHub repo: each plan's branch merges through a PR. A local-only repo can plan with core, but has nowhere to open the PR.
+
 ## 1. Get the kit
 
-Clone shipyard and note the commit you copy from:
+Clone shipyard beside your repo, not inside it, and note the commit you copy from. The commands below run from your repo's root:
 
 ```sh
-git clone https://github.com/marcwiest/shipyard.git
-git -C shipyard rev-parse HEAD
+git clone https://github.com/marcwiest/shipyard.git ../shipyard
+git -C ../shipyard rev-parse HEAD
 ```
 
 ## 2. Choose the parts
@@ -37,9 +39,9 @@ Copy each part's folder from `kit/` into `.shipyard/` at your repo's root, keepi
 
 ```sh
 mkdir -p .shipyard
-cp -R shipyard/kit/core .shipyard/core
+cp -R ../shipyard/kit/core .shipyard/core
 # and each module you chose, such as:
-# cp -R shipyard/kit/building .shipyard/building
+# cp -R ../shipyard/kit/building .shipyard/building
 ```
 
 These are managed files: don't edit them, so a later copy can replace them. `core/NOTICE.md` credits outside text the kit adapts; keep it with the files.
@@ -55,20 +57,24 @@ cp .shipyard/core/templates/settings.yml .shipyard/settings.yml
 - the planning agent's tool and how you start it, under `roles`
 - the folders under `paths`, if your specs, agent rules, plans or glossary live elsewhere than the defaults
 - the branch names under `branches`
-- your install, check and test commands under `commands`
-- your seams, where tests touch the code
+- your install, check and test commands under `commands`; leave one empty until it exists, and the plan that adds it fills it in
+- your seams, where tests touch the code, one short phrase each
 
-Leave a role empty if no part you took uses it. [The example setup](../../examples/maintainer/settings.yml) shows a filled one.
+Leave a role empty if no part you took uses it. Settings that no part you took reads do nothing; keep their defaults. [The example setup](../../examples/maintainer/settings.yml) shows a filled one.
 
 ## 5. Point your agents at it
 
 Add the contents of `.shipyard/core/templates/agents-block.md` to your repo's `AGENTS.md`, creating the file if it's missing. Keep the marker lines. Fill in the trigger labels and skills lines; without dispatch or skills, both are "none".
 
-If your agent tool doesn't read `AGENTS.md`, add a one-line pointer to it in the tool's own entry file, such as `CLAUDE.md`.
+If your agent tool doesn't read `AGENTS.md`, add a one-line pointer to it in the tool's own entry file, in a form that tool loads, such as `@AGENTS.md` in `CLAUDE.md` for Claude Code.
 
 ## 6. Create your own specs, agent rules and glossary
 
-Copy each template once to the path your settings file names, then fill its placeholders:
+Create the folders your settings file names, then copy each template once to its path and fill its placeholders:
+
+```sh
+mkdir -p docs/product docs/agents docs/plans   # or the paths in your settings file
+```
 
 | Template | Copy to |
 | --- | --- |
@@ -76,7 +82,9 @@ Copy each template once to the path your settings file names, then fill its plac
 | `.shipyard/core/templates/agent-rules-index.md` | `<paths.agent-rules>/index.md` |
 | `.shipyard/core/templates/CONTEXT.md` | `<paths.glossary>` |
 
-The copies are yours. The plan template stays in `.shipyard/`; the planning agent copies it for each plan.
+The copies are yours. Where you have nothing for a section yet, as in a new project, delete its placeholder line and leave the heading. The spec index's reading order lists only spec files that exist, so drop its sample lines until you write them.
+
+The plan template stays in `.shipyard/`; the planning agent copies it for each plan.
 
 ## 7. Add house rules, if you have any
 
@@ -87,19 +95,22 @@ House rules are your opinions, such as phase size or merge style. They go in the
 Write `.shipyard/version.yml`, naming what you copied from and a checksum per managed file:
 
 ```sh
-cd .shipyard
-{
-  echo 'release: ""   # none yet'
-  echo "commit: <the commit from step 1>"
-  echo "files:"
-  find . -type f ! -name settings.yml ! -name version.yml | sort | xargs shasum -a 256 \
-    | awk '{ sub(/^\.\//, "", $2); print "  " $2 ": " $1 }'
-} > version.yml
+(
+  cd .shipyard
+  {
+    echo 'release: ""   # none yet'
+    echo "commit: $(git -C ../../shipyard rev-parse HEAD)"
+    echo "files:"
+    find . -type f ! -name settings.yml ! -name version.yml -exec sh -c \
+      'if command -v sha256sum >/dev/null; then sha256sum "$@"; else shasum -a 256 "$@"; fi' sh {} + \
+      | sort -k2 | awk '{ sub(/^\.\//, "", $2); print "  " $2 ": " $1 }'
+  } > version.yml
+)
 ```
 
 ## 9. Commit and plan
 
-Commit the files. In a repo that already has a default branch, do it on a branch and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
+Commit the files, such as `chore: adopt shipyard core`. In a repo that already has a default branch, do it on a branch and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
 
 Then open a session with your planning agent and ask it to plan a change. It reads the `AGENTS.md` block and follows `.shipyard/core/plans.md`.
 

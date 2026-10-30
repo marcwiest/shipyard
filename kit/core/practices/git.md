@@ -22,7 +22,7 @@ Rules for every workflow. Branch names and the default branch come from the sett
   | `chore(phase-N): plan record` | the plan record |
 
 - A fix after a phase's review is a `fix(phase-N):` commit for that phase.
-- Work outside a plan uses the same prefixes without the phase scope.
+- Work outside a plan uses the same prefixes without the phase scope. Copying or updating the kit's files is `chore:`.
 
 ## What agents never do
 
