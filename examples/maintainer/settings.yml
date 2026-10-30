@@ -1,4 +1,5 @@
-# Shipyard settings: the maintainer's example. Copy to .shipyard/settings.yml.
+# Shipyard settings for this repo, from the maintainer's example setup. Repo-owned: edit freely.
+# Skills and CI pieces read this file. CI pieces read it from the default branch.
 # Values marked "per repo" are filled in each repo.
 
 # The maintainer's setup also has bots that route work and keep the backlog

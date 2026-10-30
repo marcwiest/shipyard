@@ -17,6 +17,7 @@ Rules for every workflow. Branch names and the default branch come from the sett
   | `docs(phase-N):` | spec text for the phase |
   | `test(phase-N):` | tests |
   | `feat(phase-N):`, `fix(phase-N):` | code, and any other change that isn't spec text |
+  | `docs(plan):` | the plan file, from its draft to its approval |
   | `chore(plan): phases` | the phases, added to the plan before building starts |
   | `chore(phase-N): plan record` | the plan record |
 

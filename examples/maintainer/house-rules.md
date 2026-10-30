@@ -8,7 +8,7 @@ The maintainer's house rules, written as agent rules. They apply on top of the k
 - Where the builder bot's tool reports tokens, measure context as input plus cache-read plus cache-creation tokens, at the start, end and peak of a run.
 - Draft plans with a slim planning skill modeled on pstack's multi-phase plan playbook, grounded with pstack's `how` and `why`.
 - Design bigger changes with pstack's `/architect`: types and signatures first, candidates compared, a design scrapped when the evidence turns against it.
-- Delete the plan file when the plan is done.
+- Delete the plan file when the plan is done; its PR keeps the record.
 - Keep no ADRs, GitHub issues or PR template.
 
 ## Building

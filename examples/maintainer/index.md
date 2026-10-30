@@ -8,4 +8,6 @@ The maintainer's own role mapping and house rules, as an example for an adopting
 | [house-rules.md](house-rules.md) | The agent rules folder, linked from the House rules section of its index | The maintainer's house rules, written as agent rules |
 
 - Copy core first. The settings file replaces the one copied from core's template.
+- Empty the roles that no part you took uses. Rules that name a bot, such as the builder bot's model or the Sizing log, apply only where the repo takes the building module.
+- Skills the house rules name, such as pstack's, are outside skills: install them yourself or drop the rule.
 - The house rules are opinions, gathered while the kit was split from the maintainer's earlier drafts. They are not yet sorted: some may later turn out to be mechanics, and some may be dropped.
