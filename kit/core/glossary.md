@@ -25,7 +25,7 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **PR shape**: The structure of one kind of PR, given by the same fields for every shape: who opens it, branch, what it may touch, review, verification evidence and merge.
 - **Practice**: Rules shared by all workflows, such as git, testing or verification.
 - **House rules**: Opinions a person or a repo layers on top of the workflows, kept in the repo's agent rules.
-- **Agent rules**: The repo's rules for how agents work in it, in the agent rules folder the settings file names. _Proposed._
+- **Agent rules**: The repo's rules for how agents work in it, in the agent rules folder the settings file names.
 - **Adopting repo**: A repo that uses shipyard.
 - **Kit**: Shipyard's workflow files: core and the modules, each with its reference text, skills, templates and CI pieces. A repo keeps the parts it takes in `.shipyard/`.
 - **Core**: The part of the kit every adopting repo takes; it works with a human and a planning agent alone.
@@ -37,7 +37,7 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Managed file**: A file shipyard owns in an adopting repo. Updates replace it, so the repo never edits it.
 - **Repo-owned file**: A file the adopting repo owns, such as a copied template or its specs. Shipyard never touches it after copying.
 - **Settings file**: `.shipyard/settings.yml`, the repo-owned file stating the repo's conventions, such as the role mapping, branch names and folder paths. Skills and CI pieces read it.
-- **AGENTS.md block**: The marked block shipyard keeps in the repo's AGENTS.md, pointing agents to the settings file and listing the trigger labels and skills. _Proposed._
+- **AGENTS.md block**: The marked block shipyard keeps in the repo's AGENTS.md, pointing agents to the settings file and listing the trigger labels and skills.
 - **CI workflow**: A GitHub Actions workflow. Always called this, never just "workflow".
 - **CI piece**: A GitHub Action in the kit that the repo's own CI workflows call at a release tag.
 - **Release**: A tagged version of shipyard, numbered by semver, with a changelog entry.
