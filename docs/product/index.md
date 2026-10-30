@@ -14,12 +14,11 @@ Promise: a workflow kit built around roles. It fits into any repo, agents can wo
 
 ## Reading order
 
-1. [Roles](roles.md)
-2. [Workflows, PR shapes and practices](workflows.md)
-3. [House rules](house-rules.md)
-4. [Shape](shape.md)
-5. [Adoption](adoption.md)
-6. [Agent use](agent-use.md)
-7. [Later](later.md)
+1. [Workflows, PR shapes and practices](workflows.md)
+2. [House rules](house-rules.md)
+3. [Shape](shape.md)
+4. [Adoption](adoption.md)
+5. [Agent use](agent-use.md)
+6. [Later](later.md)
 
-Terms are defined in the root `CONTEXT.md`.
+Workflow terms and the roles are defined in the kit, in [`kit/core/glossary.md`](../../kit/core/glossary.md) and [`kit/core/roles.md`](../../kit/core/roles.md). Terms about shipyard itself are in the root `CONTEXT.md`.

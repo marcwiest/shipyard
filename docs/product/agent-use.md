@@ -48,4 +48,4 @@ Every label shipyard uses carries the repo's prefix from its settings file, such
 - Every skill step ends with a done condition: something visible in the repo or on the PR, such as a commit with its phase prefix, a comment with its fixed header, a ticked box or a passing check.
 - A fresh agent resumes from repo and PR state alone.
 
-**Today:** no labels, dispatcher, answer skill or capability lists exist. `docs/init/` starts work with a hand-off between the maintainer's bots, keeps a separate plan PR and says no labels are used. Everything on this page except the dispatcher moves into the kit; the dispatcher stays here.
+**Today:** no labels, dispatcher or answer skill exist. `docs/init/` starts work with a hand-off between the maintainer's bots, keeps a separate plan PR and says no labels are used. Everything on this page except the dispatcher moves into the kit; the dispatcher stays here.

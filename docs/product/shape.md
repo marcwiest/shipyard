@@ -30,7 +30,7 @@ The CLI's own code sits beside these.
 - `docs/product/` holds what shipyard is and what its own tooling does: what the kit contains, the CLI, the CI pieces, releases, principles and refusals.
 - Core holds what every workflow shares, such as the practices, the plan format and the PR shape fields. A new PR shape is one file in the module that produces it. A different approach to the same job is a sibling module that reuses core and never copies its text.
 
-**Today:** none of this layout exists. The rules sit in `docs/init/` and in `docs/product/` pages that move into the kit: roles, workflows, most of agent use, and the house rules definition.
+**Today:** `examples/maintainer/`, `.github/`, `docs/guide/`, `README.md`, `CHANGELOG.md` and the CLI don't exist yet.
 
 ## Platform
 

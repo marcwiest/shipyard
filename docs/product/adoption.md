@@ -4,8 +4,15 @@ How shipyard gets into an adopting repo and stays current there.
 
 ## Core and modules
 
-- **Core**: the plan format and the plan check, the practices, a place for specs, a place for agent rules, and the AGENTS.md block. It works with a human and a planning agent alone.
-- **Modules**: building (the phased PR, the bot skills and the PR comment conventions), dispatch (the trigger, hold and waiting labels, the dispatcher and the answer skill), verification (the verification skill's shape and the Feature Map), the weekly drift check, and each other CI piece on its own. Each module names the modules and roles it needs. Building and the weekly drift check need dispatch.
+Each part of the kit has an index that says what the part holds and the modules and roles it needs.
+
+- **Core**: [`kit/core/`](../../kit/core/index.md). Every adopting repo takes it. It works with a human and a planning agent alone.
+- **Modules**, each taken or left on its own:
+  - [Building](../../kit/building/index.md)
+  - [Dispatch](../../kit/dispatch/index.md)
+  - [Verification](../../kit/verification/index.md)
+  - [Weekly drift check](../../kit/weekly-drift-check/index.md)
+  - One per CI piece: [docs-only detection](../../kit/docs-only-detection/index.md), [test output cap](../../kit/test-output-cap/index.md), [docs index check](../../kit/docs-index-check/index.md) and [coverage floor](../../kit/coverage-floor/index.md)
 - House rules are never on by default. Shipyard's are an example.
 
 ## Getting in
@@ -49,4 +56,4 @@ How shipyard gets into an adopting repo and stays current there.
 - Instructions for adopting shipyard live in the README and the guide.
 - Shipyard installs its own last release into `.shipyard/` like any adopting repo, and its agents follow that copy. A PR that edits `kit/` doesn't change the rules the agents working on it follow.
 
-**Today:** no CLI, kit, settings file, templates, README or guide exist yet, so shipyard doesn't install its own release. The npm package name for the CLI is open, since `shipyard` is taken.
+**Today:** no CLI, settings file, templates, README or guide exist yet, so shipyard doesn't install its own release. The npm package name for the CLI is open, since `shipyard` is taken.

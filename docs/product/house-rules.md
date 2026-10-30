@@ -8,7 +8,17 @@ The maintainer's house rules ship in the example setup, `examples/maintainer/`, 
 
 ## The maintainer's house rules
 
-- The bots and vendors in the maintainer's role mapping; CDP for browser verification, not Playwright.
+- The maintainer's role mapping:
+
+  | Role | Tool |
+  | --- | --- |
+  | Planning agent | A local CLI agent (Claude Code or Grok CLI) |
+  | Orchestrator bot | The maintainer's Coding bot |
+  | Builder bot | A Cursor cloud agent on a pinned Grok model |
+  | Reviewer bot | The Claude GitHub Action |
+
+  The maintainer's setup also has a Chief of Staff bot, which routes work and keeps the backlog, and one Project Management bot per project, which checks plans with the human and relays approval. Neither is a role.
+- CDP for browser verification, not Playwright.
 - pstack's verification skills to create and maintain each repo's verification skill.
 - Only a human merges; a release after each merged plan; a tag push deploys.
 - Trunk only, squash merges, the `plan/<slug>` and `work/<slug>` branch names.
