@@ -26,7 +26,7 @@ Each part of the kit has an index that says what the part holds and the modules 
 
 - **Managed files**: skills, discovery stubs, workflows, PR shapes, practices, template sources and the kit glossary. Shipyard owns them; the adopting repo never edits them.
 - **Repo-owned files**: copied templates, the settings file, and the repo's specs, agent rules and house rules. Shipyard never touches them after copying.
-- **Settings file**: `.shipyard/settings.yml`, in YAML. It holds the repo's conventions, which skills read instead of hardcoding: role mapping, label prefix, who may add trigger labels, how the human is notified, branch names, commands, seams, verification surfaces, and the spec and agent rules folders (by default `docs/product/` and `docs/agents/`).
+- **Settings file**: `.shipyard/settings.yml`, in YAML. It holds the repo's conventions, which skills read instead of hardcoding: role mapping, label prefix, who may add trigger labels, how the human is notified, branch names, commands, seams, verification surfaces, the coverage floor, and the spec, agent rules, plans and verification skill folders (by default `docs/product/`, `docs/agents/` and `docs/plans/`).
 - CI pieces read the settings file themselves, from the default branch, so a PR can't change the settings that act on it. Inputs only carry values that matter to CI alone, such as the test output cap.
 - An adopting repo keeps its house rules in its own agent rules.
 
