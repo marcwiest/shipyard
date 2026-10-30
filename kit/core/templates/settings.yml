@@ -50,4 +50,6 @@ verification-surfaces: []
 labels:
   prefix: "shipyard:"
   trigger-label-adders: []   # empty: anyone with write access
-notify: mention              # how the plan's human is told about a human step
+notify: mention              # how the plan's human is told about a human step:
+                             # mention (the Human step comment's mention), or a plain
+                             # description of another channel the bots can reach

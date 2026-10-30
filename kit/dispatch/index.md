@@ -10,6 +10,6 @@ Roles: human, and the bots the modules that use it name.
 - [Labels](labels.md): the trigger, hold and waiting labels, what each means to whoever adds or removes it, and how a bot works under them.
 - [Human steps on a PR](human-steps.md): how a bot asks the human, waits and resumes.
 - [Answer skill](answer.md): how any interactive agent shows the human their waiting questions and posts the answers.
-- The dispatcher, a CI piece. On a trigger label added, or a hold or waiting label removed, it starts the role the trigger label's workflow names, passing the PR number and the label. It acts only on PRs from branches inside the repo, never from forks.
+- The dispatcher, a CI piece. On a trigger label added, or a hold or waiting label removed, it starts the role the trigger label's workflow names, passing the PR number and the trigger label. It starts nothing while a hold or waiting label remains on the PR. It acts only on PRs from branches inside the repo, never from forks.
 
 Settings it reads: `roles`, `labels.prefix`, `labels.trigger-label-adders` and `notify`. The dispatcher reads them from the default branch.

@@ -4,7 +4,7 @@ How one phase is briefed, built and reported. Steps 6 and 7 of the [build workfl
 
 ## Phase brief
 
-The orchestrator bot's instructions to the builder bot for one phase. It holds:
+The orchestrator bot's instructions to the builder bot for one phase, given when it starts the builder bot, as the role mapping says. It is not posted on the PR; a fresh orchestrator bot writes it again from the plan, the preflight comment and the status comment. It holds:
 
 - the phase's goal and done condition, and one line on the whole plan for orientation
 - the Changes the phase delivers, with their Spec and Evidence lines, and the phase's Tests and Code boxes

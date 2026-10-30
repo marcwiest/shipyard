@@ -13,9 +13,9 @@ One comment, kept by the orchestrator bot and edited in place, never posted agai
 - intake's result
 - one line per phase
 - open questions
-- each answer and its source: the spec, the agent rules or the human. An answer that changed how the work was done also gets one line in the phase's Notes.
+- each answer and its source: the plan, the spec, the agent rules, the settings file or the human. An answer that changed how the work was done also gets one line in the phase's Notes.
 
-A phase's line gives its state, the run number, the duration, the number of tool calls, and context used if the tool reports it, marked if the session compacted. States: `running`, `finished, awaiting review`, `fix round N`, `passed`, `stopped: <reason>`, `held`, `waiting on human`.
+A phase's line gives its state, the run number, the duration, the number of tool calls, and context used if the tool reports it, marked if the session compacted. States: `not started`, `in preflight`, `running`, `finished, awaiting review`, `fix round N`, `passed`, `stopped: <reason>`, `held`, `waiting on human`.
 
 Example, for a tool that reports no context: `phase 2 · finished, awaiting review · run 2 · 41m · 58 calls`
 

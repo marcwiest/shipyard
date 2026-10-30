@@ -7,7 +7,7 @@ Steps 4, 9 and 10 of the [build workflow](workflow.md).
 - The reviewer bot reads one phase of the plan against the spec before it is built. It doesn't review code.
 - It posts `Phase N · preflight`: the open questions for the orchestrator bot, and the phase's scope, the files and folders it may touch.
 - Preflight stays light: open questions and scope only. An adversarial review of a plan not yet built makes agents invent risks.
-- The orchestrator bot refines the phase's hour estimate from the scope.
+- The orchestrator bot refines the phase's hour estimate from the scope, on the phase's line in the status comment.
 
 ## Review
 

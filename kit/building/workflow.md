@@ -9,7 +9,7 @@ The orchestrator bot checks for the hold label before each step (see the dispatc
 ## Intake
 
 1. The orchestrator bot reads the plan, the specs, the kit glossary, the repo's glossary and the agent rules. It runs the plan check, and checks the plan against the repo: Changes that contradict the spec, paths or seams that don't exist, Evidence lines the repo can't produce. Each gap is a human step; only the human changes the Goal or the Changes. Done condition: the status comment, holding intake's result.
-2. It splits the Changes into phases, estimates each in hours (see [runs](runs.md)), writes them into the plan's Phases section and sets Status `in progress`. It runs the plan check again and fixes what it lists. Done condition: a `chore(plan): phases` commit.
+2. It splits the Changes into phases, writes them into the plan's Phases section and sets Status `in progress`. A Change that builds on another goes in the same phase or a later one. Each phase's heading ends with its estimate in hours (see [runs](runs.md)), such as `· about 2 h`. It runs the plan check again and fixes what it lists. Done condition: a `chore(plan): phases` commit.
 
 ## Each phase
 
@@ -17,7 +17,7 @@ Phases run in order, never in parallel. Each starts from the branch as the previ
 
 3. Branch update: if the branch is behind the default branch, the orchestrator bot merges the default branch into it, never rebases. A conflict goes to the reviewer bot, which names the conflicting files and how to resolve them, then to the builder bot as a fix round. A conflict in the spec folder is a human step. Done condition: the branch is not behind the default branch.
 4. Preflight: the orchestrator bot asks the reviewer bot for preflight of the phase (see [review and fixes](review.md)). Done condition: the `Phase N · preflight` comment.
-5. Open questions: the orchestrator bot answers preflight's open questions from the spec and the agent rules, and records each answer and its source in the status comment. A question it can't answer is a human step. Done condition: every open question answered in the status comment.
+5. Open questions: the orchestrator bot answers preflight's open questions from the plan, the spec, the agent rules and the settings file, and records each answer and its source in the status comment. A question it can't answer is a human step. Done condition: every open question answered in the status comment.
 6. Brief: the orchestrator bot writes the phase brief (see [phases](phases.md)) and starts the builder bot with it. Done condition: the phase's line in the status comment reads `running`.
 7. Build: the builder bot restates the phase, the orchestrator bot checks the restatement, and the builder bot builds and verifies the phase and ends with its phase report (see [phases](phases.md)). Done condition: the phase's commits pushed, and its line reads `finished, awaiting review`.
 8. Checks: the repo's CI checks pass on the branch's newest commit. A failure goes back to the builder bot as a fix round. Done condition: green checks on the newest commit.

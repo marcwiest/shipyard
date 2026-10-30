@@ -9,6 +9,8 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Orchestrator bot**: The bot that runs intake, briefs the builder bot for each phase, gives the phase verdict and keeps the plan record.
 - **Builder bot**: The bot that builds one phase.
 - **Reviewer bot**: The bot that runs preflight and reviews each phase; its review is advisory.
+- **Interactive agent**: An agent working with the human in a session, such as the planning agent, or any agent the human talks to.
+- **Unattended**: Run by a bot with no human in the session, started by a trigger. Bots run unattended.
 - **Role mapping**: The part of the settings file naming the tool that fills each role, and how each tool is started.
 
 ## Structure
