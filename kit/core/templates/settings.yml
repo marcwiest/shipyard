@@ -25,6 +25,7 @@ paths:
   glossary: CONTEXT.md
   north-star: ""          # optional, such as docs/north-star.md
   sizing-log: ""          # read by the building module; empty: no Sizing log
+  verification-skill: ""  # the repo's verification skill, such as docs/agents/skills/verify/; empty: none
   docs:                   # what counts as docs for a docs-only PR
     - "docs/**"
     - "**/*.md"
@@ -33,6 +34,7 @@ branches:
   default: main
   plan: plan/<slug>       # one branch per plan, holding the plan and its work
   hotfix: hotfix/<slug>
+  drift-check: drift/<date>   # read by the weekly drift check
 
 # The repo's own commands.
 commands:
@@ -45,6 +47,10 @@ seams: []
 
 # The surfaces verification drives, such as web page, API, library or CLI.
 verification-surfaces: []
+
+# Read by the coverage floor CI piece: the least line coverage, in percent.
+# Empty: coverage is printed, never enforced.
+coverage-floor: ""
 
 # Read by the dispatch module.
 labels:
