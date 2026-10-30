@@ -6,7 +6,7 @@ What the dispatcher does, and what every managed file holds to so that any agent
 
 - The dispatcher is a CI piece in the dispatch module. The adopting repo's CI workflow runs it on label events.
 - On a trigger label added, or a hold or waiting label removed, it starts the role the trigger label's workflow names, through the role mapping, passing the PR number and the label. It starts nothing while a hold or waiting label remains on the PR.
-- It reads the role mapping, the label prefix and who may add trigger labels from the settings file on the default branch. When that list is set, it ignores trigger labels anyone else adds.
+- It reads the role mapping, the label prefix and who may add trigger labels from the settings file on the default branch. When that list is set, a trigger label anyone else adds starts nothing. A bot that adds its own workflow's trigger label, as the weekly drift check does, adds it after the waiting label, so that too starts nothing; removing the waiting label resumes the PR.
 - It acts only on PRs from branches inside the repo, never from forks.
 - It doesn't hear label changes made with the CI workflow's own token. Bots add and remove labels under their own app identity; humans under their own.
 

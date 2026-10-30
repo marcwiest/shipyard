@@ -18,7 +18,7 @@ The maintainer's house rules ship in the example setup, `examples/maintainer/`, 
   | Reviewer bot | The Claude GitHub Action |
 
   The maintainer's setup also has a Chief of Staff bot, which routes work and keeps the backlog, and one Project Management bot per project, which checks plans with the human and relays approval. Neither is a role.
-- CDP for browser verification, not Playwright. The repo's verification CLI is the default way to drive the app; a browser devtools MCP server is for digging in by hand. A cloud agent's MCP servers are set up in that tool's own dashboard, since a local install doesn't carry over.
+- CDP for browser verification, not Playwright. The repo's verification CLI is the default way to drive the app; a browser devtools MCP server is for digging in by hand. The builder bot's MCP servers are set up in its tool's own dashboard, since a local install doesn't carry over.
 - pstack's verification skills to create and maintain each repo's verification skill. The weekly drift check runs pstack's `/maintain-verification-skill` for its first step.
 - No formal verification skills, swarms or fan-out verification until the base verification skill works.
 - pstack's `/architect` for bigger changes: types and signatures first, candidates compared, a design scrapped when the evidence turns against it.
