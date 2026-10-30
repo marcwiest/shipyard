@@ -23,3 +23,5 @@ Tests are not verification. A Change is done only when it is verified.
 - A test change that alters asserted behavior comes with the spec change it follows.
 - Review looks for the test-change signals: an assertion moved from exact to loose, a case deleted while its code remains, expected values changed under an unchanged test name, a test that reads source or internals.
 - Loosening an assertion or deleting a case whose code remains is a blocking finding unless its stated reason holds.
+
+Adapted in part from mattpocock/skills; see the [notice](../NOTICE.md#mattpocockskills).

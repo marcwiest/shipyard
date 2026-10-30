@@ -1,0 +1,57 @@
+# Shipyard settings: the maintainer's example. Copy to .shipyard/settings.yml.
+# Values marked "per repo" are filled in each repo.
+
+# The maintainer's setup also has bots that route work and keep the backlog
+# outside the platform. They fill no role, so they aren't listed here.
+roles:
+  planning-agent:
+    tool: "Claude Code or Grok CLI, run locally"
+    start: "the human opens an interactive session in the repo"
+  orchestrator-bot:
+    tool: "the maintainer's own orchestrating bot, on a server the maintainer runs"
+    start: "the dispatcher sends it a message naming the skill and the PR"
+  builder-bot:
+    tool: "Cursor, run in the cloud on a Grok model pinned in the agent rules"
+    start: "the orchestrator bot launches it through Cursor's agents API with the phase brief as its prompt, on the PR's branch; follow-ups go through the same API"
+  reviewer-bot:
+    tool: "the Claude GitHub Action"
+    start: "a PR comment such as '@claude preflight phase N' or '@claude review phase N'"
+
+paths:
+  specs: docs/product/
+  agent-rules: docs/agents/
+  plans: docs/plans/
+  glossary: CONTEXT.md
+  north-star: docs/north-star.md
+  sizing-log: docs/agents/sizing-log.csv   # where its run data may be public; else outside the repo
+  verification-skill: docs/agents/skills/verify-<app>/   # <app> per repo
+  docs:
+    - "docs/**"
+    - "**/*.md"
+
+branches:
+  default: main
+  plan: work/<slug>
+  hotfix: hotfix/<slug>
+  drift-check: drift/<date>
+
+commands:   # per repo
+  install: ""
+  check: ""
+  test: ""
+
+# Per repo. In packages: "package exports, imported by package name".
+seams: []
+
+verification-surfaces: []   # per repo
+
+# Per repo: the coverage the repo has when it adopts the kit, never lowered after.
+coverage-floor: ""
+
+drift-check:
+  human: marcwiest
+
+labels:
+  prefix: "shipyard:"
+  trigger-label-adders: []
+notify: mention
