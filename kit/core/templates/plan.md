@@ -11,12 +11,18 @@ Out of scope: <what this plan leaves alone>
 - [ ] 1. Spec: <what the spec says after this Change> · Evidence: <what is driven and what is captured>
 - [ ] 2. Spec: <...> · Evidence: <...>
 
+## Open questions
+
+- <question for the human> · Recommendation: <the planning agent's answer>
+
 ## Phases
 
-Added before building starts, by whoever builds the plan.
+Added before building starts, by whoever builds the plan. Until then, leave this section empty. Each phase looks like this:
 
+```
 ### Phase 1: <name> · delivers Change 1
 - [ ] Tests: <seam>: <behavior the tests assert>
 - [ ] Code: <what makes them pass>
 
 Notes: <added when the phase is done: verification line, deviations, blockers>
+```
