@@ -4,8 +4,8 @@ Shipyard is plain files in a git repo. The plain files are the source; nothing e
 
 ## What it ships
 
-- **Skills**: what agents run. Each skill has one source file plus a discovery stub per tool.
-- **Workflows, PR shapes and practices**: reference text that skills cite and humans read.
+- **Skills**: what agents run. Each skill has one source file plus a discovery stub per tool, and a CI check confirms the stubs.
+- **Workflows, PR shapes and practices**: reference text that skills cite and humans read. They hold only mechanics; opinions are house rules. Each workflow names its trigger, its steps, the roles that take part and the PR shapes it produces. Every PR shape fills the same fields.
 - **Templates**: files an adopting repo copies and then owns, such as the plan skeleton or the docs layout.
 - **CI pieces**: GitHub Actions an adopting repo's CI workflows call at a release tag.
 - **The example setup**: the maintainer's role mapping and house rules.

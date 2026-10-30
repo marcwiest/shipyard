@@ -37,15 +37,10 @@ Every label shipyard uses carries the repo's prefix from its settings file, such
 
 ## Human steps
 
-- A skill marks each human step. Agents ask nothing outside human steps and spec questions.
-- The human adds the trigger label, answers human steps and spec questions, and merges.
+Human steps and done conditions are defined in core, in [`kit/core/human-steps.md`](../../kit/core/human-steps.md).
+
 - At a human step the bot posts the question on the PR, adds `waiting-human`, and notifies the plan's human as the settings file says. By default that is a GitHub mention.
 - An answer counts once it is a PR comment and `waiting-human` is removed. Any agent the human talks to may post the answer and remove the label for them; the comment names the human and the channel.
 - The answer skill finds every PR waiting on the human, shows the open questions, posts the human's answers and removes the labels.
-
-## Done conditions
-
-- Every skill step ends with a done condition: something visible in the repo or on the PR, such as a commit with its phase prefix, a comment with its fixed header, a ticked box or a passing check.
-- A fresh agent resumes from repo and PR state alone.
 
 **Today:** no labels, dispatcher or answer skill exist. `docs/init/` starts work with a hand-off between the maintainer's bots, keeps a separate plan PR and says no labels are used. Everything on this page except the dispatcher moves into the kit; the dispatcher stays here.

@@ -1,10 +1,10 @@
 # House rules
 
-House rules are opinions that a person or an adopting repo layers on top of the workflows. An adopting repo can apply house rules without changing any workflow, PR shape or practice. It keeps them in its own agent rules, and sets the conventions skills read in its settings file (see [adoption](adoption.md)).
+Where an adopting repo keeps house rules is defined in core, in [`kit/core/house-rules.md`](../../kit/core/house-rules.md).
 
-The maintainer's house rules ship in the example setup, `examples/maintainer/`, written as agent rules for an adopting repo to copy from. They are never installed. The core's agent rules template has an empty house rules section.
+The maintainer's house rules ship in the example setup, `examples/maintainer/`, written as agent rules for an adopting repo to copy from. They are never installed.
 
-**Today:** the example setup doesn't exist yet, so the list is kept here. Where house rules go moves into the kit.
+**Today:** the example setup doesn't exist yet, so the list is kept here.
 
 ## The maintainer's house rules
 
@@ -27,5 +27,10 @@ The maintainer's house rules ship in the example setup, `examples/maintainer/`, 
 - Plan files deleted when the plan is done; no ADRs, GitHub issues or PR template.
 - The docs layout: `docs/product/`, `docs/north-star.md`, `CONTEXT.md`, `docs/agents/`.
 - Coverage is never lowered; mutation testing only with the human's approval each time.
+- The default branch's rules: required CI, branch up to date before merge, linear history, rules apply to admins, no force pushes. No `develop`, release branches, back-merges or emergency self-approval. Branches are deleted after merge.
+- The squash commit message is the PR title in conventional form. A release's bump follows it: `feat` minor, `fix` patch, `!` major. Release notes come from the merged PRs and their plans. Release tags are the human's only, enforced by a tag rule.
+- Each plan merges as soon as it is done; plans are never held to merge together.
+- Packages are tested through their exports, imported by package name, never by internal path, enforced by lint.
+- Specs are written with pstack's `/technical-writing`, which keeps tutorial, how-to, reference and explanation apart. A slim planning skill modeled on pstack's multi-phase plan playbook, grounded with pstack's `how` and `why`.
 
 **Today:** `docs/init/` holds many "no X" rules. Each one still has to be sorted: a mechanic, a house rule, or dropped.

@@ -56,4 +56,4 @@ Each part of the kit has an index that says what the part holds and the modules 
 - Instructions for adopting shipyard live in the README and the guide.
 - Shipyard installs its own last release into `.shipyard/` like any adopting repo, and its agents follow that copy. A PR that edits `kit/` doesn't change the rules the agents working on it follow.
 
-**Today:** no CLI, settings file, templates, README or guide exist yet, so shipyard doesn't install its own release. The npm package name for the CLI is open, since `shipyard` is taken.
+**Today:** no CLI, release, README or guide exist yet, so shipyard doesn't install its own release. The npm package name for the CLI is open, since `shipyard` is taken.
