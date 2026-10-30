@@ -4,7 +4,7 @@
 
 - A human step is a skill step that waits for the plan's human. Each skill marks its human steps.
 - Agents ask nothing outside human steps and spec questions. Anything else they decide from the plan, the spec and the agent rules, and report.
-- At a human step the agent says plainly what it needs, offers a recommendation, and stops. In an interactive session it asks the human directly. Unattended, it asks on the PR.
+- At a human step the agent says plainly what it needs, offers a recommendation, and stops. In an interactive session it asks the human directly. A bot asks on the PR.
 - A spec question is a finding that the spec is wrong, unclear or can't be built. Work on that point stops and goes to the plan's human, who decides and owns any spec change.
 
 ## Done conditions

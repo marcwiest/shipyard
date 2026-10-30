@@ -10,7 +10,7 @@ Shipyard is plain files in a git repo. The plain files are the source; nothing e
 - **CI pieces**: GitHub Actions an adopting repo's CI workflows call at a release tag.
 - **The example setup**: the maintainer's role mapping and house rules.
 
-Everything a bot needs lives in the adopting repo, because bots run unattended on its checkout. Nothing installed on the human's machine reaches them.
+Everything a bot needs lives in the adopting repo, because bots run autonomously on its checkout. Nothing installed on the human's machine reaches them.
 
 A plugin for one agent tool may later wrap the same files. It never becomes the source (see [later](later.md)).
 

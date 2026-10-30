@@ -10,7 +10,7 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Builder bot**: The bot that builds one phase.
 - **Reviewer bot**: The bot that runs preflight and reviews each phase; its review is advisory.
 - **Interactive agent**: An agent working with the human in a session, such as the planning agent, or any agent the human talks to.
-- **Unattended**: Run by a bot with no human in the session, started by a trigger. Bots run unattended.
+- **Bot**: An agent that runs autonomously, with no human in the session, started by a trigger.
 - **Role mapping**: The part of the settings file naming the tool that fills each role, and how each tool is started.
 
 ## Structure

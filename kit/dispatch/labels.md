@@ -10,7 +10,7 @@ Every label carries the prefix in `labels.prefix` of the settings file, such as 
 
 ## Trigger labels
 
-- Each workflow that runs unattended names its trigger label and the role the dispatcher starts for it.
+- Each workflow that a bot runs names its trigger label and the role the dispatcher starts for it.
 - A PR carries one trigger label at most.
 - When `labels.trigger-label-adders` lists people, a trigger label counts only if one of them added it. When it is empty, anyone with write access can add one.
 

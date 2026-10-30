@@ -11,5 +11,5 @@ Kit text names roles, never tools. The role mapping in the settings file names t
 | Reviewer bot | Runs preflight and reviews each phase. Its review is advisory. | Reading the repo and the PR, PR comments, including inline review comments |
 
 - One or more people can fill the human role. Each plan names its human, by default the person who wrote it. That person gets the plan's questions and its handoff.
-- Bots run unattended. The human and the planning agent work together interactively.
+- Bots run autonomously. The human and the planning agent work together interactively.
 - Core needs only the human and the planning agent. Each module's index names the bots it needs.
