@@ -13,7 +13,7 @@ Each part of the kit has an index that says what the part holds and the modules 
   - [Verification](../../kit/verification/index.md)
   - [Weekly drift check](../../kit/weekly-drift-check/index.md)
   - One per CI piece: [docs-only detection](../../kit/docs-only-detection/index.md), [test output cap](../../kit/test-output-cap/index.md), [docs index check](../../kit/docs-index-check/index.md) and [coverage floor](../../kit/coverage-floor/index.md)
-- House rules are never on by default. Shipyard's are an example.
+- House rules are never on by default. The maintainer's are an example, in [`examples/maintainer/`](../../examples/maintainer/index.md), copied by hand and never installed.
 
 ## Getting in
 
@@ -32,7 +32,7 @@ Each part of the kit has an index that says what the part holds and the modules 
 
 ## In an adopting repo
 
-- `.shipyard/` holds everything the CLI writes, at a fixed path: one folder per installed part of the kit, mirroring `kit/`, plus the version record. The settings file is the one repo-owned file in it.
+- `.shipyard/` holds everything the CLI writes, at a fixed path: one folder per installed part of the kit, mirroring `kit/`, plus the version record, `.shipyard/version.yml`. The settings file is the one repo-owned file in it.
 - Each skill gets a discovery stub in the skills folder of every tool the role mapping names, and only those.
 - Template sources stay in `.shipyard/` as managed files, so skills can read them. Each copy made from them, such as a plan or a spec page, is repo-owned.
 - Agents reach managed files by a named path: a stub, the AGENTS.md block or a skill step. Nothing depends on search tools that skip hidden folders.
@@ -56,4 +56,4 @@ Each part of the kit has an index that says what the part holds and the modules 
 - Instructions for adopting shipyard live in the README and the guide.
 - Shipyard installs its own last release into `.shipyard/` like any adopting repo, and its agents follow that copy. A PR that edits `kit/` doesn't change the rules the agents working on it follow.
 
-**Today:** no CLI, release, README or guide exist yet, so shipyard doesn't install its own release. The npm package name for the CLI is open, since `shipyard` is taken.
+**Today:** no CLI or release exists yet, so shipyard doesn't install its own release, and a repo copying by hand records the commit it copied from. The npm package name for the CLI is open, since `shipyard` is taken.

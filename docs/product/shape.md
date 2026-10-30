@@ -23,6 +23,7 @@ A plugin for one agent tool may later wrap the same files. It never becomes the 
 | `.github/` | Shipyard's own CI only. It calls the CI pieces from `kit/` at the current commit |
 | `docs/product/`, `docs/agents/`, `CONTEXT.md` | Shipyard's own specs, agent rules and glossary. Never copied |
 | `docs/guide/`, `README.md`, `CHANGELOG.md` | Instructions for adopters and the release history |
+| `AGENTS.md`, `LICENSE` | Shipyard's own agent entry file, pointing to `docs/agents/index.md`, and the MIT license |
 
 The CLI's own code sits beside these.
 
@@ -30,7 +31,7 @@ The CLI's own code sits beside these.
 - `docs/product/` holds what shipyard is and what its own tooling does: what the kit contains, the CLI, the CI pieces, releases, principles and refusals.
 - Core holds what every workflow shares, such as the practices, the plan format and the PR shape fields. A new PR shape is one file in the module that produces it. A different approach to the same job is a sibling module that reuses core and never copies its text.
 
-**Today:** `examples/maintainer/`, `.github/`, `docs/guide/`, `README.md`, `CHANGELOG.md` and the CLI don't exist yet.
+**Today:** `.github/`, `CHANGELOG.md` and the CLI don't exist yet.
 
 ## Platform
 
@@ -39,6 +40,13 @@ Shipyard assumes GitHub: PRs, PR comments, labels, CI workflows, branch rules an
 ## Outside skills
 
 Shipyard depends on no outside skill. A mechanic can define a skill's shape, such as the verification skill's. Which outside skill builds or maintains it is a house rule.
+
+## Outside text
+
+- Where kit text adapts text from an outside source, `kit/core/NOTICE.md` lists the source, the kit files derived from it and its license text. It ships with core, so the notice travels with the copied text.
+- Each derived file ends with a one-line pointer to its entry in the notice.
+- An entry and its pointers are removed once a rewrite leaves no listed file derived from that source.
+- Ideas taken without their text are credited in the README only.
 
 ## Releases
 
