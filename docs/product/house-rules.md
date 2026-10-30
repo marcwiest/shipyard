@@ -22,8 +22,11 @@ The maintainer's house rules ship in the example setup, `examples/maintainer/`, 
 - pstack's verification skills to create and maintain each repo's verification skill.
 - Only a human merges; a release after each merged plan; a tag push deploys.
 - Trunk only, squash merges, the `plan/<slug>` and `work/<slug>` branch names.
-- Inside a phase: spec, then tests, then code; the restatement step.
-- Phases of about 3 hours of work, with a 150k context target.
+- Inside a phase: spec, then tests, then code.
+- The restatement uses pstack's `/in-your-own-words`.
+- Phases of about 3 hours of work, with a 150k context target. Context is estimated at about 20k to start plus about 43k per hour of work, and measured as input plus cache-read plus cache-creation tokens, at the start, end and peak of a run.
+- The builder bot runs on a model pinned per repo in its agent rules, at high effort. The model changes only on purpose.
+- The Sizing log lives in the repo where its run data may be public, and elsewhere where it may not.
 - Plan files deleted when the plan is done; no ADRs, GitHub issues or PR template.
 - The docs layout: `docs/product/`, `docs/north-star.md`, `CONTEXT.md`, `docs/agents/`.
 - Coverage is never lowered; mutation testing only with the human's approval each time.
