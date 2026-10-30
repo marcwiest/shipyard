@@ -14,7 +14,7 @@ Each repo writes its own verification skill: the one way its agents launch, driv
    - **Launch**: how to start the codebase, and when it counts as ready
    - **Doctor**: a read-only health check
    - **Drive**: how to drive a feature through the CLI
-   - **Evidence**: what to capture and where it goes
+   - **Evidence**: what to capture, and the folder outside the repo or ignored by git where runs write it
    - **Cleanup**: how to stop and reset, never deleting the evidence
 3. A [Feature Map](feature-map.md), inside the skill's folder.
 

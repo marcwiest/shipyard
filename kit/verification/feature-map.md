@@ -7,7 +7,7 @@ The verification skill's index of features: what each feature is, and how to rea
 In the verification skill's folder:
 
 - `features/README.md`: the index. One line per feature, linking its file.
-- `features/<feature>.md`: one file per feature.
+- `features/<feature>.md`: one file per feature, named for the feature in a few lowercase words joined by hyphens, such as `count-lines.md`.
 
 ## A feature's file
 

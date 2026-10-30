@@ -11,9 +11,11 @@ Whether every file the PR changes matches one of the patterns in `paths.docs`. O
 
 ## Using it
 
-- Called as `marcwiest/shipyard/kit/docs-only-detection@<release tag>`, from a step in the calling CI workflow's own job.
-- The calling CI workflow runs on pull request events. The job needs `contents: read` and `pull-requests: read`.
-- The build and test jobs depend on that job and run only when `docs-only` is `false`. A job skipped that way reports skipped, which satisfies a required check.
+- Called as `marcwiest/shipyard/kit/docs-only-detection@<release tag>`, from a step in a job of the calling CI workflow. It reads through the token, so the job needs no checkout.
+- The job needs `contents: read` and `pull-requests: read`.
+- The job passes the step's `docs-only` output on as a job output. The build and test jobs depend on that job and run only when it is the string `false`. A job skipped that way reports skipped, which satisfies a required check.
+- On a push or any other event, `docs-only` is `false`, so build and test run.
+- The detection job is a required check too, beside build and test. Otherwise a failed detection skips build and test, and the skipped jobs pass the PR.
 
 | Input | Holds | Default |
 | --- | --- | --- |
@@ -21,6 +23,6 @@ Whether every file the PR changes matches one of the patterns in `paths.docs`. O
 
 | Output | Holds |
 | --- | --- |
-| `docs-only` | `true` when every changed file matches `paths.docs`, otherwise `false` |
+| `docs-only` | The string `true` when every changed file matches `paths.docs`, otherwise `false` |
 
-Settings it reads, from the default branch: `paths.docs`.
+Settings it reads, from the default branch: `paths.docs`. A change to them takes effect once merged.

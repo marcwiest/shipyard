@@ -9,7 +9,7 @@ Verification follows the surface a user touches, not a screen. Each repo names i
 | Web page | Driving pages in a real browser | Screenshots, video, performance traces, console and network logs |
 | API or service | Launching the service locally with seed data and test users, then real HTTP calls | Requests and responses, status codes, logs, side effects such as rows written or messages sent |
 | Library | A small consumer app or the demo page | What the consumer shows or returns |
-| CLI | An isolated terminal session | The transcript, exit codes and files written |
+| CLI | A fresh terminal session in a temporary folder outside the repo, so the run touches nothing else | The transcript, exit codes and files written |
 
 For an API or service, the Feature Map lists endpoints and journeys from the consumer's point of view.
 

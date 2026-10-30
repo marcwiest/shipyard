@@ -52,6 +52,10 @@ verification-surfaces: []
 # Empty: coverage is printed, never enforced.
 coverage-floor: ""
 
+# Read by the weekly drift check: who examines its findings.
+drift-check:
+  human: ""
+
 # Read by the dispatch module.
 labels:
   prefix: "shipyard:"

@@ -86,6 +86,11 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Verification evidence**: What a verification run captures: screenshots, traces, requests and responses, transcripts.
 - **Evidence list**: The part of the phase report naming each piece of verification evidence: what was driven, the file, what it shows.
 - **Verification line**: One line of text on the PR saying what was verified and how.
+- **Verification skill**: The repo's own skill for launching, driving and observing its codebase: a CLI in the repo, a `SKILL.md` and a Feature Map.
 - **Feature Map**: The verification skill's index of features: how to reach and drive each one, and what end state proves it works.
 - **Test-change signals**: Signs a test change weakens a test: a looser assertion, a deleted case whose code remains, changed expected values under an unchanged name, a test that reads internals.
 - **Weekly drift check**: A weekly run that maintains the verification skill, flags specs and agent rules that no longer match the code, and reviews dependency update PRs.
+- **Drift report**: The file a weekly drift check commits to its drift check PR, listing its findings for the human; deleted before the PR merges.
+- **Drift check PR**: The PR one weekly drift check run opens so the human can examine its drift report.
+- **Drift-risk list**: Areas prone to drift that the agent rules list, checked by each weekly drift check.
+- **Dependency update PR**: A PR that updates a dependency, opened by the repo's dependency update tool and reviewed by each weekly drift check.

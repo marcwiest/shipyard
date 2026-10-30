@@ -4,7 +4,7 @@ Every label carries the prefix in `labels.prefix` of the settings file, such as 
 
 | Label | Added by | Means | Removing it |
 | --- | --- | --- | --- |
-| Trigger label, `<prefix><workflow>`, such as `shipyard:build` | The human | Go: this PR runs the workflow the label names. Adding it is the human's approval to start | Does nothing. It stays until merge |
+| Trigger label, `<prefix><workflow>`, such as `shipyard:build` | The human, or the bot of a scheduled workflow (see below) | Go: this PR runs the workflow the label names. Adding it is the human's approval to start | Does nothing. It stays until merge |
 | `<prefix>hold` | The human | Stop at the next done condition | Resumes the work |
 | `<prefix>waiting-human` | A bot | Stopped at a human step. The question is on the PR | The answer is in. Resumes the work |
 

@@ -12,4 +12,4 @@ Trigger: a weekly schedule the repo sets up, such as a scheduled CI workflow tha
 - [Drift check PR](pr-shapes/drift-check.md): the PR each run opens for the human.
 - [Dependency update PR](pr-shapes/dependency-update.md): the PRs a dependency update tool opens, which each run reviews.
 
-Settings it reads: `roles`, `paths`, `branches.drift-check`, `commands` and `notify`.
+Settings it reads: `roles`, `paths`, `branches.drift-check`, `drift-check.human`, `commands` and `notify`.
