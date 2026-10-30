@@ -1,0 +1,52 @@
+# Shipyard settings for this repo. Repo-owned: edit freely.
+# Skills and CI pieces read this file. CI pieces read it from the default branch.
+
+# Which tool fills each role, and how it is started.
+# Leave a role empty if no module this repo takes uses it.
+roles:
+  planning-agent:
+    tool: ""
+    start: ""
+  orchestrator-bot:
+    tool: ""
+    start: ""
+  builder-bot:
+    tool: ""
+    start: ""
+  reviewer-bot:
+    tool: ""
+    start: ""
+
+# Folders, relative to the repo root.
+paths:
+  specs: docs/product/
+  agent-rules: docs/agents/
+  plans: docs/plans/
+  glossary: CONTEXT.md
+  north-star: ""          # optional, such as docs/north-star.md
+  docs:                   # what counts as docs for a docs-only PR
+    - "docs/**"
+    - "**/*.md"
+
+branches:
+  default: main
+  plan: plan/<slug>       # one branch per plan, holding the plan and its work
+  hotfix: hotfix/<slug>
+
+# The repo's own commands.
+commands:
+  install: ""
+  check: ""               # types, lint, build
+  test: ""
+
+# Where tests touch the code, such as "package exports" or "HTTP routes".
+seams: []
+
+# The surfaces verification drives, such as web page, API, library or CLI.
+verification-surfaces: []
+
+# Read by the dispatch module.
+labels:
+  prefix: "shipyard:"
+  trigger-label-adders: []   # empty: anyone with write access
+notify: mention              # how the plan's human is told about a human step
