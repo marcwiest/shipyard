@@ -6,7 +6,7 @@ Kit text names roles, never tools. The role mapping in the settings file names t
 | --- | --- | --- |
 | Human | Writes plans with the planning agent, adds trigger labels, answers human steps and spec questions, merges, releases. | — |
 | Planning agent | Drafts the plan with the human in an interactive session. | Reading and editing files, a shell, git |
-| Orchestrator bot | Runs intake, writes phase briefs, starts the builder bot, gives the phase verdict, keeps the plan record and the status comment, escalates to the plan's human. | Reading and editing files, a shell, git with push, PR comments it can edit, adding and removing labels, starting the builder bot and the reviewer bot |
+| Orchestrator bot | Runs intake, writes phase briefs, starts the builder bot, gives the phase verdict, keeps the plan record and the status comment, escalates to the plan's human. | Reading and editing files, a shell, git with push, PR comments it can edit, adding and removing labels, starting the builder bot and sending it follow-ups, starting the reviewer bot |
 | Builder bot | Builds one phase: restatement, spec, tests, code, verification, phase report. | Reading and editing files, a shell, git with push to the PR's branch |
 | Reviewer bot | Runs preflight and reviews each phase. Its review is advisory. | Reading the repo and the PR, PR comments, including inline review comments |
 

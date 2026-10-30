@@ -4,12 +4,15 @@ Builds an approved plan on the PR that holds it, one phase at a time: the orches
 
 Needs: core, dispatch.
 Roles: human, orchestrator bot, builder bot, reviewer bot.
+Trigger label: `<prefix>build`. The dispatcher starts the orchestrator bot.
 
-Holds:
+## Contents
 
-- the build workflow, from intake to handoff
-- the phased PR shape, which holds its own plan
-- the phase brief, the restatement and the spec rule
-- fix rules: a blocking finding cites a plan or spec line, and a spec question stops the work
-- PR comment conventions: one status comment edited in place, and comments headed `Phase N · preflight`, `Phase N · verification`, `Phase N · review` and `Handoff`
-- spikes, run handling and the Sizing log columns
+- [Build workflow](workflow.md): every step from intake to handoff, with its done condition.
+- [Phased PR](pr-shapes/phased.md): the PR shape the workflow produces. It holds its own plan.
+- [Phases](phases.md): the phase brief, the restatement, building a phase, the spec rule, spikes and the phase report.
+- [Review and fixes](review.md): preflight, review, the phase verdict, fix rounds and repo fixes.
+- [PR comments](pr-comments.md): the PR body, the status comment and the headed comments.
+- [Runs](runs.md): run handling, sizing and the Sizing log.
+
+Settings it reads: `roles`, `paths.plans`, `paths.sizing-log`, `branches`, `commands` and `seams`.

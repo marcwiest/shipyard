@@ -24,6 +24,7 @@ paths:
   plans: docs/plans/
   glossary: CONTEXT.md
   north-star: ""          # optional, such as docs/north-star.md
+  sizing-log: ""          # read by the building module; empty: no Sizing log
   docs:                   # what counts as docs for a docs-only PR
     - "docs/**"
     - "**/*.md"
