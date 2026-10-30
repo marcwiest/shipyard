@@ -23,7 +23,7 @@ Workflows, PR shapes and practices hold only mechanics. Opinions go into [house 
 - The Sizing log columns.
 - A place for specs that tests can cite, and a place for agent rules.
 
-**Today:** `docs/init/` mixes mechanics and opinions and doesn't use this structure. What it describes:
+**Today:** this page states rules that belong in the kit. They move there, and the spec keeps a description of what the kit contains (see [shape](shape.md)). `docs/init/` mixes mechanics and opinions and doesn't use this structure. What it describes:
 
 - Workflows: planning, building (the phased PR) and the weekly drift check. Bootstrap is planned.
 - PR shapes: plan PR, phased PR, docs-only PR, dependency update PR and hotfix PR.

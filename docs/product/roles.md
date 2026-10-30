@@ -14,7 +14,9 @@ Bots run unattended. The human and the planning agent work together interactivel
 
 ## Role mapping
 
-An adopting repo states which tool fills each role and how each tool is started, in its settings file. Each role lists the capabilities its tool needs (see [agent use](agent-use.md)). Shipyard ships the maintainer's role mapping as an example:
+An adopting repo states which tool fills each role and how each tool is started, in its settings file. Each role lists the capabilities its tool needs (see [agent use](agent-use.md)). The maintainer's role mapping ships in the example setup, `examples/maintainer/` (see [shape](shape.md)).
+
+**Today:** the example setup doesn't exist yet, so the maintainer's role mapping is kept here:
 
 | Role | Tool |
 | --- | --- |
@@ -25,4 +27,4 @@ An adopting repo states which tool fills each role and how each tool is started,
 
 The maintainer's setup also has a Chief of Staff bot, which routes work and keeps the backlog, and one Project Management bot per project, which checks plans with the human and relays approval. Neither is a role.
 
-**Today:** `docs/init/` names the maintainer's bots throughout instead of roles.
+**Today:** `docs/init/` names the maintainer's bots throughout instead of roles. The roles and the role mapping move into the kit, which agents in adopting repos read.

@@ -7,12 +7,30 @@ Shipyard is plain files in a git repo. The plain files are the source; nothing e
 - **Skills**: what agents run. Each skill has one source file plus a discovery stub per tool.
 - **Workflows, PR shapes and practices**: reference text that skills cite and humans read.
 - **Templates**: files an adopting repo copies and then owns, such as the plan skeleton or the docs layout.
-- **CI pieces**: CI workflows an adopting repo calls at a release tag.
+- **CI pieces**: GitHub Actions an adopting repo's CI workflows call at a release tag.
 - **The example setup**: the maintainer's role mapping and house rules.
 
 Everything a bot needs lives in the adopting repo, because bots run unattended on its checkout. Nothing installed on the human's machine reaches them.
 
 A plugin for one agent tool may later wrap the same files. It never becomes the source (see [later](later.md)).
+
+## Layout
+
+| Path | Holds |
+| --- | --- |
+| `kit/core/`, `kit/<module>/` | The kit: one folder per part, each with an index naming what it needs, and its workflows, PR shapes, practices, skills, templates and CI pieces |
+| `examples/maintainer/` | The example setup: a filled settings file with the role mapping, and the house rules written as agent rules |
+| `.github/` | Shipyard's own CI only. It calls the CI pieces from `kit/` at the current commit |
+| `docs/product/`, `docs/agents/`, `CONTEXT.md` | Shipyard's own specs, agent rules and glossary. Never copied |
+| `docs/guide/`, `README.md`, `CHANGELOG.md` | Instructions for adopters and the release history |
+
+The CLI's own code sits beside these.
+
+- The kit holds what agents and humans do in an adopting repo: roles, workflows, PR shapes, practices, labels, skills, the kit glossary, and where house rules go.
+- `docs/product/` holds what shipyard is and what its own tooling does: what the kit contains, the CLI, the CI pieces, releases, principles and refusals.
+- Core holds what every workflow shares, such as the practices, the plan format and the PR shape fields. A new PR shape is one file in the module that produces it. A different approach to the same job is a sibling module that reuses core and never copies its text.
+
+**Today:** none of this layout exists. The rules sit in `docs/init/` and in `docs/product/` pages that move into the kit: roles, workflows, most of agent use, and the house rules definition.
 
 ## Platform
 

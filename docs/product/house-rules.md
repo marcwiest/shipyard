@@ -2,11 +2,11 @@
 
 House rules are opinions that a person or an adopting repo layers on top of the workflows. An adopting repo can apply house rules without changing any workflow, PR shape or practice. It keeps them in its own agent rules, and sets the conventions skills read in its settings file (see [adoption](adoption.md)).
 
-**Today:** the maintainer's house rules are listed below; they are to ship as a template.
+The maintainer's house rules ship in the example setup, `examples/maintainer/`, written as agent rules for an adopting repo to copy from. They are never installed. The core's agent rules template has an empty house rules section.
+
+**Today:** the example setup doesn't exist yet, so the list is kept here. Where house rules go moves into the kit.
 
 ## The maintainer's house rules
-
-Shipyard ships these as an example:
 
 - The bots and vendors in the maintainer's role mapping; CDP for browser verification, not Playwright.
 - pstack's verification skills to create and maintain each repo's verification skill.

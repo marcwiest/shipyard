@@ -2,6 +2,8 @@
 
 Glossary for shipyard. One entry per term, one or two sentences each. `docs/init/` predates this glossary; where its terms differ, this glossary wins.
 
+**Today:** this file also holds the workflow terms. They move to the kit glossary once it exists, and this file keeps the terms about shipyard itself.
+
 ## Roles
 
 - **Human**: The person or people who write plans with the planning agent, merge and release. Each plan names its human, who answers that plan's questions. _Avoid_: owner.
@@ -18,7 +20,7 @@ Glossary for shipyard. One entry per term, one or two sentences each. `docs/init
 - **Trigger label**: A PR label that names the workflow to run; a human adding it is the go. It stays until merge.
 - **Hold label**: A label a human adds to stop a PR's work at the next done condition; removing it resumes.
 - **Waiting label**: The label a bot adds when work stops at a human step; the human's removal resumes it.
-- **Dispatcher**: The CI piece that hears label events and starts the role the role mapping names.
+- **Dispatcher**: The CI piece an adopting repo's CI workflow runs on label events; it starts the role the role mapping names.
 - **Human step**: A skill step that waits for the plan's human. Agents ask nothing outside human steps and spec questions.
 - **Done condition**: What a skill step leaves visible in the repo or on the PR to mark it finished, such as a commit or a headed comment.
 - **Answer skill**: The skill any interactive agent runs to show the human's waiting questions, post the answers and remove the waiting labels.
@@ -29,15 +31,18 @@ Glossary for shipyard. One entry per term, one or two sentences each. `docs/init
 - **CI workflow**: A GitHub Actions workflow. Always called this, never just "workflow".
 - **Skill**: Instructions an agent loads and runs, kept in a `SKILL.md` file. The form in which shipyard reaches agents.
 - **Template**: A file an adopting repo copies from shipyard and then owns.
-- **CI piece**: A CI workflow shipyard ships for adopting repos to call at a release tag. _Avoid_: shared workflow.
+- **CI piece**: A GitHub Action in the kit that an adopting repo's own CI workflows call at a release tag. _Avoid_: shared workflow.
 - **Platform**: The code host shipyard assumes: GitHub. Not a tool, so never in a role mapping.
 - **Release**: A tagged version of shipyard with a changelog entry, numbered by semver.
-- **Version record**: The note in an adopting repo naming the release its shipyard files came from, with a checksum per managed file.
+- **Version record**: The file in `.shipyard/` naming the release an adopting repo's shipyard files came from, with a checksum per managed file.
 - **Core**: The part of shipyard every adopting repo takes; it works with a human and a planning agent alone.
-- **Module**: An optional part of shipyard an adopting repo takes or leaves, such as building or verification. Each names what it needs.
+- **Module**: An optional part of shipyard an adopting repo takes or leaves, such as building, dispatch or verification. Each names what it needs.
+- **Kit**: Everything the CLI can install: core and the modules, each with its skills, reference text, templates and CI pieces. It lives in `kit/`.
+- **Kit glossary**: The managed file in core that defines the workflow terms agents in any adopting repo need.
+- **Example setup**: The maintainer's role mapping and house rules in `examples/maintainer/`, copied by hand, never installed.
 - **Managed file**: A file shipyard owns in an adopting repo. Updates replace it, so the repo never edits it.
 - **Repo-owned file**: A file the adopting repo owns, such as a copied template or its specs. Shipyard never touches it after copying.
-- **Settings file**: The repo-owned file stating an adopting repo's conventions, such as role mapping, branch names and folder paths, which skills read.
+- **Settings file**: `.shipyard/settings.yml`, the repo-owned file stating an adopting repo's conventions, such as role mapping, branch names and folder paths. Skills and CI pieces read it.
 - **Guide**: Shipyard's how-tos for people adopting it, in `docs/guide/`. Never copied into an adopting repo.
 - **Bootstrap**: The workflow that starts or straightens out a codebase by working through ordered questions into its specs and agent rules.
 

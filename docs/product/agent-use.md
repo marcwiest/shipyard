@@ -18,7 +18,8 @@ Every label shipyard uses carries the repo's prefix from its settings file, such
 
 ## Dispatcher
 
-- The dispatcher is a CI piece. It hears label events and starts the role the role mapping names, passing the PR number and the label.
+- The dispatcher is a CI piece in the dispatch module, with the labels and the answer skill. The adopting repo's CI workflow runs it on label events, and it starts the role the role mapping names, passing the PR number and the label.
+- It reads the role mapping, the label prefix and who may add trigger labels from the settings file on the default branch.
 - It acts only on PRs from branches inside the repo, never from forks.
 - It doesn't hear label changes made with the CI workflow's own token. Bots add and remove labels under their own app identity; humans under their own.
 
@@ -47,4 +48,4 @@ Every label shipyard uses carries the repo's prefix from its settings file, such
 - Every skill step ends with a done condition: something visible in the repo or on the PR, such as a commit with its phase prefix, a comment with its fixed header, a ticked box or a passing check.
 - A fresh agent resumes from repo and PR state alone.
 
-**Today:** no labels, dispatcher, answer skill or capability lists exist. `docs/init/` starts work with a hand-off between the maintainer's bots, keeps a separate plan PR and says no labels are used.
+**Today:** no labels, dispatcher, answer skill or capability lists exist. `docs/init/` starts work with a hand-off between the maintainer's bots, keeps a separate plan PR and says no labels are used. Everything on this page except the dispatcher moves into the kit; the dispatcher stays here.
