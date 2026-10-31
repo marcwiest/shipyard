@@ -21,7 +21,7 @@ The workflow terms are defined in the [kit glossary](kit/core/glossary.md).
 
 ## Credits
 
-- [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto, and The Complete Guide to pstack: the ideas behind verification as the proof of work, the verification skill and its Feature Map, the restatement, and planning in phases.
+- [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto, and The Complete Guide to pstack: the ideas behind verification as the evidence that work is done, the verification skill and its Feature Map, the restatement, and planning in phases.
 - [mattpocock/skills](https://github.com/mattpocock/skills): the testing practice adapts text from its `tdd` skill, under the MIT license. See [`kit/core/NOTICE.md`](kit/core/NOTICE.md).
 
 ## License
