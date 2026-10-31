@@ -35,7 +35,7 @@ Open questions: while the plan is a draft, the questions waiting on the human, e
 
 Phases: added before building starts, by whoever builds the plan. Each phase delivers one or more Changes and is built and reviewed on its own. Each has:
 
-- a heading naming the Changes it delivers
+- a heading naming the Changes it delivers, ending with its estimate in hours, such as `· about 2 h`, where whoever builds the plan estimates phases
 - a Tests box naming the seam and the behavior the tests assert
 - a Code box naming what makes the tests pass
 - a Notes line, added when the phase is done: the verification line, deviations, blockers, and answers that changed how the work was done
