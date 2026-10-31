@@ -9,10 +9,13 @@ Shipyard is plain files in a git repo. The plain files are the source; nothing e
 - **Templates**: files an adopting repo copies and then owns, such as the plan skeleton or the docs layout.
 - **CI pieces**: GitHub Actions an adopting repo's CI workflows call at a release tag.
 - **The example setup**: the maintainer's role mapping and house rules.
+- **The plan check**: a script the CLI runs. It only lists missing required items, so it needs no agent, and a CI piece can run it on PRs later.
 
 Everything a bot needs lives in the adopting repo, because bots run autonomously on its checkout. Nothing installed on the human's machine reaches them.
 
 A plugin for one agent tool may later wrap the same files. It never becomes the source (see [later](later.md)).
+
+**Today:** no plan check script exists; agents run the check by reading core's [plans](../../kit/core/plans.md).
 
 ## Layout
 
