@@ -15,7 +15,7 @@ In design. There is no release yet, no CLI, no skills, and the CI pieces describ
 | [`docs/guide/`](docs/guide/index.md) | How to adopt the kit |
 | [`docs/product/`](docs/product/index.md) | Shipyard's own specs: what it is, what it ships and what it refuses |
 | [`docs/agents/`](docs/agents/index.md), [`AGENTS.md`](AGENTS.md), [`CLAUDE.md`](CLAUDE.md), [`CONTEXT.md`](CONTEXT.md) | How agents work on shipyard itself, and its own glossary |
-| `docs/plans/` | Shipyard's own plans |
+| `docs/plans/` | Shipyard's own plans while they are built. A done plan is deleted; its PR keeps the record |
 
 The workflow terms are defined in the [kit glossary](kit/core/glossary.md).
 
