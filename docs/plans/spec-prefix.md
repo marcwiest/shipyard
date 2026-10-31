@@ -1,6 +1,6 @@
 # Give spec text its own commit prefix
 
-Status: ready
+Status: in progress
 Human: marcwiest
 Goal: a phase's spec text is found by its own `spec(phase-N):` prefix, so docs work in any phase can use `docs(phase-N):` like any other docs change.
 Specs touched: none
@@ -17,4 +17,7 @@ Out of scope: other prefixes; branch names; the CLI and any commit lint config s
 
 ## Phases
 
-Added before building starts, by whoever builds the plan.
+### Phase 1: spec prefix in the kit · delivers Change 1, 2, 3, 4 · about 1 h
+- [ ] Work: `kit/core/practices/git.md` prefix table, the line on work outside a plan and a commit lint line; `kit/building/phases.md` builder bot steps 2 and 3; `kit/building/review.md` phase verdict's spec commit line; then the Change 4 grep
+
+Notes:
