@@ -2,8 +2,6 @@
 # Skills and CI pieces read this file. CI pieces read it from the default branch.
 # Values marked "per repo" are filled in each repo.
 
-# The maintainer's setup also has bots that route work and keep the backlog
-# outside the platform. They fill no role, so they aren't listed here.
 roles:
   planning-agent:
     tool: "Claude Code or Grok CLI, run locally"
@@ -32,7 +30,7 @@ paths:
 
 branches:
   default: main
-  plan: work/<slug>
+  plan: plan/<slug>
   hotfix: hotfix/<slug>
   drift-check: drift/<date>
 
@@ -50,7 +48,7 @@ verification-surfaces: []   # per repo
 coverage-floor: ""
 
 drift-check:
-  human: marcwiest
+  human: ""   # per repo: the GitHub login of who examines the findings
 
 labels:
   prefix: "shipyard:"

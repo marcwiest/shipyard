@@ -14,14 +14,14 @@ In design. There is no release yet, no CLI, no skills, and the CI pieces describ
 | [`examples/maintainer/`](examples/maintainer/index.md) | The maintainer's settings file and house rules, as an example to copy from |
 | [`docs/guide/`](docs/guide/index.md) | How to adopt the kit |
 | [`docs/product/`](docs/product/index.md) | Shipyard's own specs: what it is, what it ships and what it refuses |
-| [`docs/agents/`](docs/agents/index.md), [`AGENTS.md`](AGENTS.md), [`CONTEXT.md`](CONTEXT.md) | How agents work on shipyard itself, and its own glossary |
+| [`docs/agents/`](docs/agents/index.md), [`AGENTS.md`](AGENTS.md), [`CLAUDE.md`](CLAUDE.md), [`CONTEXT.md`](CONTEXT.md) | How agents work on shipyard itself, and its own glossary |
 | `docs/plans/` | Shipyard's own plans |
 
 The workflow terms are defined in the [kit glossary](kit/core/glossary.md).
 
 ## Credits
 
-- pstack by poteto, and The Complete Guide to pstack: the ideas behind verification as the proof of work, the verification skill and its Feature Map, the restatement, and planning in phases.
+- [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto, and The Complete Guide to pstack: the ideas behind verification as the proof of work, the verification skill and its Feature Map, the restatement, and planning in phases.
 - [mattpocock/skills](https://github.com/mattpocock/skills): the testing practice adapts text from its `tdd` skill, under the MIT license. See [`kit/core/NOTICE.md`](kit/core/NOTICE.md).
 
 ## License

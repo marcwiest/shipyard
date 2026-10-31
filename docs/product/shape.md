@@ -23,7 +23,7 @@ A plugin for one agent tool may later wrap the same files. It never becomes the 
 | `.github/` | Shipyard's own CI only. It calls the CI pieces from `kit/` at the current commit |
 | `docs/product/`, `docs/agents/`, `CONTEXT.md` | Shipyard's own specs, agent rules and glossary. Never copied |
 | `docs/guide/`, `README.md`, `CHANGELOG.md` | Instructions for adopters and the release history |
-| `AGENTS.md`, `LICENSE` | Shipyard's own agent entry file, pointing to `docs/agents/index.md`, and the MIT license |
+| `AGENTS.md`, `CLAUDE.md`, `LICENSE` | Shipyard's own agent entry file, pointing to `docs/agents/index.md`, its `CLAUDE.md` sibling, and the MIT license |
 
 The CLI's own code sits beside these.
 

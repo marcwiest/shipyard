@@ -19,6 +19,7 @@ How agents work in this repo.
 - Before writing a rule, ask who carries it out. Agents or humans in an adopting repo: it goes in the kit. Shipyard's CLI or CI pieces: it goes in `docs/product/`. Each rule has one home.
 - Workflow terms go in the kit glossary; terms about shipyard itself go in `CONTEXT.md`. The kit glossary carries no retired names.
 - `.github/` holds only shipyard's own CI. CI pieces live in `kit/`.
+- Every `AGENTS.md` has a sibling `CLAUDE.md` holding only `@AGENTS.md`, so Claude Code loads it.
 - Leave `docs/init/` unchanged; it gets restructured as a whole.
 - This repo is public. Never name private orgs, repos, clients or products, local paths, or infrastructure hosts.
 

@@ -66,7 +66,9 @@ Leave a role empty if no part you took uses it. Settings that no part you took r
 
 Add the contents of `.shipyard/core/templates/agents-block.md` to your repo's `AGENTS.md`, creating the file if it's missing. Keep the marker lines. Fill in the trigger labels and skills lines; without dispatch or skills, both are "none".
 
-If your agent tool doesn't read `AGENTS.md`, add a one-line pointer to it in the tool's own entry file, in a form that tool loads, such as `@AGENTS.md` in `CLAUDE.md` for Claude Code.
+Beside `AGENTS.md`, add a `CLAUDE.md` holding only `@AGENTS.md`, since Claude Code doesn't read `AGENTS.md`. Do the same beside any other `AGENTS.md` in the repo.
+
+If another agent tool you use doesn't read `AGENTS.md`, add a one-line pointer to it in that tool's own entry file.
 
 ## 6. Create your own specs, agent rules and glossary
 
@@ -117,4 +119,4 @@ Then open a session with your planning agent and ask it to plan a change. It rea
 ## Updating and removing
 
 - To update, compare each managed file's checksum with `version.yml` first. A mismatch is a local edit that the copy would overwrite. Then copy the parts again and rewrite the version record. Never copy over your settings file or the templates you copied.
-- To remove shipyard, delete `.shipyard/` and the `AGENTS.md` block, and any pointer you added in step 5.
+- To remove shipyard, delete `.shipyard/`, the `AGENTS.md` block, and the `CLAUDE.md` and any other pointer you added in step 5.
