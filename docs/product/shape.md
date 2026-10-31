@@ -60,5 +60,6 @@ Shipyard depends on no outside skill. A mechanic can define a skill's shape, suc
   - **Patch**: wording and fixes that change no behavior.
 - A changelog entry per release says what changed and whether an adopting repo must act.
 - Each adopting repo keeps a version record naming the release its files came from (see [adoption](adoption.md)).
+- Before each release, a few short scenario runs pass in a small sample repo: fresh agents adopt the kit by the guide and plan a change. They stay small; real use in adopting repos is the main test.
 
-**Today:** no release, no changelog.
+**Today:** no release, no changelog, no scenario runs.
