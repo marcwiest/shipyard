@@ -9,10 +9,13 @@ Shipyard is plain files in a git repo. The plain files are the source; nothing e
 - **Templates**: files an adopting repo copies and then owns, such as the plan skeleton or the docs layout.
 - **CI pieces**: GitHub Actions an adopting repo's CI workflows call at a release tag.
 - **The example setup**: the maintainer's role mapping and house rules.
+- **The plan check**: a script the CLI runs. It only lists missing required items, so it needs no agent, and a CI piece can run it on PRs later.
 
 Everything a bot needs lives in the adopting repo, because bots run autonomously on its checkout. Nothing installed on the human's machine reaches them.
 
 A plugin for one agent tool may later wrap the same files. It never becomes the source (see [later](later.md)).
+
+**Today:** no plan check script exists; agents run the check by reading core's [plans](../../kit/core/plans.md).
 
 ## Layout
 
@@ -20,7 +23,7 @@ A plugin for one agent tool may later wrap the same files. It never becomes the 
 | --- | --- |
 | `kit/core/`, `kit/<module>/` | The kit: one folder per part, each with an index naming what it needs, and its workflows, PR shapes, practices, skills, templates and CI pieces |
 | `examples/maintainer/` | The example setup: a filled settings file with the role mapping, and the house rules written as agent rules |
-| `.github/` | Shipyard's own CI only. It calls the CI pieces from `kit/` at the current commit |
+| `.github/` | Shipyard's own CI only. It calls the CI pieces from `kit/` at the current commit, the docs index check on `docs/product/` among them, and checks every link in tracked markdown files |
 | `docs/product/`, `docs/agents/`, `CONTEXT.md` | Shipyard's own specs, agent rules and glossary. Never copied |
 | `docs/guide/`, `README.md`, `CHANGELOG.md` | Instructions for adopters and the release history |
 | `AGENTS.md`, `CLAUDE.md`, `LICENSE` | Shipyard's own agent entry file, pointing to `docs/agents/index.md`, its `CLAUDE.md` sibling, and the MIT license |
@@ -57,5 +60,7 @@ Shipyard depends on no outside skill. A mechanic can define a skill's shape, suc
   - **Patch**: wording and fixes that change no behavior.
 - A changelog entry per release says what changed and whether an adopting repo must act.
 - Each adopting repo keeps a version record naming the release its files came from (see [adoption](adoption.md)).
+- Before each release, a few short scenario runs pass in a small sample repo: fresh agents adopt the kit by the guide and plan a change. They stay small while shipyard is early; real use in adopting repos is the main test, and more checks come as that use shows where they are needed.
+- Before each release, an agent reads the kit, `docs/product/`, the guide and the README together for terms used without a glossary entry and rules with more than one home. The human examines its findings before tagging.
 
-**Today:** no release, no changelog.
+**Today:** no release, no changelog, no scenario runs. Until `.github/` exists, the link check runs by hand before each release.

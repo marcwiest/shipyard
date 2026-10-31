@@ -9,13 +9,13 @@ The maintainer's house rules, written as agent rules. They apply on top of the k
 - Draft plans with a slim planning skill modeled on pstack's multi-phase plan playbook, grounded with pstack's `how` and `why`.
 - Design bigger changes with pstack's `/architect`: types and signatures first, candidates compared, a design scrapped when the evidence turns against it.
 - Delete the plan file when the plan is done; its PR keeps the record.
+- Never mention a plan file in the spec or other docs, such as the README. Docs describe the codebase, not the work that changed it, and the plan file is deleted when done.
 - Keep no ADRs, GitHub issues or PR template.
 
 ## Building
 
-- Inside a phase: spec, then tests, then code. Tests are committed before the code that makes them pass; working one test at a time locally is fine.
 - Run the restatement with pstack's `/in-your-own-words`.
-- The builder bot runs on `<model>` at high effort. Change the model only on purpose.
+- The builder bot runs on `<model>` (per repo) at high effort. Change the model only on purpose.
 - Keep the Sizing log in the repo where its run data may be public, and outside it where it may not.
 
 ## Tests
@@ -42,9 +42,9 @@ The maintainer's house rules, written as agent rules. They apply on top of the k
 - The default branch requires CI and an up-to-date branch before merge, keeps a linear history, applies its rules to admins and allows no force pushes. No emergency self-approval.
 - Squash merges. The squash commit message is the PR title in conventional form.
 - Delete branches after merge.
-- Only a human merges. Each plan merges as soon as it is done; plans are never held to merge together.
+- Each plan merges as soon as it is done; plans are never held to merge together.
 - A release follows each merged plan. Its bump follows the PR title: `feat` minor, `fix` patch, `!` major. Release notes come from the merged PRs and their plans.
-- Release tags are the human's only, enforced by a tag rule. A tag push deploys.
+- A tag rule lets only humans push release tags. A tag push deploys.
 
 ## Dependencies
 

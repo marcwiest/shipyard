@@ -51,8 +51,8 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Today note**: A note in a spec marking where code and spec differ; deleted when the gap closes.
 - **North star**: Where the codebase is heading, and why.
 - **Plan**: A file stating one piece of intended work: its human, goal, Changes and phases. Once done, it is the record of what got done.
-- **Change**: One item of the human's intent in a plan, made of a Spec line and an Evidence line.
-- **Spec line**: The part of a Change that states what the spec will say after it.
+- **Change**: One thing the human wants true once a plan is built, such as a behavior, a documented step or a refactor, approved with the plan. Its Spec line states it and its Evidence line names what proves it.
+- **Spec line**: The part of a Change that states what the spec will say after it, or, for a Change that edits no spec, `none` and what is true after it.
 - **Evidence line**: The part of a Change that names the verification evidence proving it. Checks are always required and not listed.
 - **Plan check**: An inspection of a plan for its required items. It never judges plan quality.
 - **Intake**: The orchestrator bot checks an approved plan against the repo, raises gaps with the plan's human, and splits the Changes into phases.

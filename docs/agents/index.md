@@ -21,6 +21,8 @@ How agents work in this repo.
 - `.github/` holds only shipyard's own CI. CI pieces live in `kit/`.
 - Every `AGENTS.md` has a sibling `CLAUDE.md` holding only `@AGENTS.md`, so Claude Code loads it.
 - This repo is public. Never name private orgs, repos, clients or products, local paths, or infrastructure hosts.
+- Working notes, trackers and run files go in the gitignored `.scratch/`. Tracked text never points into it, since a public reader can't follow it.
+- A done plan's file is deleted; its PR keeps the record. A done plan points to working notes and history a public reader can't see.
 
 ## Commands
 

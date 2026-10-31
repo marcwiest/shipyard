@@ -15,13 +15,13 @@ In design. There is no release yet, no CLI, no skills, and the CI pieces describ
 | [`docs/guide/`](docs/guide/index.md) | How to adopt the kit |
 | [`docs/product/`](docs/product/index.md) | Shipyard's own specs: what it is, what it ships and what it refuses |
 | [`docs/agents/`](docs/agents/index.md), [`AGENTS.md`](AGENTS.md), [`CLAUDE.md`](CLAUDE.md), [`CONTEXT.md`](CONTEXT.md) | How agents work on shipyard itself, and its own glossary |
-| `docs/plans/` | Shipyard's own plans |
+| `docs/plans/` | Shipyard's own plans while they are built. A done plan is deleted; its PR keeps the record |
 
 The workflow terms are defined in the [kit glossary](kit/core/glossary.md).
 
 ## Credits
 
-- [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto, and The Complete Guide to pstack: the ideas behind verification as the evidence that work is done, the verification skill and its Feature Map, the restatement, and planning in phases.
+- [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto, and [The Complete Guide to pstack](https://github.com/cursor/plugins/tree/main/pstack/docs/guide): the ideas behind verification as the evidence that work is done, the verification skill and its Feature Map, the restatement, and planning in phases.
 - [mattpocock/skills](https://github.com/mattpocock/skills): the testing practice adapts text from its `tdd` skill, under the MIT license. See [`kit/core/NOTICE.md`](kit/core/NOTICE.md).
 
 ## License

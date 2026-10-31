@@ -4,7 +4,7 @@ A PR that builds one plan, phase by phase. It holds its own plan: there is no se
 
 | Field | Phased PR |
 | --- | --- |
-| Who opens it | The human, or the planning agent at the human's ask, from the plan's branch once the plan may be public |
+| Who opens it | The planning agent, at the end of core's [planning workflow](../../core/plans.md#planning-workflow), from the plan's branch |
 | Branch | The plan's branch, named by `branches.plan` in the settings file. It holds the plan file and all of the plan's work |
 | What it may touch | The plan file, and for each phase the scope its preflight set |
 | Review | Each phase: the reviewer bot's advisory review and the orchestrator bot's phase verdict. At handoff, the plan's human, for intent |
