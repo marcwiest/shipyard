@@ -17,7 +17,7 @@ Out of scope: <what this plan leaves alone>
 
 ## Phases
 
-Added before building starts, by whoever builds the plan. Until then, leave this section empty. Each phase looks like this:
+Added before building starts, by whoever builds the plan. Until then, leave this section empty. A phase that changes code has Tests and Code boxes; any other phase has one Work box:
 
 ```
 ### Phase 1: <name> · delivers Change 1
@@ -25,4 +25,9 @@ Added before building starts, by whoever builds the plan. Until then, leave this
 - [ ] Code: <what makes them pass>
 
 Notes: <added when the phase is done: verification line, deviations, blockers>
+
+### Phase 2: <name> · delivers Change 2
+- [ ] Work: <what it changes, such as docs, config or content>
+
+Notes: <...>
 ```

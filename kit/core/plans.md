@@ -36,8 +36,8 @@ Open questions: while the plan is a draft, the questions waiting on the human, e
 Phases: added before building starts, by whoever builds the plan. Each phase delivers one or more Changes and is built and reviewed on its own. Each has:
 
 - a heading naming the Changes it delivers, ending with its estimate in hours, such as `· about 2 h`, where whoever builds the plan estimates phases
-- a Tests box naming the seam and the behavior the tests assert
-- a Code box naming what makes the tests pass
+- for a phase that changes code: a Tests box naming the seam and the behavior the tests assert, and a Code box naming what makes the tests pass
+- for a phase that changes no code, such as docs, config or content: a Work box naming what it changes
 - a Notes line, added when the phase is done: the verification line, deviations, blockers, and answers that changed how the work was done
 
 ## Who changes what
@@ -60,7 +60,7 @@ Required before approval:
 Required once phases exist:
 
 - each phase names the Changes it delivers
-- each phase has a Tests box naming a seam, and a Code box
+- each phase has a Tests box naming a seam and a Code box, or a Work box when it changes no code
 - together the phases deliver every Change
 
 The planning agent runs it before the human approves the plan. Whoever adds the phases runs it again after adding them.
