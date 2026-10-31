@@ -119,4 +119,4 @@ Then open a session with your planning agent and ask it to plan a change. It rea
 ## Updating and removing
 
 - To update, compare each managed file's checksum with `version.yml` first. A mismatch is a local edit that the copy would overwrite. Then copy the parts again and rewrite the version record. Never copy over your settings file or the templates you copied.
-- To remove shipyard, delete `.shipyard/`, the `AGENTS.md` block, and the `CLAUDE.md` and any other pointer you added in step 5.
+- To remove shipyard, delete `.shipyard/` and the `AGENTS.md` block. `CLAUDE.md` and any other pointer from step 5 can stay; they only load `AGENTS.md`.
