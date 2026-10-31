@@ -27,8 +27,8 @@ The orchestrator bot's instructions to the builder bot for one phase, given when
 The builder bot, in order:
 
 1. Reads what the brief names first, then only the files its work needs.
-2. Writes the spec text the phase's Spec lines call for, within the spec rule. Commit: `docs(phase-N):`.
-3. Writes the tests at the seam the phase's Tests box names, and the code that makes them pass. Commits: `test(phase-N):`, then `feat(phase-N):` or `fix(phase-N):`. The test commit comes first, so review can see the tests were written before the code. For a phase with a Work box, it makes the change the box names instead, in `feat(phase-N):` or `fix(phase-N):` commits.
+2. Writes the spec text the phase's Spec lines call for, within the spec rule. Commit: `spec(phase-N):`.
+3. Writes the tests at the seam the phase's Tests box names, and the code that makes them pass. Commits: `test(phase-N):`, then `feat(phase-N):` or `fix(phase-N):`. The test commit comes first, so review can see the tests were written before the code. For a phase with a Work box, it makes the change the box names instead: changes to files in the settings file's docs paths in `docs(phase-N):` commits, any other change in `feat(phase-N):` or `fix(phase-N):`.
 4. Runs the repo's checks and tests with the commands in the settings file.
 5. Verifies each Change the phase delivers as its Evidence line and the repo's minimums say (see core's [verification practice](../core/practices/verification.md)).
 6. Pushes its commits and ends with the phase report.

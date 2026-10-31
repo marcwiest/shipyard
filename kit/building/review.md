@@ -19,7 +19,7 @@ Steps 4, 9 and 10 of the [build workflow](workflow.md).
 
 The orchestrator bot reviews the phase itself, then gives one verdict from its own reading, the review and the verification evidence:
 
-- The spec commit first, against the Spec lines of the Changes the phase delivers. A mismatch is a fix round before tests and code are judged.
+- The spec commit first, found by its `spec(phase-N):` prefix, against the Spec lines of the Changes the phase delivers. A mismatch is a fix round before tests and code are judged.
 - Each change to an existing test, against its stated reason.
 - The evidence list, against each Change's Evidence line and the repo's minimums. It opens only the evidence it needs. When it doubts the evidence, it starts a fresh builder bot to rerun the verification. Missing or weak evidence is a blocking finding.
 - The extra spec lines. Any line it doubts is a human step.
