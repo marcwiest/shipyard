@@ -10,7 +10,7 @@ roles:
     tool: "the maintainer's own orchestrating bot, on a server the maintainer runs"
     start: "the dispatcher sends it a message naming the skill and the PR"
   builder-bot:
-    tool: "Cursor, run in the cloud on a Grok model pinned in the agent rules"
+    tool: "Cursor, run in the cloud on a Grok model, pinned per repo in the house rules"
     start: "the orchestrator bot launches it through Cursor's agents API with the phase brief as its prompt, on the PR's branch; follow-ups go through the same API"
   reviewer-bot:
     tool: "the Claude GitHub Action"

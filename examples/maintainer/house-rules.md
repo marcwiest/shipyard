@@ -15,7 +15,7 @@ The maintainer's house rules, written as agent rules. They apply on top of the k
 
 - Inside a phase: spec, then tests, then code. Tests are committed before the code that makes them pass; working one test at a time locally is fine.
 - Run the restatement with pstack's `/in-your-own-words`.
-- The builder bot runs on `<model>` at high effort. Change the model only on purpose.
+- The builder bot runs on `<model>` (per repo) at high effort. Change the model only on purpose.
 - Keep the Sizing log in the repo where its run data may be public, and outside it where it may not.
 
 ## Tests
