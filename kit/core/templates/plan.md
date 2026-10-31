@@ -13,11 +13,11 @@ Out of scope: <what this plan leaves alone>
 
 ## Open questions
 
-- <question for the human> · Recommendation: <the planning agent's answer>
+- <question for the human> · Recommendation: <the planning agent's answer>. Delete this line once no question is open.
 
 ## Phases
 
-Added before building starts, by whoever builds the plan. Until then, leave this section empty. A phase that changes code has Tests and Code boxes; any other phase has one Work box:
+Added before building starts, by whoever builds the plan. Until then, it holds only this note and the example below, which the phases replace. A phase that changes code has Tests and Code boxes; any other phase has one Work box:
 
 ```
 ### Phase 1: <name> · delivers Change 1

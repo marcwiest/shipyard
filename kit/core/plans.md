@@ -42,13 +42,13 @@ Phases: added before building starts, by whoever builds the plan. Each phase del
 
 ## Who changes what
 
-- The planning agent writes the Goal and the Changes with the human. Once the plan is approved, only the human changes them.
+- The planning agent writes the Goal and the Changes with the human. Once the plan is approved, only the human changes them; whoever builds the plan ticks their boxes.
 - Whoever builds the plan writes and owns the phases, keeps the Status line, ticks the boxes and adds each phase's Notes line in the plan record commit.
 - The PR is the working channel for questions, reviews and the handoff. The plan keeps only what the record needs.
 
 ## Plan check
 
-An inspection of a plan for its required items. It lists what is missing and never judges plan quality.
+An inspection of a plan for its required items. It lists what is missing and never judges plan quality. Until shipyard ships it as a script, the agent checks the lists below by reading them.
 
 Required before approval:
 
