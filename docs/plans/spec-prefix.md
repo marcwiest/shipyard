@@ -1,6 +1,6 @@
 # Give spec text its own commit prefix
 
-Status: draft
+Status: ready
 Human: marcwiest
 Goal: a phase's spec text is found by its own `spec(phase-N):` prefix, so docs work in any phase can use `docs(phase-N):` like any other docs change.
 Specs touched: none
