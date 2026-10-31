@@ -11,7 +11,7 @@ Glossary for shipyard itself. One entry per term, one or two sentences each. Wor
 
 ## Retired names
 
-`docs/init/` predates both glossaries and uses names since retired. New text uses the term on the right.
+The drafts the kit was built from used names since retired. They remain in git history; new text uses the term on the right.
 
 | Retired | Term |
 | --- | --- |

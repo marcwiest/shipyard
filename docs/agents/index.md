@@ -11,7 +11,7 @@ How agents work in this repo.
 
 ## Rules
 
-- Use the terms in the kit glossary and `CONTEXT.md`. `docs/init/` predates them and uses retired names, listed in `CONTEXT.md`. Don't carry those into new text.
+- Use the terms in the kit glossary and `CONTEXT.md`. Never use the retired names listed in `CONTEXT.md`.
 - Name things by their definition. A new concept gets a glossary entry before it's used.
 - Glossary entries are one sentence, two at most. Cap the length of entries, never the number of terms.
 - `docs/product/` describes shipyard itself: intent, behavior, refusals. Install and usage instructions for adopting repos go in the README and `docs/guide/`.
@@ -20,7 +20,6 @@ How agents work in this repo.
 - Workflow terms go in the kit glossary; terms about shipyard itself go in `CONTEXT.md`. The kit glossary carries no retired names.
 - `.github/` holds only shipyard's own CI. CI pieces live in `kit/`.
 - Every `AGENTS.md` has a sibling `CLAUDE.md` holding only `@AGENTS.md`, so Claude Code loads it.
-- Leave `docs/init/` unchanged; it gets restructured as a whole.
 - This repo is public. Never name private orgs, repos, clients or products, local paths, or infrastructure hosts.
 
 ## Commands
