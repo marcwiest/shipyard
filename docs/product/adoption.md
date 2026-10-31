@@ -4,9 +4,16 @@ How shipyard gets into an adopting repo and stays current there.
 
 ## Core and modules
 
-- **Core**: the plan format and the plan check, the practices, a place for specs, a place for agent rules, and the AGENTS.md block. It works with a human and a planning agent alone.
-- **Modules**: building (the phased PR, the bot skills and the PR comment conventions), dispatch (the trigger, hold and waiting labels, the dispatcher and the answer skill), verification (the verification skill's shape and the Feature Map), the weekly drift check, and each other CI piece on its own. Each module names the modules and roles it needs. Building and the weekly drift check need dispatch.
-- House rules are never on by default. Shipyard's are an example.
+Each part of the kit has an index that says what the part holds and the modules and roles it needs.
+
+- **Core**: [`kit/core/`](../../kit/core/index.md). Every adopting repo takes it. It works with a human and a planning agent alone.
+- **Modules**, each taken or left on its own:
+  - [Building](../../kit/building/index.md)
+  - [Dispatch](../../kit/dispatch/index.md)
+  - [Verification](../../kit/verification/index.md)
+  - [Weekly drift check](../../kit/weekly-drift-check/index.md)
+  - One per CI piece: [docs-only detection](../../kit/docs-only-detection/index.md), [test output cap](../../kit/test-output-cap/index.md), [docs index check](../../kit/docs-index-check/index.md) and [coverage floor](../../kit/coverage-floor/index.md)
+- House rules are never on by default. The maintainer's are an example, in [`examples/maintainer/`](../../examples/maintainer/index.md), copied by hand and never installed.
 
 ## Getting in
 
@@ -19,13 +26,13 @@ How shipyard gets into an adopting repo and stays current there.
 
 - **Managed files**: skills, discovery stubs, workflows, PR shapes, practices, template sources and the kit glossary. Shipyard owns them; the adopting repo never edits them.
 - **Repo-owned files**: copied templates, the settings file, and the repo's specs, agent rules and house rules. Shipyard never touches them after copying.
-- **Settings file**: `.shipyard/settings.yml`, in YAML. It holds the repo's conventions, which skills read instead of hardcoding: role mapping, label prefix, who may add trigger labels, how the human is notified, branch names, commands, seams, verification surfaces, and the spec and agent rules folders (by default `docs/product/` and `docs/agents/`).
+- **Settings file**: `.shipyard/settings.yml`, in YAML. It holds the repo's conventions, which skills read instead of hardcoding: role mapping, label prefix, who may add trigger labels, how the human is notified, branch names, commands, seams, verification surfaces, the coverage floor, and the spec, agent rules, plans and verification skill folders (by default `docs/product/`, `docs/agents/` and `docs/plans/`).
 - CI pieces read the settings file themselves, from the default branch, so a PR can't change the settings that act on it. Inputs only carry values that matter to CI alone, such as the test output cap.
 - An adopting repo keeps its house rules in its own agent rules.
 
 ## In an adopting repo
 
-- `.shipyard/` holds everything the CLI writes, at a fixed path: one folder per installed part of the kit, mirroring `kit/`, plus the version record. The settings file is the one repo-owned file in it.
+- `.shipyard/` holds everything the CLI writes, at a fixed path: one folder per installed part of the kit, mirroring `kit/`, plus the version record, `.shipyard/version.yml`. The settings file is the one repo-owned file in it.
 - Each skill gets a discovery stub in the skills folder of every tool the role mapping names, and only those.
 - Template sources stay in `.shipyard/` as managed files, so skills can read them. Each copy made from them, such as a plan or a spec page, is repo-owned.
 - Agents reach managed files by a named path: a stub, the AGENTS.md block or a skill step. Nothing depends on search tools that skip hidden folders.
@@ -40,13 +47,14 @@ How shipyard gets into an adopting repo and stays current there.
 ## Agent entry files
 
 - Shipyard adds one marked block to AGENTS.md, creating the file if it's missing. Updates replace only what is between the markers. It is the only shipyard content inside a repo-owned file.
-- A tool that doesn't read AGENTS.md gets a one-line pointer from its own entry file.
+- Beside AGENTS.md, shipyard adds a `CLAUDE.md` holding only `@AGENTS.md`, creating it if it's missing, since Claude Code doesn't read AGENTS.md. Every AGENTS.md in the repo has this sibling. It is repo-owned: the repo may add to it, and removing shipyard leaves it.
+- Another tool that doesn't read AGENTS.md gets a one-line pointer from its own entry file.
 
 ## Shipyard's own docs
 
 - Shipyard's `docs/product/`, `docs/agents/` and `CONTEXT.md` describe shipyard and are never copied. They are made with the same templates and workflows, and serve as a worked example.
-- An adopting repo creates its own from templates and skills, such as bootstrap, at the paths in its settings file.
+- An adopting repo creates its own from the templates, at the paths in its settings file.
 - Instructions for adopting shipyard live in the README and the guide.
 - Shipyard installs its own last release into `.shipyard/` like any adopting repo, and its agents follow that copy. A PR that edits `kit/` doesn't change the rules the agents working on it follow.
 
-**Today:** no CLI, kit, settings file, templates, README or guide exist yet, so shipyard doesn't install its own release. The npm package name for the CLI is open, since `shipyard` is taken.
+**Today:** no CLI or release exists yet, so shipyard doesn't install its own release, and a repo copying by hand records the commit it copied from. The npm package name for the CLI is open, since `shipyard` is taken.
