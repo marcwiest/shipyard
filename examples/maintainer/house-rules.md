@@ -21,7 +21,7 @@ The maintainer's house rules, written as agent rules. They apply on top of the k
 ## Tests
 
 - Never lower the coverage floor.
-- Run mutation testing only with the human's approval, each time.
+- Run mutation testing only with the human's approval, each time. A surviving mutant is evidence, not a task; never silence one with a disable comment.
 - Test packages through their exports, imported by package name, never by internal path. Lint enforces it.
 
 ## Verification
@@ -34,6 +34,7 @@ The maintainer's house rules, written as agent rules. They apply on top of the k
 ## Specs
 
 - Write specs with pstack's `/technical-writing`, which keeps tutorial, how-to, reference and explanation apart.
+- Keep the direction in a north star file, the one explanation-style doc. The README opens with a sentence or two of purpose and links to it.
 
 ## Git and releases
 
