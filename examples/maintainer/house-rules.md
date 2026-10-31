@@ -9,6 +9,7 @@ The maintainer's house rules, written as agent rules. They apply on top of the k
 - Draft plans with a slim planning skill modeled on pstack's multi-phase plan playbook, grounded with pstack's `how` and `why`.
 - Design bigger changes with pstack's `/architect`: types and signatures first, candidates compared, a design scrapped when the evidence turns against it.
 - Delete the plan file when the plan is done; its PR keeps the record.
+- Never mention a plan file in the spec or other docs, such as the README. Docs describe the codebase, not the work that changed it, and the plan file is deleted when done.
 - Keep no ADRs, GitHub issues or PR template.
 
 ## Building

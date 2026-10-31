@@ -1,6 +1,6 @@
 # Docs-only PR
 
-A PR that changes only documentation.
+A PR that changes only documentation, for work outside a plan. A plan's PR never takes this shape, even when it touches only docs: its Changes carry their Evidence lines.
 
 | Field | Docs-only PR |
 | --- | --- |

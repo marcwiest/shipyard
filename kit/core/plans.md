@@ -23,13 +23,13 @@ Header lines:
 - **Status**: `draft`, `ready`, `in progress` or `done`. The human sets `ready`; whoever builds the plan keeps it after that. Status is never a trigger.
 - **Human**: the person who owns the plan's intent and answers its questions. By default, the person who asked for the plan.
 - **Goal**: one sentence on what changes for the user.
-- **Specs touched**: the spec files the Changes edit, and the repo's glossary if they add or change terms.
+- **Specs touched**: the spec files the Changes edit, and the repo's glossary if they add or change terms. `none` when no Change edits either.
 - **Out of scope**: what the plan leaves alone.
 
-Changes: the human's intent, approved with the plan. Each is a checkbox with two parts:
+Changes: the human's intent, approved with the plan. Each Change is one thing the human wants true once the plan is built, such as a behavior, a documented step or a refactor. Each is a checkbox with two parts:
 
-- **Spec line**: what the spec says after the Change.
-- **Evidence line**: the verification evidence that proves it. Checks are always required and not listed.
+- **Spec line**: what the spec says after the Change. A Change that edits no spec, such as a README, refactor or config change, writes `none;` and then what is true after it.
+- **Evidence line**: the verification evidence that proves it. Checks are always required and not listed. A Change that touches only docs has one too, such as running the examples it shows or opening the links it adds.
 
 Open questions: while the plan is a draft, the questions waiting on the human, each with the planning agent's recommendation. Answers go into the Goal or the Changes, and the section is empty before approval.
 

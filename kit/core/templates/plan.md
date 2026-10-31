@@ -3,12 +3,12 @@
 Status: draft
 Human: <who owns this plan's intent>
 Goal: <one sentence on what changes for the user>
-Specs touched: <spec files the Changes edit>
+Specs touched: <spec files the Changes edit, or none>
 Out of scope: <what this plan leaves alone>
 
 ## Changes
 
-- [ ] 1. Spec: <what the spec says after this Change> · Evidence: <what is driven and what is captured>
+- [ ] 1. Spec: <what the spec says after this Change, or none; what is true after it> · Evidence: <what is driven and what is captured>
 - [ ] 2. Spec: <...> · Evidence: <...>
 
 ## Open questions
