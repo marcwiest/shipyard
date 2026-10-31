@@ -6,7 +6,7 @@ Terms in this guide are defined in the [kit glossary](../../kit/core/glossary.md
 
 ## What works today
 
-- **Core** works now: a human drafts plans with a planning agent, following the kit's plan format, practices and PR shapes.
+- **Core** works now: a human drafts plans with a planning agent, following the kit's plan format, practices and PR shapes. Core stops at an approved plan; without the building module, you build it your own way, written in your agent rules, keeping to the plan format and the practices.
 - **Building, dispatch and the weekly drift check** describe bots that no skill drives yet. Copy them to read and try by hand; no bot runs them for you.
 - **Verification** is reference text an agent can follow to write your repo's verification skill.
 - **The CI pieces** state their interface but have no action code, so a CI workflow can't call them yet.

@@ -11,4 +11,5 @@
 ## Parked
 
 - **Tool plugins.** A plugin per agent tool for one-command install, built from the plain files. Waits until the plain files are stable; never the source.
+- **Interactive building module.** A module for building a plan in an interactive session, without bots, with its steps and done conditions. Waits until a common way emerges from repos building their own way. Never in core, so each repo keeps its choice.
 - **Issue triggers.** A trigger label on an issue that turns it into a PR, which then follows its workflow there. Open: who writes the plan, since planning is interactive today.
