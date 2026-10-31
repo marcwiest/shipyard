@@ -86,7 +86,7 @@ mkdir -p docs/product docs/agents   # or the paths in your settings file; the pl
 
 The copies are yours. Where you have nothing for a section yet, as in a new project, delete its placeholder line and leave the heading; a heading that is itself a placeholder, such as `## <Group>`, goes too. The spec index's reading order lists only spec files that exist, so leave it empty until you write one.
 
-If you don't take the building module, write in the agent rules index's Building plans section how you build an approved plan: who adds the phases, builds and verifies each one, and keeps the plan record.
+If you don't take the building module, write in the agent rules index's Building plans section how you build an approved plan: the PR shape of the plan's PR, and who adds the phases, builds and verifies each one, and keeps the plan record.
 
 The plan template stays in `.shipyard/`; the planning agent copies it for each plan.
 
