@@ -53,7 +53,7 @@ Each part of the kit has an index that says what the part holds and the modules 
 ## Shipyard's own docs
 
 - Shipyard's `docs/product/`, `docs/agents/` and `CONTEXT.md` describe shipyard and are never copied. They are made with the same templates and workflows, and serve as a worked example.
-- An adopting repo creates its own from templates and skills, such as bootstrap, at the paths in its settings file.
+- An adopting repo creates its own from the templates, at the paths in its settings file.
 - Instructions for adopting shipyard live in the README and the guide.
 - Shipyard installs its own last release into `.shipyard/` like any adopting repo, and its agents follow that copy. A PR that edits `kit/` doesn't change the rules the agents working on it follow.
 
