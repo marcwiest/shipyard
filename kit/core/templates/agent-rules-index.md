@@ -17,7 +17,7 @@ How agents work in this repo. What the codebase does is in the spec, not here.
 
 ## Building plans
 
-- <how this repo builds an approved plan, if it doesn't take the building module: who adds the phases, builds and verifies each one, and keeps the plan record>
+- <how this repo builds an approved plan, if it doesn't take the building module: the PR shape of the plan's PR, and who adds the phases, builds and verifies each one, and keeps the plan record>
 
 ## Commands
 

@@ -12,9 +12,8 @@ A plan states one piece of intended work. It is a file in the plans folder the s
   3. Human step, for the whole drafting: the human states the intent and answers the planning agent's questions; the planning agent writes it down as the Goal and the Changes. Questions still open when a session ends go in the plan's Open questions section, each with the planning agent's recommendation.
   4. The planning agent runs the plan check and fixes what it lists. Done condition: the check lists nothing missing.
   5. Human step: the human approves the plan by setting its Status to `ready`.
-- Outcome: an approved plan. How it is built is the repo's choice: the building module, or the repo's own way, written in its agent rules. Whoever builds it follows the plan format and the practices.
-
-In a public repo, a plan is public once its branch is pushed. Keep it unpushed until it is ready to be.
+  6. The planning agent pushes the plan's branch and opens the plan's PR, in the building module's phased PR shape or the PR shape the repo's agent rules name. It does so earlier only when the human asks, such as to share a draft. Done condition: the plan's PR, open.
+- Outcome: an approved plan on its own PR. How it is built is the repo's choice: the building module, or the repo's own way, written in its agent rules. Whoever builds it follows the plan format and the practices.
 
 ## Plan format
 
