@@ -14,15 +14,17 @@ Rules for every workflow. Branch names and the default branch come from the sett
 
   | Prefix | Holds |
   | --- | --- |
-  | `docs(phase-N):` | spec text for the phase |
+  | `spec(phase-N):` | spec text for the phase |
+  | `docs(phase-N):` | the phase's other changes to files in the settings file's docs paths |
   | `test(phase-N):` | tests |
-  | `feat(phase-N):`, `fix(phase-N):` | code, and any other change that isn't spec text |
+  | `feat(phase-N):`, `fix(phase-N):` | code, and any other change |
   | `docs(plan):` | the plan file, from its draft to its approval |
   | `chore(plan): phases` | the phases, added to the plan before building starts |
   | `chore(phase-N): plan record` | the plan record |
 
 - A fix after a phase's review is a `fix(phase-N):` commit for that phase.
-- Work outside a plan uses the same prefixes without the phase scope. Copying or updating the kit's files is `chore:`.
+- Work outside a plan uses the same prefixes without the phase scope, such as `spec:` for spec text. Copying or updating the kit's files is `chore:`.
+- `spec` isn't a standard conventional type. A repo that lints commit types, such as with commitlint's conventional preset, adds `spec` to its allowed types.
 
 ## What agents never do
 
