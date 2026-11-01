@@ -23,6 +23,8 @@ How agents work in this repo.
 - This repo is public. Never name private orgs, repos, clients or products, local paths, or infrastructure hosts.
 - Working notes, trackers and run files go in the gitignored `.scratch/`. Tracked text never points into it, since a public reader can't follow it.
 - A done plan's file is deleted; its PR keeps the record. A done plan points to working notes and history a public reader can't see.
+- Close a done plan by deleting its file in one `chore(plan): remove the done plan` commit on its branch, without setting its Status to `done` first.
+- An agent that opens a PR assigns it to the plan's human or, for work outside a plan, to the human who asked for it.
 
 ## Commands
 
