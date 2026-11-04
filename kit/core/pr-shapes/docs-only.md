@@ -10,5 +10,3 @@ A PR that changes only documentation, for work outside a plan. A plan's PR never
 | Review | The human reads it against the spec and the glossaries |
 | Verification evidence | None. Its checks still run; build and test jobs may report skipped |
 | Merge | The human |
-
-It still goes through a PR: no direct push to the default branch.

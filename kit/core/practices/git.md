@@ -4,7 +4,6 @@ Rules for every workflow. Branch names and the default branch come from the sett
 
 ## Branches
 
-- Nobody works on the default branch directly. Work lands there only through a PR.
 - Each plan has one branch and one PR, which hold the plan file and all of its work.
 - Several branches can be open at once; none waits for another.
 
@@ -30,4 +29,5 @@ Rules for every workflow. Branch names and the default branch come from the sett
 
 - Rewrite pushed history: no rebases, amends of pushed commits or force-pushes.
 - Change git config, or bypass hooks or checks.
+- Commit to the default branch, unless the human asks for that one commit.
 - Merge, tag, publish or deploy, unless the human asks for that one action.
