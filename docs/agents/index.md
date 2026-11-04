@@ -26,6 +26,14 @@ How agents work in this repo.
 - Close a done plan by deleting its file in one `chore(plan): remove the done plan` commit on its branch, without setting its Status to `done` first.
 - An agent that opens a PR assigns it to the plan's human or, for work outside a plan, to the human who asked for it.
 
+## House rules
+
+Shipyard's own git rules, for this repo only.
+
+- Plan work, and anything a bot produced, lands on `main` only through a PR.
+- Outside a plan, a small change may be committed straight to `main`, but only when the human asks for that one commit. Small means one concern, checkable from the diff at a glance, that leaves the kit's meaning unchanged: typos, links, rewording, this file, README and guide fixes.
+- A change to what the kit means goes through a PR, as does a decision in `docs/product/`. The kit's meaning covers glossary definitions, workflow steps, PR shapes, practices, settings keys, CI pieces and skills.
+
 ## Commands
 
 None yet.
