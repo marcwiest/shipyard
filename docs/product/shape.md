@@ -24,7 +24,7 @@ A plugin for one agent tool may later wrap the same files. It never becomes the 
 | `kit/core/`, `kit/<module>/` | The kit: one folder per part, each with an index naming what it needs, and its workflows, PR shapes, practices, skills, templates and CI pieces |
 | `examples/maintainer/` | The example setup: a filled settings file with the role mapping, and the house rules written as agent rules |
 | `.github/` | Shipyard's own CI only. It calls the CI pieces from `kit/` at the current commit, the docs index check on `docs/product/` among them, and checks every link in tracked markdown files |
-| `docs/product/`, `docs/agents/`, `CONTEXT.md` | Shipyard's own specs, agent rules and glossary. Never copied |
+| `docs/product/`, `docs/agents/`, `docs/context.md` | Shipyard's own specs, agent rules and glossary. Never copied |
 | `docs/guide/`, `README.md`, `CHANGELOG.md` | Instructions for adopters and the release history |
 | `AGENTS.md`, `CLAUDE.md`, `LICENSE` | Shipyard's own agent entry file, pointing to `docs/agents/index.md`, its `CLAUDE.md` sibling, and the MIT license |
 

@@ -21,7 +21,7 @@ Roles: human, planning agent.
   - [Plan](templates/plan.md), copied for each plan
   - [Spec index](templates/spec-index.md), copied to the spec folder as `index.md`
   - [Agent rules index](templates/agent-rules-index.md), copied to the agent rules folder as `index.md`
-  - [Glossary](templates/CONTEXT.md), copied to the glossary path
+  - [Glossary](templates/context.md), copied to the glossary path
 - [Notice](NOTICE.md): outside sources whose text the kit adapts, with their licenses. Keep it with the copied files.
 
 ## How the kit is written

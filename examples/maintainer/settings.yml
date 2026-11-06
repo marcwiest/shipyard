@@ -20,7 +20,7 @@ paths:
   specs: docs/product/
   agent-rules: docs/agents/
   plans: docs/plans/
-  glossary: CONTEXT.md
+  glossary: docs/context.md
   north-star: docs/north-star.md
   sizing-log: docs/agents/sizing-log.csv   # where its run data may be public; else outside the repo
   verification-skill: docs/agents/skills/verify-<app>/   # <app> per repo

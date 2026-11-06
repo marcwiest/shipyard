@@ -82,7 +82,7 @@ mkdir -p docs/product docs/agents   # or the paths in your settings file; the pl
 | --- | --- |
 | `.shipyard/core/templates/spec-index.md` | `<paths.specs>/index.md` |
 | `.shipyard/core/templates/agent-rules-index.md` | `<paths.agent-rules>/index.md` |
-| `.shipyard/core/templates/CONTEXT.md` | `<paths.glossary>` |
+| `.shipyard/core/templates/context.md` | `<paths.glossary>` |
 
 The copies are yours. Where you have nothing for a section yet, as in a new project, delete its placeholder line and leave the heading; a heading that is itself a placeholder, such as `## <Group>`, goes too. The spec index's reading order lists only spec files that exist, so leave it empty until you write one.
 

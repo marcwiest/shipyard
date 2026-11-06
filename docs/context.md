@@ -1,6 +1,6 @@
 # Context
 
-Glossary for shipyard itself. One entry per term, one or two sentences each. Workflow terms, which agents in adopting repos also meet, are in the kit glossary, [`kit/core/glossary.md`](kit/core/glossary.md).
+Glossary for shipyard itself. One entry per term, one or two sentences each. Workflow terms, which agents in adopting repos also meet, are in the kit glossary, [`kit/core/glossary.md`](../kit/core/glossary.md).
 
 ## Shipyard
 
