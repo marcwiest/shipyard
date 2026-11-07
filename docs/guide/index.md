@@ -15,7 +15,7 @@ Shipyard assumes a GitHub repo: each plan's branch merges through a PR. A local-
 
 ## 1. Get the kit
 
-Clone shipyard beside your repo, not inside it, and note the commit you copy from. The commands below run from your repo's root:
+Clone shipyard anywhere outside your repo and note the commit you copy from. You need the clone only for steps 3 and 8; your repo doesn't depend on it afterward. The commands below run from your repo's root and assume the clone sits beside your repo, so adjust `../shipyard` in step 3 and `../../shipyard` in step 8 if it doesn't:
 
 ```sh
 git clone https://github.com/marcwiest/shipyard.git ../shipyard
@@ -52,12 +52,14 @@ These are managed files: don't edit them, so a later copy can replace them. `cor
 cp .shipyard/core/templates/settings.yml .shipyard/settings.yml
 ```
 
-`.shipyard/settings.yml` is yours. Fill in at least:
+`.shipyard/settings.yml` is yours. First look at what your repo already runs, such as its CI workflows and its release or deploy flows. Adoption records what exists and sets nothing up.
+
+Fill in at least:
 
 - the planning agent's tool and how you start it, under `roles`
 - the folders under `paths`, if your specs, agent rules, plans or glossary live elsewhere than the defaults
 - the branch names under `branches`
-- your install, check and test commands under `commands`; leave one empty until it exists, and the plan that adds it fills it in
+- your install, check and test commands under `commands`, matching what CI runs so a local pass predicts its result; leave one empty until it exists, and the plan that adds it fills it in
 - your seams, where tests touch the code, one short phrase each
 
 Leave a role empty if no part you took uses it. Settings that no part you took reads do nothing; keep their defaults. [The example setup](../../examples/maintainer/settings.yml) shows a filled one.
@@ -86,6 +88,8 @@ mkdir -p docs/product docs/agents   # or the paths in your settings file; the pl
 
 The copies are yours. Where you have nothing for a section yet, as in a new project, delete its placeholder line and leave the heading; a heading that is itself a placeholder, such as `## <Group>`, goes too. The spec index's reading order lists only spec files that exist, so leave it empty until you write one.
 
+If a merge or a tag sets anything off in your repo, such as a deploy or a publish, say so in the agent rules index's Rules section.
+
 If you don't take the building module, write in the agent rules index's Building plans section how you build an approved plan: the PR shape of the plan's PR, and who adds the phases, builds and verifies each one, and keeps the plan record.
 
 The plan template stays in `.shipyard/`; the planning agent copies it for each plan.
@@ -113,6 +117,14 @@ Write `.shipyard/version.yml`, naming what you copied from and a checksum per ma
 ```
 
 ## 9. Commit and plan
+
+Before committing, check that your ignore rules keep the new files. Broad rules, such as `.*/` or `*.md`, drop them without a word. Use your settings file's paths in place of the `docs/` ones:
+
+```sh
+git check-ignore .shipyard/settings.yml .shipyard/core/index.md AGENTS.md CLAUDE.md docs/product/index.md docs/agents/index.md docs/context.md
+```
+
+Any path it prints is ignored, so change the rule that catches it.
 
 Commit the files, such as `chore: adopt shipyard core`. In a repo that already has a default branch, do it on a branch and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
 
