@@ -5,6 +5,7 @@ Verification means running the real artifact the way a user or consumer would an
 - Agents verify their own work, so they can keep going until it works without waiting on the human.
 - A Change is verified once its Evidence line's verification has run on the real artifact and its evidence was captured.
 - A Change's Evidence line can ask for more than the repo's minimums, never less.
+- A run in the human's own browser isn't isolated from the human. Ask them to leave the machine alone during it, and to check any effect the agent can't read.
 
 ## Evidence
 
