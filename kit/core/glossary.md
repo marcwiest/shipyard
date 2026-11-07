@@ -54,6 +54,7 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Change**: One thing the human wants true once a plan is built, such as a behavior, a documented step or a refactor, approved with the plan. Its Spec line states it and its Evidence line names what proves it.
 - **Spec line**: The part of a Change that states what the spec will say after it, or, for a Change that edits no spec, `none` and what is true after it.
 - **Evidence line**: The part of a Change that names the verification evidence proving it. Checks are always required and not listed.
+- **Plan PR**: Core's PR shape for one plan and all of its work, in a repo that builds plans its own way.
 - **Plan check**: An inspection of a plan for its required items. It never judges plan quality.
 - **Intake**: The orchestrator bot checks an approved plan against the repo, raises gaps with the plan's human, and splits the Changes into phases.
 
@@ -66,14 +67,14 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Spec rule**: When the builder bot may write spec text without asking: only behavior the plan names, and nothing existing changed or removed.
 - **Extra spec lines**: Spec text the builder bot wrote that no Spec line called for. Listed in the phase report for review.
 - **Seam**: Where tests touch the code, such as a package's exports or an app's routes. Each repo names its own.
-- **Spike**: A throwaway experiment the builder bot runs to learn how something works. It never lands in the PR.
+- **Spike**: A throwaway experiment an agent runs to learn how or whether something works. Its work never lands in the PR.
 - **Phase report**: The builder bot's closing account of a phase: what changed, check results, extra spec lines, test changes with reasons, the evidence list and spike findings.
 - **Review**: The reviewer bot's findings on a phase's code and spec.
 - **Blocking finding**: A finding that cites a plan or spec line and must be fixed. Findings without one are nits.
 - **Phase verdict**: The orchestrator bot's combined judgment of a phase, from its own reading, the review and the verification evidence.
 - **Fix round**: A pass where the builder bot brings code and tests back in line with the spec. It never changes the spec.
 - **Spec question**: A finding that the spec itself is wrong, unclear or can't be built. Work stops and the plan's human decides.
-- **Plan record**: The orchestrator bot's commit that ticks a finished phase's boxes and adds its notes to the plan.
+- **Plan record**: The commit, by whoever builds the plan, that ticks a finished phase's boxes and adds its notes to the plan.
 - **Status comment**: The one PR comment the orchestrator bot edits in place with phase status and open questions.
 - **Handoff**: The final PR comment that hands finished work to the plan's human.
 - **Repo fix**: A change that stops a repeated mistake, tried in order: architecture, types, lint or CI, a test, docs.
@@ -84,7 +85,7 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Check**: An inspection that doesn't run the real thing, such as types, build, tests, a plan check or a drift check.
 - **Verification**: Running the real artifact the way a user or consumer would and capturing what happened. Tests are not verification.
 - **Verification evidence**: What a verification run captures: screenshots, traces, requests and responses, transcripts.
-- **Evidence list**: The part of the phase report naming each piece of verification evidence: what was driven, the file, what it shows.
+- **Evidence list**: The list naming each piece of verification evidence: what was driven, the file, what it shows. In the building module, it is part of the phase report.
 - **Verification line**: One line of text on the PR saying what was verified and how.
 - **Verification skill**: The repo's own skill for launching, driving and observing its codebase: a CLI in the repo, a `SKILL.md` and a Feature Map.
 - **Feature Map**: The verification skill's index of features: how to reach and drive each one, and what end state proves it works.

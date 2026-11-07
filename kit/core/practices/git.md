@@ -28,6 +28,7 @@ Rules for every workflow. Branch names and the default branch come from the sett
 ## What agents never do
 
 - Rewrite pushed history: no rebases, amends of pushed commits or force-pushes.
-- Change git config, or bypass hooks or checks.
+- Change git config, unless the human asks for that one change.
+- Bypass hooks or checks.
 - Commit to the default branch, unless the human asks for that one commit.
 - Merge, tag, publish or deploy, unless the human asks for that one action.

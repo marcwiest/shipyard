@@ -48,9 +48,8 @@ Otherwise, or when unsure, it stops and reports, and the orchestrator bot makes 
 
 ## Spikes
 
-- A spike answers an implementation question with evidence: how, or whether, something works. It never answers a spec or intent question; those go to the human.
-- Spikes are the builder bot's own. They are never shown to the human for review or choice.
-- A spike runs in a git worktree on a throwaway local branch, or for a tiny experiment in a temporary folder outside the repo. Its branch is never pushed, and the worktree is removed once the spike has served its purpose.
+- What a spike may answer and where it runs are in core's [plans](../core/plans.md#spikes).
+- A spike during a phase is the builder bot's own. It needs no approval and is never shown to the human for review or choice.
 - Its finding goes in the phase report; the orchestrator bot adds it to the phase's Notes line.
 
 ## Phase report

@@ -17,7 +17,7 @@ Out of scope: <what this plan leaves alone>
 
 ## Phases
 
-Added before building starts, by whoever builds the plan. Until then, it holds only this note and the example below, which the phases replace. A phase that changes code has Tests and Code boxes; any other phase has one Work box:
+Added before building starts, by whoever builds the plan. Until then, it holds only this note and the example below, which the phases replace. A phase that changes code a seam reaches has Tests and Code boxes; any other phase has one Work box, which says why no seam reaches any code it changes:
 
 ```
 ### Phase 1: <name> · delivers Change 1

@@ -11,3 +11,4 @@ The maintainer's own role mapping and house rules, as an example for an adopting
 - Values marked "per repo", in either file, are filled in each repo.
 - Empty the roles that no part you took uses. Rules that name a bot, such as the builder bot's model or the Sizing log, apply only where the repo takes the building module.
 - Skills the house rules name, such as pstack's, are outside skills: install them yourself or drop the rule.
+- The merge and branch rules assume matching GitHub repo settings, such as allowing only squash merges and deleting branches on merge. Change the settings when you copy the rules.
