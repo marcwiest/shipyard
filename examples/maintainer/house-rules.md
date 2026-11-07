@@ -8,9 +8,10 @@ The maintainer's house rules, written as agent rules. They apply on top of the k
 - Where the builder bot's tool reports tokens, measure context as input plus cache-read plus cache-creation tokens, at the start, end and peak of a run.
 - Draft plans with a slim planning skill modeled on pstack's multi-phase plan playbook, grounded with pstack's `how` and `why`.
 - Design bigger changes with pstack's `/architect`: types and signatures first, candidates compared, a design scrapped when the evidence turns against it.
-- Delete the plan file when the plan is done; its PR keeps the record.
+- Delete the plan file in the plan's last commit, once the human says their review and any hand checks have passed; its PR keeps the record. Put the verification lines in the PR's description, since a squash keeps only the title.
 - Never mention a plan file in the spec or other docs, such as the README. Docs describe the codebase, not the work that changed it, and the plan file is deleted when done.
-- Keep no ADRs, GitHub issues or PR template.
+- Keep no ADRs or PR template.
+- Intended work lives in plans, not GitHub issues. Where a repo's issues are open, visitors can still report bugs there.
 
 ## Building
 
