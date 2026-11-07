@@ -13,7 +13,7 @@ Roles: human, planning agent.
 - [Spec writing](spec-writing.md): what goes in the spec and how it is written.
 - [Human steps and done conditions](human-steps.md): when agents stop for the human, and how a step shows it is done.
 - [House rules](house-rules.md): where a repo keeps its opinions.
-- [PR shapes](pr-shapes/index.md): the fields every PR shape fills, and the docs-only and hotfix PR shapes.
+- [PR shapes](pr-shapes/index.md): the fields every PR shape fills, and the plan, docs-only and hotfix PR shapes.
 - Practices, which apply to every workflow: [git](practices/git.md), [testing](practices/testing.md), [verification](practices/verification.md).
 - Templates, copied once and then owned by the repo:
   - [Settings file](templates/settings.yml), copied to `.shipyard/settings.yml`

@@ -13,5 +13,6 @@ A PR shape is the structure of one kind of PR. Every shape fills the same fields
 
 Each module that produces a PR shape holds it as one file. Core holds the shapes any repo can use:
 
+- [Plan PR](plan.md)
 - [Docs-only PR](docs-only.md)
 - [Hotfix PR](hotfix.md)

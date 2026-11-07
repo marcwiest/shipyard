@@ -90,7 +90,7 @@ The copies are yours. Where you have nothing for a section yet, as in a new proj
 
 If a merge or a tag sets anything off in your repo, such as a deploy or a publish, say so in the agent rules index's Rules section.
 
-If you don't take the building module, write in the agent rules index's Building plans section how you build an approved plan: the PR shape of the plan's PR, and who adds the phases, builds and verifies each one, and keeps the plan record.
+If you don't take the building module, write in the agent rules index's Building plans section how you build an approved plan: who adds the phases, builds and verifies each one, and keeps the plan record. The plan's PR takes core's [plan PR](../../kit/core/pr-shapes/plan.md) shape, unless you name another there.
 
 The plan template stays in `.shipyard/`; the planning agent copies it for each plan.
 

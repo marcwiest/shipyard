@@ -54,6 +54,7 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Change**: One thing the human wants true once a plan is built, such as a behavior, a documented step or a refactor, approved with the plan. Its Spec line states it and its Evidence line names what proves it.
 - **Spec line**: The part of a Change that states what the spec will say after it, or, for a Change that edits no spec, `none` and what is true after it.
 - **Evidence line**: The part of a Change that names the verification evidence proving it. Checks are always required and not listed.
+- **Plan PR**: Core's PR shape for one plan and all of its work, in a repo that builds plans its own way.
 - **Plan check**: An inspection of a plan for its required items. It never judges plan quality.
 - **Intake**: The orchestrator bot checks an approved plan against the repo, raises gaps with the plan's human, and splits the Changes into phases.
 
