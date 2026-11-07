@@ -32,3 +32,4 @@ A record belongs in the spec if changing it needs the human's approval and a tes
 - A plan is the approval for a spec change: each Change's Spec line states what the spec says after it.
 - Spec text for a Change is written before the tests and code that back it, in its own commit.
 - Spec text no Spec line calls for needs the plan's human. A spec question stops the work on that point until the human decides.
+- A glossary entry that only defines a term an approved Change's text already uses counts as covered by that text. It is flagged on the PR. Changing an existing term's meaning needs the plan's human.
