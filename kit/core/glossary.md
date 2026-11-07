@@ -67,7 +67,7 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Spec rule**: When the builder bot may write spec text without asking: only behavior the plan names, and nothing existing changed or removed.
 - **Extra spec lines**: Spec text the builder bot wrote that no Spec line called for. Listed in the phase report for review.
 - **Seam**: Where tests touch the code, such as a package's exports or an app's routes. Each repo names its own.
-- **Spike**: A throwaway experiment the builder bot runs to learn how something works. It never lands in the PR.
+- **Spike**: A throwaway experiment an agent runs to learn how or whether something works. Its work never lands in the PR.
 - **Phase report**: The builder bot's closing account of a phase: what changed, check results, extra spec lines, test changes with reasons, the evidence list and spike findings.
 - **Review**: The reviewer bot's findings on a phase's code and spec.
 - **Blocking finding**: A finding that cites a plan or spec line and must be fixed. Findings without one are nits.

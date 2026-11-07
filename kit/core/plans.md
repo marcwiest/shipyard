@@ -64,6 +64,14 @@ Required once phases exist:
 
 The planning agent runs it before the human approves the plan. Whoever adds the phases runs it again after adding them.
 
+## Spikes
+
+A spike is a throwaway experiment to learn how or whether something works.
+
+- It answers an implementation question with evidence. It never answers a spec or intent question; those go to the human.
+- It runs in a git worktree on a throwaway local branch, or for a tiny experiment in a temporary folder outside the repo. Its branch is never pushed, and the worktree is removed once the spike has served its purpose.
+- While drafting a plan, the planning agent runs a spike only if the human approves it. Findings that shape the plan go into its Changes; the rest go on the plan's PR.
+
 ## Several plans
 
 Plans don't block each other. Each has its own file, branch and PR. A spec conflict between plans goes to the human of the plan whose branch hit it.
