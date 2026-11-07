@@ -28,7 +28,7 @@ Header lines:
 Changes: the human's intent, approved with the plan. Each Change is one thing the human wants true once the plan is built, such as a behavior, a documented step or a refactor. Each is a checkbox with two parts:
 
 - **Spec line**: what the spec says after the Change. A Change that edits no spec, such as a README, refactor or config change, writes `none;` and then what is true after it.
-- **Evidence line**: the verification evidence that proves it. Checks are always required and not listed. A Change that touches only docs has one too, such as running the examples it shows or opening the links it adds.
+- **Evidence line**: the verification evidence that proves it. Checks are always required and not listed. A Change that touches only docs has one too, such as running the examples it shows or opening the links it adds. When the evidence needs tooling the repo doesn't have, the plan says whether that tooling is kept, as its own Change, or thrown away.
 
 Open questions: while the plan is a draft, the questions waiting on the human, each with the planning agent's recommendation. Answers go into the Goal or the Changes, and the section is empty before approval.
 
