@@ -19,17 +19,32 @@ Out of scope: the bots, skills, the dispatcher and CI pieces; tagging, publishin
 
 ## Phases
 
-Added before building starts, by whoever builds the plan. Until then, it holds only this note and the example below, which the phases replace. A phase that changes code a seam reaches has Tests and Code boxes; any other phase has one Work box, which says why no seam reaches any code it changes:
+### Phase 1: the scenario runs and the release steps · delivers Changes 1, 2 · about 1.5 h
+- [ ] Work: `docs/agents/scenario-runs.md`, linked from the release steps and the agent rules index; the release steps' publish step on npm's staged publishing. Docs only, so no seam reaches it
 
-```
-### Phase 1: <name> · delivers Change 1
-- [ ] Tests: <seam>: <behavior the tests assert>
-- [ ] Code: <what makes them pass>
+Notes:
 
-Notes: <added when the phase is done: verification line, deviations, blockers>
+### Phase 2: the docs say `0.1.0` is out · delivers Change 5 · about 1 h
+- [ ] Work: the Today notes in `shape.md` and `adoption.md`, the spec index's Status, and the guide's and README's wording about the time before the first release. Docs only, so no seam reaches it
 
-### Phase 2: <name> · delivers Change 2
-- [ ] Work: <what it changes, such as docs, config or content>
+Notes:
 
-Notes: <...>
-```
+### Phase 3: the consistency read · delivers Change 3 · about 2 h
+- [ ] Work: a fresh agent reads the kit, `docs/product/`, the guide and the README for terms without a glossary entry and rules with more than one home; the human decides each finding on the PR, and the accepted ones are fixed. Docs only, so no seam reaches it
+
+Notes:
+
+### Phase 4: the release commit · delivers Change 6 · about 0.5 h
+- [ ] Work: `package.json`'s version and the changelog's heading, in `chore: release 0.1.0`. Release metadata only; the CLI's tests read neither
+
+Notes:
+
+### Phase 5: run the scenarios · delivers Change 1 · about 3 h
+- [ ] Work: the three scenarios, run by fresh agents from the tarball of the release commit, with the report on the PR and the friction the human accepts fixed. Runs and docs only, so no seam reaches it
+
+Notes:
+
+### Phase 6: the link check · delivers Change 4 · about 0.5 h
+- [ ] Work: a throwaway script resolves every relative link and anchor in the tracked markdown, and broken ones are fixed. Docs only, so no seam reaches it
+
+Notes:
