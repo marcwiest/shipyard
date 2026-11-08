@@ -1,6 +1,6 @@
 # The first release, 0.1.0
 
-Status: draft
+Status: ready
 Human: marcwiest
 Goal: an adopter can install shipyard's core and its reference modules from npm as `shipyard-kit@0.1.0`, after scenario runs, a consistency read and a link check have passed, and the docs say plainly that the bots don't run yet.
 Specs touched: `docs/product/shape.md`, `docs/product/adoption.md`, `docs/product/index.md`, and any spec a finding of the consistency read that the human accepts edits
