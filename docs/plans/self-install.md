@@ -1,6 +1,6 @@
 # Shipyard installs its own release
 
-Status: draft
+Status: ready
 Human: marcwiest
 Goal: agents working on shipyard follow the workflow of its last release, installed in `.shipyard/` with the CLI like any adopting repo, so a PR that edits `kit/` no longer changes the rules its own agents follow.
 Specs touched: `docs/product/adoption.md`
