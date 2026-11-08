@@ -1,6 +1,6 @@
 // The adopting repo: its git state and the version record.
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, lstatSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 export const recordPath = '.shipyard/version.yml';
@@ -55,7 +55,30 @@ export function read(cwd, path) {
   return existsSync(file) ? readFileSync(file, 'utf8') : null;
 }
 
+// Refuses a path with a symlink in it, so no write lands outside the repo.
+export function requireNoSymlink(cwd, path) {
+  let current = cwd;
+  for (const segment of path.split('/')) {
+    current = join(current, segment);
+    if (!existsSync(current) && !isLink(current)) return;
+    if (isLink(current)) {
+      throw new Stop(`\`${path}\` goes through a symlink, \`${current.slice(cwd.length + 1)}\`. Shipyard writes only real files in the repo.`, [
+        'Replace the symlink with a real folder or file, commit that, then run the command again.',
+      ]);
+    }
+  }
+}
+
+function isLink(file) {
+  try {
+    return lstatSync(file).isSymbolicLink();
+  } catch {
+    return false;
+  }
+}
+
 export function write(cwd, path, content) {
+  requireNoSymlink(cwd, path);
   const file = join(cwd, path);
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, content);

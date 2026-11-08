@@ -2,7 +2,7 @@
 import { copyFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { kitFile, modules, needs, npx, ordered, partFiles, sha256, version } from './kit.js';
-import { Stop, requireCommitted, requireGit, writeRecord } from './repo.js';
+import { Stop, requireCommitted, requireGit, requireNoSymlink, writeRecord } from './repo.js';
 
 export function parseModules(args) {
   const known = modules();
@@ -33,14 +33,14 @@ export function requireNeeds(taken, named) {
 
 // Copies the parts' files into `.shipyard/` and returns each one's checksum.
 export function copyParts(cwd, parts) {
+  const paths = parts.flatMap(partFiles);
+  for (const path of paths) requireNoSymlink(cwd, `.shipyard/${path}`);
   const files = {};
-  for (const part of parts) {
-    for (const path of partFiles(part)) {
-      const target = join(cwd, '.shipyard', ...path.split('/'));
-      mkdirSync(dirname(target), { recursive: true });
-      copyFileSync(kitFile(path), target);
-      files[path] = sha256(readFileSync(target));
-    }
+  for (const path of paths) {
+    const target = join(cwd, '.shipyard', ...path.split('/'));
+    mkdirSync(dirname(target), { recursive: true });
+    copyFileSync(kitFile(path), target);
+    files[path] = sha256(readFileSync(target));
   }
   return files;
 }
