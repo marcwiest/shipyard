@@ -27,14 +27,14 @@ A plugin for one agent tool may later wrap the same files. It never becomes the 
 | `docs/product/`, `docs/agents/`, `docs/context.md` | Shipyard's own specs, agent rules and glossary. Never copied |
 | `docs/guide/`, `README.md`, `CHANGELOG.md` | Instructions for adopters and the release history |
 | `AGENTS.md`, `CLAUDE.md`, `LICENSE` | Shipyard's own agent entry file, pointing to `docs/agents/index.md`, its `CLAUDE.md` sibling, and the MIT license |
-
-The CLI's own code sits beside these.
+| `cli/` | The [CLI](cli.md)'s code and its tests |
+| `package.json` | Publishes `cli/`, `kit/` and `CHANGELOG.md` as the npm package `shipyard-kit`, with no dependencies and no build step, on Node 22 or later. Its version is the release number |
 
 - The kit holds what agents and humans do in an adopting repo: roles, workflows, PR shapes, practices, labels, skills, the kit glossary, and where house rules go.
 - `docs/product/` holds what shipyard is and what its own tooling does: what the kit contains, the CLI, the CI pieces, releases, principles and refusals.
 - Core holds what every workflow shares, such as the practices, the plan format and the PR shape fields. A new PR shape is one file in the module that produces it. A different approach to the same job is a sibling module that reuses core and never copies its text.
 
-**Today:** `.github/`, `CHANGELOG.md` and the CLI don't exist yet.
+**Today:** `.github/` and `CHANGELOG.md` don't exist yet, and the CLI has no release.
 
 ## Platform
 

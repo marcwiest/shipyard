@@ -17,7 +17,7 @@ Each part of the kit has an index that says what the part holds and the modules 
 
 ## Getting in
 
-- A CLI, run at a pinned release without installing it (such as `npx <package>@x.y.z`), copies files into the repo and writes the version record.
+- The [CLI](cli.md), run at a pinned release without installing it (`npx shipyard-kit@x.y.z`), copies files into the repo and writes the version record.
 - Files are copied into the repo, never left in `node_modules` for agents to read. Bots run on the checkout, often before dependencies are installed.
 - The files are plain, so copying by hand also works. The version record is then written by hand.
 - CI pieces are not copied. The adopting repo's own CI workflows call them at a release tag; those CI workflows ship as templates and set the trigger, runner and permissions. A dependency update tool can bump the tag.
@@ -36,7 +36,17 @@ Each part of the kit has an index that says what the part holds and the modules 
 - Each skill gets a discovery stub in the skills folder of every tool the role mapping names, and only those.
 - Template sources stay in `.shipyard/` as managed files, so skills can read them. Each copy made from them, such as a plan or a spec page, is repo-owned.
 - Agents reach managed files by a named path: a stub, the AGENTS.md block or a skill step. Nothing depends on search tools that skip hidden folders.
+- A monorepo takes one install, at its root.
 - Removing shipyard means deleting `.shipyard/`, the stubs and the AGENTS.md block. The version record lists every managed file.
+
+## The version record
+
+`.shipyard/version.yml` names where the managed files came from:
+
+- `release`: the release they came from; empty for a copy by hand.
+- `commit`: only for a copy by hand, the shipyard commit it was copied from.
+- `files`: each managed file's path in `.shipyard/`, such as `core/plans.md`, mapped to its SHA-256.
+- `agents-block`: the SHA-256 of the lines between the AGENTS.md block's markers. A record written by hand may leave it out.
 
 ## Updates
 
@@ -57,4 +67,4 @@ Each part of the kit has an index that says what the part holds and the modules 
 - Instructions for adopting shipyard live in the README and the guide.
 - Shipyard installs its own last release into `.shipyard/` like any adopting repo, and its agents follow that copy. A PR that edits `kit/` doesn't change the rules the agents working on it follow.
 
-**Today:** no CLI or release exists yet, so shipyard doesn't install its own release, and a repo copying by hand records the commit it copied from. The npm package name for the CLI is open, since `shipyard` is taken.
+**Today:** no release exists yet, so the CLI isn't published, shipyard doesn't install its own release, and a repo copying by hand records the commit it copied from.
