@@ -28,3 +28,9 @@ The command that installs, updates and removes shipyard's parts in an adopting r
 - It adds a `CLAUDE.md` holding `@AGENTS.md` if there's none. When one exists without that line, it says so as a next step and leaves the file alone.
 - It copies the spec index, agent rules index and glossary templates once, to the settings template's default paths, skipping any that exist and saying which.
 - Its next steps end by saying where the repo's own instructions go: its agent rules and house rules, never `.shipyard/`.
+
+On an existing install, `init` adds the named parts at the installed release:
+
+- It refuses when the CLI's release differs from the version record's, with running `update` first as its next step.
+- It copies the new parts and adds their files to the version record.
+- It never edits the settings file. It prints as next steps the exact settings lines the new parts read that the file lacks, and where each goes.
