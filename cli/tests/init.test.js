@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
+import { symlinkSync } from 'node:fs';
 import { test } from 'node:test';
-import { files, put, read, repo, run, sha256, status, version } from './helpers.js';
+import { commit, files, put, read, repo, run, sha256, status, version } from './helpers.js';
 
 test('init copies core and the named modules and records each checksum', () => {
   const cwd = repo();
@@ -53,4 +54,15 @@ test('init stops on an uncommitted change to a file it would write', () => {
   assert.match(stderr, /1\. Commit them first/);
   assert.equal(read(cwd, '.shipyard/core/plans.md'), 'mine\n');
   assert.deepEqual(files(cwd, '.shipyard'), ['core/plans.md']);
+});
+
+test('init refuses to write through a symlink and writes nothing', () => {
+  const outside = repo({}, { git: false });
+  const cwd = repo();
+  symlinkSync(outside, `${cwd}/.shipyard`);
+  commit(cwd);
+  const { code, stderr } = run(cwd, ['init']);
+  assert.equal(code, 1);
+  assert.match(stderr, /goes through a symlink, `\.shipyard`/);
+  assert.deepEqual(files(outside, '.'), []);
 });
