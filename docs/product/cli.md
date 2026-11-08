@@ -23,3 +23,8 @@ The command that installs, updates and removes shipyard's parts in an adopting r
 - It refuses when the current folder has no `.git`.
 - It refuses when a named module's Needs line names a part not taken, naming that part. It never adds a part on its own.
 - It copies each part's folder from the kit to `.shipyard/<part>/` and writes the version record (see [adoption](adoption.md#the-version-record)).
+- It writes `.shipyard/settings.yml` from core's settings template, leaving out each key marked `# read by:` whose parts weren't taken. It never overwrites a settings file that exists.
+- It adds the AGENTS.md block from core's template, between its markers, at the end of AGENTS.md, creating the file if it's missing. Trigger labels and skills are "none" while the kit has no skills or dispatcher.
+- It adds a `CLAUDE.md` holding `@AGENTS.md` if there's none. When one exists without that line, it says so as a next step and leaves the file alone.
+- It copies the spec index, agent rules index and glossary templates once, to the settings template's default paths, skipping any that exist and saying which.
+- Its next steps end by saying where the repo's own instructions go: its agent rules and house rules, never `.shipyard/`.

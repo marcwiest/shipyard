@@ -16,6 +16,6 @@ What the dispatcher does, and what every managed file holds to so that any agent
 - An action that differs by tool, such as starting the builder bot or asking the reviewer bot for a review, is named in the skill. The role mapping in the settings file says how each tool does it.
 - Each role lists the capabilities its tool needs, such as editing files, a shell, git and commenting on PRs.
 - A skill names the reference files each step needs; the agent reads only those.
-- The AGENTS.md block is a few lines, under a size cap. It points to the settings file and lists the trigger labels and skills available. It doesn't restrict how interactive work starts.
+- The AGENTS.md block holds at most 20 lines between its markers. It points to the settings file and lists the trigger labels and skills available. It doesn't restrict how interactive work starts.
 
 **Today:** no dispatcher, skills or discovery stubs exist.
