@@ -1,6 +1,6 @@
 # Adopting shipyard
 
-How to install, update and remove shipyard in your repo. The CLI does each with one command, from release `0.1.0` on. Before that release, or if you'd rather, [copy the kit by hand](#adopting-by-hand).
+How to install, update and remove shipyard in your repo. The CLI does each with one command. If you'd rather, [copy the kit by hand](#adopting-by-hand).
 
 Terms in this guide are defined in the [kit glossary](../../kit/core/glossary.md).
 
@@ -26,7 +26,7 @@ Every repo takes core. Each module's `index.md` has a Needs line naming the othe
 
 ## Adopt it with the CLI
 
-The CLI runs with Node 22 or later, from your repo's root, at a pinned release: replace `x.y.z` below with the release you want, `0.1.0` or later. The [changelog](../../CHANGELOG.md) lists the releases.
+The CLI runs with Node 22 or later, from your repo's root, at a pinned release: replace `x.y.z` below with the release you want. The [changelog](../../CHANGELOG.md) lists the releases.
 
 Its output ends with numbered next steps, written for an agent to carry out, so the easiest way is to give your agent a prompt such as:
 

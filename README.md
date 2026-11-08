@@ -4,17 +4,17 @@ A workflow kit for planning, building, reviewing and verifying code with coding 
 
 ## Status
 
-In design, with no release yet. There are no skills yet, and the CI pieces describe their interface but have no action code. What works today is planning with core, which needs only a human and a planning agent.
+In design. `0.1.0` is the first release. What works today is planning with core, which needs only a human and a planning agent. The bots don't run yet: there are no skills yet, and the CI pieces describe their interface but have no action code.
 
 ## Install
 
-From release `0.1.0` on, the CLI installs, updates and removes shipyard's parts. Run it with Node 22 or later from your repo's root, at a pinned release:
+The CLI installs, updates and removes shipyard's parts. Run it with Node 22 or later from your repo's root, at a pinned release:
 
 ```sh
 npx shipyard-kit@x.y.z init
 ```
 
-Its output ends with next steps written for an agent, so you can ask your agent to run it and finish what it asks. Until that release, copy the kit by hand. [The guide](docs/guide/index.md) covers both, and updating and removing.
+Its output ends with next steps written for an agent, so you can ask your agent to run it and finish what it asks. You can also copy the kit by hand. [The guide](docs/guide/index.md) covers both, and updating and removing.
 
 ## What's where
 
