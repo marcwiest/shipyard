@@ -25,7 +25,7 @@ Each part of the kit has an index that says what the part holds and the modules 
 ## Ownership
 
 - **Managed files**: skills, discovery stubs, workflows, PR shapes, practices, template sources and the kit glossary. Shipyard owns them; the adopting repo never edits them.
-- **Repo-owned files**: copied templates, the settings file, and the repo's specs, agent rules and house rules. Shipyard never touches them after copying.
+- **Repo-owned files**: copied templates, the settings file, and the repo's specs, agent rules and house rules. Shipyard never changes them after copying; removing shipyard deletes only the settings file, with `.shipyard/`.
 - **Settings file**: `.shipyard/settings.yml`, in YAML. It holds the repo's conventions, which skills read instead of hardcoding: role mapping, label prefix, who may add trigger labels, how the human is notified, branch names, commands, seams, verification surfaces, the coverage floor, and the spec, agent rules, plans and verification skill folders (by default `docs/product/`, `docs/agents/` and `docs/plans/`).
 - CI pieces read the settings file themselves, from the default branch, so a PR can't change the settings that act on it. Inputs only carry values that matter to CI alone, such as the test output cap.
 - An adopting repo keeps its house rules in its own agent rules.
@@ -50,10 +50,7 @@ Each part of the kit has an index that says what the part holds and the modules 
 
 ## Updates
 
-- An update replaces managed files and never touches repo-owned files.
-- The version record keeps a checksum per managed file. A managed file edited or deleted in the repo stops an update before it is overwritten, until the human decides whether the edit belongs in a repo-owned file.
-- An update refuses a version record naming a newer release. Going back means reverting the commit that updated shipyard, since the CLI can't undo a newer release's manual steps.
-- Template changes appear in the changelog as optional manual steps. A major release lists the actions a repo must take.
+- What an update does and refuses is in the [CLI](cli.md#update); what the changelog asks of a repo is in [Releases](shape.md#releases).
 
 ## Agent entry files
 
@@ -67,4 +64,4 @@ Each part of the kit has an index that says what the part holds and the modules 
 - Instructions for adopting shipyard live in the README and the guide.
 - Shipyard installs its own last release into `.shipyard/` like any adopting repo, and its agents follow that copy. A PR that edits `kit/` doesn't change the rules the agents working on it follow.
 
-**Today:** no release exists yet, so the CLI isn't published, shipyard doesn't install its own release, and a repo copying by hand records the commit it copied from.
+**Today:** `0.1.0` is the first release, and the CLI installs it from npm; scenario runs passed before it. Shipyard doesn't install its own release yet, so its agents follow `kit/` as it stands on their branch.

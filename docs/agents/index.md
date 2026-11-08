@@ -35,7 +35,7 @@ Shipyard's own git rules, for this repo only.
 
 ## Releases
 
-The human releases, following [the release steps](releasing.md).
+The human releases, following [the release steps](releasing.md). Before each release, an agent runs [the scenario runs](scenario-runs.md).
 
 ## Commands
 

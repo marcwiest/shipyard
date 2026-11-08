@@ -4,7 +4,7 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 
 ## Roles
 
-- **Human**: The person or people who write plans with the planning agent, merge and release. Each plan names its human, who answers that plan's questions.
+- **Human**: The person or people who write plans with the planning agent, merge, and release the repo's own code. Each plan names its human, who answers that plan's questions.
 - **Planning agent**: The interactive agent the human drafts a plan with.
 - **Orchestrator bot**: The bot that runs intake, briefs the builder bot for each phase, gives the phase verdict and keeps the plan record.
 - **Builder bot**: The bot that builds one phase.
@@ -21,8 +21,8 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Hold label**: A label a human adds to stop a PR's work at the next done condition; removing it resumes.
 - **Waiting label**: The label a bot adds when work stops at a human step; the human's removal resumes it.
 - **Dispatcher**: The CI piece the repo's CI workflow runs on label events; it starts the role the role mapping names.
-- **Human step**: A skill step that waits for the plan's human. Agents ask nothing outside human steps and spec questions.
-- **Done condition**: What a skill step leaves visible in the repo or on the PR to mark it finished, such as a commit or a headed comment.
+- **Human step**: A workflow step that waits for the plan's human. Agents ask nothing outside human steps and spec questions.
+- **Done condition**: What a workflow step leaves visible in the repo or on the PR to mark it finished, such as a commit or a headed comment.
 - **Answer skill**: The skill any interactive agent runs to show the human's waiting questions, post the answers and remove the waiting labels.
 - **PR shape**: The structure of one kind of PR, given by the same fields for every shape: who opens it, branch, what it may touch, review, verification evidence and merge.
 - **Practice**: Rules shared by all workflows, such as git, testing or verification.
@@ -34,16 +34,17 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Module**: An optional part of the kit, such as building, dispatch or verification. Its index names the modules and roles it needs.
 - **Part**: Core or one module. Each is a folder in the kit, and in `.shipyard/` once the repo takes it.
 - **Kit glossary**: This file: the managed file in core that defines the workflow terms.
+- **Repo's glossary**: The adopting repo's own glossary, at the glossary path the settings file names, for its terms that aren't workflow terms.
 - **Skill**: Instructions an agent loads and runs, kept in a `SKILL.md` file.
 - **Discovery stub**: A small skill file in one tool's skills folder that points to the skill's single source file.
 - **Template**: A file in the kit that a repo copies and then owns.
 - **Managed file**: A file shipyard owns in an adopting repo. Updates replace it, so the repo never edits it.
-- **Repo-owned file**: A file the adopting repo owns, such as a copied template or its specs. Shipyard never touches it after copying.
+- **Repo-owned file**: A file the adopting repo owns, such as a copied template or its specs. Shipyard never changes it after copying; removing shipyard deletes only the settings file, with `.shipyard/`.
 - **Settings file**: `.shipyard/settings.yml`, the repo-owned file stating the repo's conventions, such as the role mapping, branch names and folder paths. Skills and CI pieces read it.
 - **AGENTS.md block**: The marked block shipyard keeps in the repo's AGENTS.md, pointing agents to the settings file and listing the trigger labels and skills.
 - **CI workflow**: A GitHub Actions workflow. Always called this, never just "workflow".
 - **CI piece**: A GitHub Action in the kit that the repo's own CI workflows call at a release tag.
-- **Release**: A tagged version of shipyard, numbered by semver, with a changelog entry.
+- **Release**: A tagged version of shipyard, numbered by semver, with a changelog entry. Kit text calls an adopting repo's own releases "the repo's own release", never just "release".
 - **Version record**: The file in `.shipyard/` naming the release the repo's managed files came from, with a checksum per managed file.
 
 ## Specs and plans
@@ -56,12 +57,19 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Spec line**: The part of a Change that states what the spec will say after it, or, for a Change that edits no spec, `none` and what is true after it.
 - **Evidence line**: The part of a Change that names the verification evidence proving it. Checks are always required and not listed.
 - **Plan PR**: Core's PR shape for one plan and all of its work, in a repo that builds plans its own way.
+- **Phased PR**: The building module's PR shape for one plan, built phase by phase on the plan's own PR.
+- **Docs-only PR**: Core's PR shape for a change to documentation alone, outside any plan.
+- **Hotfix PR**: Core's PR shape for a fix to a defect in the repo's own released code, outside any plan.
 - **Plan check**: An inspection of a plan for its required items. It never judges plan quality.
 - **Intake**: The orchestrator bot checks an approved plan against the repo, raises gaps with the plan's human, and splits the Changes into phases.
 
 ## Phases
 
 - **Phase**: One step of a plan, built and reviewed on its own. It delivers one or more Changes.
+- **Tests box**: The part of a phase that names a seam and the behavior its tests assert, for a phase that changes code a seam reaches.
+- **Code box**: The part of that phase that names what makes its tests pass.
+- **Work box**: The part of a phase that changes no code a seam reaches: it names what the phase changes and, where that is code, why no seam reaches it.
+- **Notes line**: The line added to a phase when it's done: its verification line, deviations, blockers, and answers that changed the work.
 - **Preflight**: The reviewer bot reads one phase against the specs before it is built, lists open questions and sets the phase's scope.
 - **Phase brief**: The orchestrator bot's instructions to the builder bot for one phase: goal, resolved facts, scope and limits.
 - **Restatement**: The builder bot's own-words summary of its phase, checked against the plan before any change.
@@ -85,6 +93,7 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 
 - **Check**: An inspection that doesn't run the real thing, such as types, build, tests, a plan check or a drift check.
 - **Verification**: Running the real artifact the way a user or consumer would and capturing what happened. Tests are not verification.
+- **Surface**: The way a user or consumer touches the codebase, such as a web page, an API, a library or a CLI; not a screen. The settings file names the repo's surfaces.
 - **Verification evidence**: What a verification run captures: screenshots, traces, requests and responses, transcripts.
 - **Evidence list**: The list naming each piece of verification evidence: what was driven, the file, what it shows. In the building module, it is part of the phase report.
 - **Verification line**: One line of text on the PR saying what was verified and how.
