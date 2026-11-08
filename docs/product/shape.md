@@ -26,7 +26,7 @@ A plugin for one agent tool may later wrap the same files. It never becomes the 
 | `.github/` | Shipyard's own CI only. It calls the CI pieces from `kit/` at the current commit, the docs index check on `docs/product/` among them, and checks every link in tracked markdown files |
 | `docs/product/`, `docs/agents/`, `docs/context.md` | Shipyard's own specs, agent rules and glossary. Never copied |
 | `docs/guide/`, `README.md`, `CHANGELOG.md` | Instructions for adopters and the release history |
-| `AGENTS.md`, `CLAUDE.md`, `LICENSE` | Shipyard's own agent entry file, pointing to `docs/agents/index.md`, its `CLAUDE.md` sibling, and the MIT license |
+| `AGENTS.md`, `LICENSE` | Shipyard's own agent entry file, pointing to `docs/agents/index.md`, and the MIT license |
 | `cli/` | The [CLI](cli.md)'s code and its tests |
 | `package.json` | Publishes `cli/`, `kit/` and `CHANGELOG.md` as the npm package `shipyard-kit`, with no dependencies and no build step, on Node 22 or later. Its version is the release number |
 

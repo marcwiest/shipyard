@@ -58,7 +58,6 @@ Each part of the kit has an index that says what the part holds and the modules 
 ## Agent entry files
 
 - Shipyard adds one marked block to AGENTS.md, creating the file if it's missing. Updates replace only what is between the markers. It is the only shipyard content inside a repo-owned file.
-- Beside AGENTS.md, shipyard adds a `CLAUDE.md` holding only `@AGENTS.md`, creating it if it's missing, since Claude Code doesn't read AGENTS.md. Every AGENTS.md in the repo has this sibling. It is repo-owned: the repo may add to it, and removing shipyard leaves it.
 - Another tool that doesn't read AGENTS.md gets a one-line pointer from its own entry file.
 
 ## Shipyard's own docs
