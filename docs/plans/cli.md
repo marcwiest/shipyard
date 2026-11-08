@@ -1,6 +1,6 @@
 # The CLI
 
-Status: ready
+Status: in progress
 Human: marcwiest
 Goal: an adopter, usually through their agent, installs, updates and removes shipyard's parts with one pinned `npx shipyard-kit@x.y.z` command instead of copying files by hand, and each release can be published to npm.
 Specs touched: `docs/product/cli.md` (new), `docs/product/adoption.md`, `docs/product/agent-use.md`, `docs/product/shape.md`, `docs/product/index.md`
@@ -26,17 +26,37 @@ Out of scope: tagging and publishing `v0.1.0`, and its changelog entry; discover
 
 ## Phases
 
-Added before building starts, by whoever builds the plan. Until then, it holds only this note and the example below, which the phases replace. A phase that changes code a seam reaches has Tests and Code boxes; any other phase has one Work box, which says why no seam reaches any code it changes:
+### Phase 1: the package, `init` and the version record · delivers Changes 1, 2, 11 · about 3 h
+- [ ] Tests: the CLI: arguments in; files, stdout, stderr and exit code out. `--help`, `--version`, an unknown command and an unknown module; `init` refusing without `.git`, refusing a module whose Needs line names a part not taken, and stopping on an uncommitted change to a file it would write, each with nothing written; `init` copying the parts and writing a record whose checksums match the files; next steps that start with the commit
+- [ ] Code: the root `package.json`, `cli/` with argument handling, the kit's parts and Needs lines, the git check, the version record and `init`'s copy; the specs, glossary and core index lines Changes 1 and 2 name; the test command in `docs/agents/index.md`
 
-```
-### Phase 1: <name> · delivers Change 1
-- [ ] Tests: <seam>: <behavior the tests assert>
-- [ ] Code: <what makes them pass>
+Notes:
 
-Notes: <added when the phase is done: verification line, deviations, blockers>
+### Phase 2: settings, the AGENTS.md block, `CLAUDE.md` and templates · delivers Changes 3, 4, 9, 13 · about 3 h
+- [ ] Tests: the CLI: `init` leaves out the settings keys of parts not taken and keeps an existing settings file; adds the block at the end of AGENTS.md or creates it, with its checksum in the record; creates `CLAUDE.md` or names the missing import; copies the templates only where none exist, naming the skipped ones
+- [ ] Code: the `# read by:` marks in the settings template and the filter that reads them, the block, `CLAUDE.md` and the template copies; the house rules line in core and the block; the specs Changes 3, 4 and 9 name
 
-### Phase 2: <name> · delivers Change 2
-- [ ] Work: <what it changes, such as docs, config or content>
+Notes:
 
-Notes: <...>
-```
+### Phase 3: `init` on an existing install · delivers Change 5 · about 1.5 h
+- [ ] Tests: the CLI: `init building dispatch` on a core-only install adds both parts and their checksums, leaves the settings file's bytes unchanged and prints the missing lines with where they go; a record naming another release is refused with `update` as the next step
+- [ ] Code: reading the record, adding parts at the installed release, and the missing settings lines; the spec Change 5 names
+
+Notes:
+
+### Phase 4: `update` and the changelog · delivers Changes 6, 7 · about 3 h
+- [ ] Tests: the CLI: `update` replaces managed files and the block, deletes dropped files and rewrites the record, leaving repo-owned files; stops on an edited or deleted managed file or block and overwrites with `--force`; refuses a newer release; reads a record written by hand; prints the changelog entries after the installed release, oldest first
+- [ ] Code: `update`, the changelog reader and `CHANGELOG.md`; the specs Changes 6 and 7 name
+
+Notes:
+
+### Phase 5: `remove` · delivers Change 8 · about 1 h
+- [ ] Tests: the CLI: `remove` deletes `.shipyard/` and the block, deletes an AGENTS.md left empty and keeps one with its own text, and lists `CLAUDE.md` and the templates it left
+- [ ] Code: `remove`; the spec Change 8 names
+
+Notes:
+
+### Phase 6: the guide, README and release steps · delivers Changes 10, 12 · about 2 h
+- [ ] Work: the guide leads with the CLI and its agent prompts, the README's Status and install follow it, `shape.md` says how releases publish, and `docs/agents/` holds the release steps. Docs only, so no seam reaches it
+
+Notes:
