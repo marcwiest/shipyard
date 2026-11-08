@@ -40,9 +40,9 @@ npx shipyard-kit@x.y.z init building dispatch
 
 It copies the parts into `.shipyard/`, writes the settings file with the keys those parts read, adds the block to `AGENTS.md`, copies the spec index, agent rules index and glossary templates where you have none, and writes the version record. It stops before writing anything if a file it would write has uncommitted changes, so commit your own work first. Before committing what it wrote, check that your ignore rules keep the new files, as in [step 8 by hand](#8-commit-and-plan).
 
-Then fill in what its next steps name, such as the settings file and the templates. Keep your own instructions in your agent rules and your opinions in their House rules section, which win over kit text; never edit `.shipyard/` other than `settings.yml`. In a repo that already has a default branch, commit on a branch and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
+Then fill in what its next steps name, such as the settings file and the templates. Keep your own instructions in your agent rules and your opinions in their House rules section, which win over kit text; never edit `.shipyard/` other than `settings.yml`. In a repo that already has a default branch, commit on a branch, such as `chore/shipyard-x.y.z`, and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
 
-Then open a session with your planning agent and ask it to plan a change. It reads the `AGENTS.md` block and follows `.shipyard/core/plans.md`.
+Once the adoption is on your default branch, open a session with your planning agent and ask it to plan a change. It reads the `AGENTS.md` block and follows `.shipyard/core/plans.md`, which starts each plan's branch from the default branch.
 
 To add a module later, run `init` again with its name, at the release you have installed.
 
@@ -55,6 +55,8 @@ npx shipyard-kit@x.y.z update
 ```
 
 It replaces the managed files and the `AGENTS.md` block, deletes the files the new release dropped, and rewrites the version record. It never touches your settings file or other files you own. Its next steps list any settings lines the new release reads that your file lacks, and what the changelog asks of your repo for each release since yours.
+
+As when adopting, commit on a branch, such as `chore/shipyard-x.y.z`, and merge it through a PR.
 
 If a managed file or the block was edited in your repo, it stops before writing and lists them. Move each edit to a file you own, such as your agent rules, then run it again with `--force` to overwrite them. It refuses to go back to an older release: to go back, revert the commit that updated shipyard.
 
@@ -174,9 +176,9 @@ git check-ignore .shipyard/settings.yml .shipyard/core/index.md AGENTS.md docs/p
 
 Any path it prints is ignored, so change the rule that catches it.
 
-Commit the files, such as `chore: adopt shipyard core`. In a repo that already has a default branch, do it on a branch and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
+Commit the files, such as `chore: adopt shipyard core`. In a repo that already has a default branch, do it on a branch, such as `chore/adopt-shipyard`, and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
 
-Then open a session with your planning agent and ask it to plan a change. It reads the `AGENTS.md` block and follows `.shipyard/core/plans.md`.
+Once the adoption is on your default branch, open a session with your planning agent and ask it to plan a change. It reads the `AGENTS.md` block and follows `.shipyard/core/plans.md`, which starts each plan's branch from the default branch.
 
 ### Updating and removing by hand
 
