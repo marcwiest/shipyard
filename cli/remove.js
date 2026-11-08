@@ -29,7 +29,8 @@ export function remove(args, { cwd }) {
   const removed = [installed && '`.shipyard/`', hasBlock && 'the AGENTS.md block', rest === null && '`AGENTS.md`, which held nothing else']
     .filter(Boolean);
   const left = repoOwned.filter((path) => read(cwd, path) !== null);
-  const report = [`Removed ${removed.join(', ')}.`];
+  const list = removed.length > 1 ? `${removed.slice(0, -1).join(', ')} and ${removed.at(-1)}` : removed[0];
+  const report = [`Removed ${list}.`];
   if (left.length) report.push(`Left in place, as the repo's own: ${left.map((path) => `\`${path}\``).join(', ')}.`);
 
   const next = ['Commit what this removed, and nothing else, such as `chore: remove shipyard`.'];
