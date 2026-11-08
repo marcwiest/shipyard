@@ -1,6 +1,6 @@
 # shipyard
 
-Status: in design, with no release yet. Core can be copied by hand and planned with today; what doesn't exist yet is in each page's Today note.
+Status: in design, with no release yet. Core can be copied by hand and planned with today, and the CLI installs it from the first release; what doesn't exist yet is in each page's Today note.
 
 Who: a person who runs coding agents and bots on their repos and wants a repeatable way to plan, build, review and verify that work.
 

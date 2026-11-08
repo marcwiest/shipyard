@@ -54,6 +54,7 @@ Shipyard depends on no outside skill. A mechanic can define a skill's shape, suc
 ## Releases
 
 - Each release is a git tag. The files at that tag are the release.
+- Each release publishes `shipyard-kit` to npm at the same version, from its tag. The human publishes it, following the release steps in `docs/agents/`.
 - Release numbers follow semver:
   - **Major**: an adopting repo must act, such as a renamed plan field, a changed PR comment header, or a renamed or split skill.
   - **Minor**: something new that nobody has to use, such as a new skill, PR shape or CI piece.
