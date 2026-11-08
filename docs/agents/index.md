@@ -34,6 +34,10 @@ Shipyard's own git rules, for this repo only.
 - Outside a plan, a small change may be committed straight to `main`, but only when the human asks for that one commit. Small means one concern, checkable from the diff at a glance, that leaves the kit's meaning unchanged: typos, links, rewording, this file, README and guide fixes.
 - A change to what the kit means goes through a PR, as does a decision in `docs/product/`. The kit's meaning covers glossary definitions, workflow steps, PR shapes, practices, settings keys, CI pieces and skills.
 
+## Releases
+
+The human releases, following [the release steps](releasing.md).
+
 ## Commands
 
 - Test: `node --test cli/`. The CLI's seam: arguments in; files, stdout, stderr and exit code out.
