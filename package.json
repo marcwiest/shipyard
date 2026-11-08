@@ -1,6 +1,6 @@
 {
   "name": "shipyard-kit",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Installs, updates and removes shipyard's workflow kit in a git repo.",
   "license": "MIT",
   "repository": {
