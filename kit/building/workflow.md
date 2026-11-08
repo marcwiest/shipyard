@@ -4,7 +4,7 @@
 - Roles: the orchestrator bot runs the workflow. The builder bot builds each phase, the reviewer bot runs preflight and review, and the plan's human answers human steps and takes the handoff.
 - Produces: a [phased PR](pr-shapes/phased.md).
 
-The orchestrator bot checks for the hold label before each step (see the dispatch module's labels). Human steps go on the PR as the dispatch module's human steps on a PR say.
+The orchestrator bot checks for the hold and waiting labels before each step (see the dispatch module's labels). Human steps go on the PR as the dispatch module's human steps on a PR say.
 
 ## Intake
 
