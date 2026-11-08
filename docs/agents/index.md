@@ -4,20 +4,22 @@ How agents work in this repo.
 
 ## Reading order
 
-1. `kit/core/glossary.md`
+1. The kit glossary, `.shipyard/core/glossary.md`
 2. `docs/context.md`
 3. `docs/product/index.md`
 4. This file
 
 ## Rules
 
-- Use the terms in the kit glossary and `docs/context.md`.
+- Agents follow the workflow in `.shipyard/`, shipyard's installed last release, like any adopting repo. The kit they change is `kit/`, so a PR that edits `kit/` doesn't change the rules its own agents follow.
+- Never edit `.shipyard/` other than `settings.yml`: the CLI replaces it on each update.
+- Use the terms in the kit glossary and `docs/context.md`. Kit text written on a branch uses the terms of `kit/core/glossary.md` on that branch, where a new term gets its entry first.
 - Name things by their definition. A new concept gets a glossary entry before it's used.
 - Glossary entries are one sentence, two at most. Cap the length of entries, never the number of terms.
 - `docs/product/` describes shipyard itself: intent, behavior, refusals. Install and usage instructions for adopting repos go in the README and `docs/guide/`.
 - Shipyard's own `docs/product/`, `docs/agents/` and `docs/context.md` are never copied into adopting repos. What ships is the kit, in `kit/`.
 - Before writing a rule, ask who carries it out. Agents or humans in an adopting repo: it goes in the kit. Shipyard's CLI or CI pieces: it goes in `docs/product/`. Each rule has one home.
-- Workflow terms go in the kit glossary; terms about shipyard itself go in `docs/context.md`.
+- Workflow terms go in `kit/core/glossary.md`; terms about shipyard itself go in `docs/context.md`.
 - `.github/` holds only shipyard's own CI. CI pieces live in `kit/`.
 - This repo is public. Never name private orgs, repos, clients or products, local paths, or infrastructure hosts.
 - Working notes, trackers and run files go in the gitignored `.scratch/`. Tracked text never points into it, since a public reader can't follow it.
@@ -33,10 +35,14 @@ Shipyard's own git rules, for this repo only.
 - Outside a plan, a small change may be committed straight to `main`, but only when the human asks for that one commit. Small means one concern, checkable from the diff at a glance, that leaves the kit's meaning unchanged: typos, links, rewording, this file, README and guide fixes.
 - A change to what the kit means goes through a PR, as does a decision in `docs/product/`. The kit's meaning covers glossary definitions, workflow steps, PR shapes, practices, settings keys, CI pieces and skills.
 
+## Building plans
+
+- The agent building an approved plan adds its phases, builds and verifies each one, and keeps the plan record. The plan's PR is core's plan PR.
+
 ## Releases
 
-The human releases, following [the release steps](releasing.md). Before each release, an agent runs [the scenario runs](scenario-runs.md).
+The human releases, following [the release steps](releasing.md). Before each release, an agent runs [the scenario runs](scenario-runs.md). The checks before a release read `kit/`, not its copy in `.shipyard/`.
 
 ## Commands
 
-- Test: `node --test cli/`. The CLI's seam: arguments in; files, stdout, stderr and exit code out.
+See `commands` and `seams` in `.shipyard/settings.yml`.
