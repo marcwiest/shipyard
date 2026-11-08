@@ -103,7 +103,13 @@ export function readRecord(cwd) {
     if (!entry) continue;
     const [, indent, key, value = ''] = entry;
     if (indent && inFiles) {
-      record.files[unquote(key)] = unquote(value);
+      const path = unquote(key);
+      if (path.split('/').some((segment) => !segment || segment === '.' || segment === '..') || path.includes('\\')) {
+        throw new Stop(`\`${recordPath}\` lists \`${path}\`, which isn't a path inside \`.shipyard/\`.`, [
+          `Fix or remove that line in \`${recordPath}\` and commit it, then run the command again.`,
+        ]);
+      }
+      record.files[path] = unquote(value);
       continue;
     }
     inFiles = key === 'files';
@@ -126,13 +132,13 @@ export function recordText({ release, agentsBlock, files }) {
 }
 
 // Writes and deletes files, once none of them has uncommitted changes or goes through a symlink.
-export function apply(cwd, writes, deletes = []) {
+export function apply(cwd, writes, deletes = [], { recursive = false } = {}) {
   const paths = [...writes.keys(), ...deletes];
   if (!paths.length) return;
   requireCommitted(cwd, paths);
   for (const path of paths) requireNoSymlink(cwd, path);
   for (const [path, content] of writes) write(cwd, path, content);
-  for (const path of deletes) rmSync(join(cwd, path), { force: true, recursive: true });
+  for (const path of deletes) rmSync(join(cwd, path), { force: true, recursive });
 }
 
 // The parts a record lists, from the first folder of each managed file's path.
