@@ -1,6 +1,6 @@
 // The adopting repo: its git state and the version record.
 import { execFileSync } from 'node:child_process';
-import { existsSync, lstatSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, lstatSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 export const recordPath = '.shipyard/version.yml';
@@ -114,7 +114,7 @@ export function readRecord(cwd) {
   return record;
 }
 
-export function writeRecord(cwd, { release, agentsBlock, files }) {
+export function recordText({ release, agentsBlock, files }) {
   const lines = [
     '# Written by shipyard-kit. Managed: the CLI rewrites it on each install or update.',
     `release: ${release}`,
@@ -122,7 +122,17 @@ export function writeRecord(cwd, { release, agentsBlock, files }) {
   if (agentsBlock) lines.push(`agents-block: ${agentsBlock}`);
   lines.push('files:');
   for (const path of Object.keys(files).sort()) lines.push(`  ${path}: ${files[path]}`);
-  write(cwd, recordPath, `${lines.join('\n')}\n`);
+  return `${lines.join('\n')}\n`;
+}
+
+// Writes and deletes files, once none of them has uncommitted changes or goes through a symlink.
+export function apply(cwd, writes, deletes = []) {
+  const paths = [...writes.keys(), ...deletes];
+  if (!paths.length) return;
+  requireCommitted(cwd, paths);
+  for (const path of paths) requireNoSymlink(cwd, path);
+  for (const [path, content] of writes) write(cwd, path, content);
+  for (const path of deletes) rmSync(join(cwd, path), { force: true, recursive: true });
 }
 
 // The parts a record lists, from the first folder of each managed file's path.

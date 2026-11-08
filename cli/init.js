@@ -1,8 +1,16 @@
 // `init [module...]`: installs core and the named modules.
-import { copyFileSync, mkdirSync, readFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { readFileSync } from 'node:fs';
+import { blockChecksum, blockTemplate, importsAgents, withBlock } from './agents.js';
 import { kitFile, modules, needs, npx, ordered, partFiles, sha256, version } from './kit.js';
-import { Stop, requireCommitted, requireGit, requireNoSymlink, writeRecord } from './repo.js';
+import { Stop, apply, read, readRecord, recordPath, recordText, requireGit } from './repo.js';
+import { filterSettings, settingsPath, settingsTemplate } from './settings.js';
+
+// Core's templates the repo copies once and then owns, at the settings template's default paths.
+const templates = [
+  ['core/templates/spec-index.md', 'docs/product/index.md'],
+  ['core/templates/agent-rules-index.md', 'docs/agents/index.md'],
+  ['core/templates/context.md', 'docs/context.md'],
+];
 
 export function parseModules(args) {
   const known = modules();
@@ -31,32 +39,76 @@ export function requireNeeds(taken, named) {
   }
 }
 
-// Copies the parts' files into `.shipyard/` and returns each one's checksum.
-export function copyParts(cwd, parts) {
-  const paths = parts.flatMap(partFiles);
-  for (const path of paths) requireNoSymlink(cwd, `.shipyard/${path}`);
+// Adds the parts' files to the writes and returns each one's checksum, keyed by its path in `.shipyard/`.
+export function addParts(writes, parts) {
   const files = {};
-  for (const path of paths) {
-    const target = join(cwd, '.shipyard', ...path.split('/'));
-    mkdirSync(dirname(target), { recursive: true });
-    copyFileSync(kitFile(path), target);
-    files[path] = sha256(readFileSync(target));
+  for (const path of parts.flatMap(partFiles)) {
+    const content = readFileSync(kitFile(path));
+    writes.set(`.shipyard/${path}`, content);
+    files[path] = sha256(content);
   }
   return files;
 }
 
+export const ownStep =
+  "Keep this repo's own instructions in its agent rules, `docs/agents/index.md` by default, and its opinions in that file's House rules section, where they win over kit text. Never edit files in `.shipyard/` other than `settings.yml`: updates replace them.";
+
 export function init(args, { cwd }) {
   const named = parseModules(args);
   requireGit(cwd);
+  if (readRecord(cwd)) throw new Stop('Shipyard is already installed here.', []);
   const parts = ordered(['core', ...named]);
   requireNeeds(parts, named);
-  requireCommitted(cwd, ['.shipyard']);
 
-  const files = copyParts(cwd, parts);
-  writeRecord(cwd, { release: version, files });
+  const writes = new Map();
+  const files = addParts(writes, parts);
+  const report = [`Installed shipyard ${version} in \`.shipyard/\`: ${parts.join(', ')}.`];
+  const next = [`Commit what this wrote, and nothing else, such as \`chore: adopt shipyard ${version}\`.`];
 
-  return {
-    report: `Installed shipyard ${version} in \`.shipyard/\`: ${parts.join(', ')}.`,
-    next: [`Commit what this wrote, and nothing else, such as \`chore: adopt shipyard ${version}\`.`],
-  };
+  if (read(cwd, settingsPath) === null) {
+    writes.set(settingsPath, filterSettings(settingsTemplate(), parts));
+    report.push(`Wrote \`${settingsPath}\`, with the keys the taken parts read.`);
+    next.push(
+      `Fill in \`${settingsPath}\`, matching what the repo already runs: the planning agent's tool and start under \`roles\`, the folders under \`paths\` if they differ from the defaults, the branch names, the install, check and test commands CI runs, and the seams. Leave a value empty until it exists.`,
+    );
+  } else {
+    report.push(`Kept the existing \`${settingsPath}\`.`);
+  }
+
+  const agents = withBlock(read(cwd, 'AGENTS.md'), blockTemplate());
+  writes.set('AGENTS.md', agents);
+  report.push('Added the shipyard block to `AGENTS.md`.');
+
+  const claude = read(cwd, 'CLAUDE.md');
+  if (claude === null) {
+    writes.set('CLAUDE.md', '@AGENTS.md\n');
+    report.push('Wrote `CLAUDE.md`, holding `@AGENTS.md`.');
+  } else if (!importsAgents(claude)) {
+    next.push('Add a line holding only `@AGENTS.md` to `CLAUDE.md`, so Claude Code loads `AGENTS.md`.');
+  }
+
+  const copied = [];
+  const skipped = [];
+  for (const [source, target] of templates) {
+    if (read(cwd, target) === null) {
+      writes.set(target, readFileSync(kitFile(source)));
+      copied.push(target);
+    } else {
+      skipped.push(target);
+    }
+  }
+  if (copied.length) {
+    report.push(`Copied templates to ${copied.map((path) => `\`${path}\``).join(', ')}.`);
+    next.push(
+      `Fill in the placeholders, in angle brackets, in ${copied.map((path) => `\`${path}\``).join(', ')}. Where there is nothing for a section yet, delete its placeholder line and keep the heading.`,
+    );
+  }
+  if (skipped.length) {
+    report.push(`Skipped templates where a file exists: ${skipped.map((path) => `\`${path}\``).join(', ')}.`);
+  }
+
+  writes.set(recordPath, recordText({ release: version, agentsBlock: blockChecksum(agents), files }));
+  apply(cwd, writes);
+  next.push(ownStep);
+  return { report: report.join('\n'), next };
 }
