@@ -34,6 +34,8 @@ function pruneEmpty(cwd, paths) {
   }
 }
 
+const count = (n, noun) => `${n} ${noun}${n === 1 ? '' : 's'}`;
+
 export function update(args, { cwd }) {
   const unknown = args.filter((arg) => arg !== '--force');
   if (unknown.length) {
@@ -96,7 +98,7 @@ export function update(args, { cwd }) {
 
   const from = record.release || 'a copy by hand';
   const report = written
-    ? `Updated shipyard from ${from} to ${version}: ${parts.join(', ')}. ${writes.size} files written, ${deletes.length} deleted.`
+    ? `Updated shipyard from ${from} to ${version}: ${parts.join(', ')}. ${count(writes.size, 'file')} written, ${deletes.length} deleted.`
     : `Shipyard ${version} is installed and matches this release: ${parts.join(', ')}.`;
   return { report: force && changed.length ? `${report}\nOverwrote:\n${changed.join('\n')}` : report, next };
 }
