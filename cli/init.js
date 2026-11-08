@@ -2,8 +2,8 @@
 import { readFileSync } from 'node:fs';
 import { blockChecksum, blockTemplate, importsAgents, withBlock } from './agents.js';
 import { kitFile, modules, needs, npx, ordered, partFiles, sha256, version } from './kit.js';
-import { Stop, apply, read, readRecord, recordPath, recordText, requireGit } from './repo.js';
-import { filterSettings, settingsPath, settingsTemplate } from './settings.js';
+import { Stop, apply, read, readRecord, recordPath, recordText, recordedParts, requireGit } from './repo.js';
+import { filterSettings, missingSettings, missingSettingsStep, settingsPath, settingsTemplate } from './settings.js';
 
 // Core's templates the repo copies once and then owns, at the settings template's default paths.
 const templates = [
@@ -53,10 +53,38 @@ export function addParts(writes, parts) {
 export const ownStep =
   "Keep this repo's own instructions in its agent rules, `docs/agents/index.md` by default, and its opinions in that file's House rules section, where they win over kit text. Never edit files in `.shipyard/` other than `settings.yml`: updates replace them.";
 
+// Adds the named parts to an install, at its release, leaving the settings file to the repo.
+function addToInstall(cwd, named, record) {
+  if (record.release !== version) {
+    const installed = record.release ? `Shipyard ${record.release} is installed` : 'Shipyard is installed from a copy by hand';
+    throw new Stop(`${installed}, and this CLI is ${version}. Parts are added only at the installed release.`, [
+      `Run \`${npx} update\` first and commit what it wrote, then run this \`init\` again.`,
+    ]);
+  }
+  const installed = recordedParts(record);
+  const added = ordered(named.filter((part) => !installed.includes(part)));
+  if (!added.length) {
+    return { report: `Already installed: ${ordered(installed).join(', ')}.`, next: [] };
+  }
+  const parts = ordered([...installed, ...added]);
+  requireNeeds(parts, named);
+
+  const writes = new Map();
+  const files = { ...record.files, ...addParts(writes, added) };
+  writes.set(recordPath, recordText({ release: version, agentsBlock: record.agentsBlock, files }));
+  apply(cwd, writes);
+
+  const next = [`Commit what this wrote, and nothing else, such as \`chore: add shipyard ${added.join(', ')}\`.`];
+  const settings = missingSettingsStep(missingSettings(read(cwd, settingsPath) ?? '', parts, installed));
+  if (settings) next.push(settings);
+  return { report: `Added to shipyard ${version} in \`.shipyard/\`: ${added.join(', ')}.`, next };
+}
+
 export function init(args, { cwd }) {
   const named = parseModules(args);
   requireGit(cwd);
-  if (readRecord(cwd)) throw new Stop('Shipyard is already installed here.', []);
+  const record = readRecord(cwd);
+  if (record) return addToInstall(cwd, named, record);
   const parts = ordered(['core', ...named]);
   requireNeeds(parts, named);
 

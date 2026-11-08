@@ -99,6 +99,15 @@ export function missingSettings(settings, parts, alreadyRead = null) {
 
 export function missingSettingsStep(missing) {
   if (!missing.length) return null;
-  const blocks = missing.map(({ where, text }) => `${where}:\n${text}`);
-  return `Add these lines to \`${settingsPath}\`, where each says, then fill in their values, in their own commit:\n${blocks.join('\n')}`;
+  const groups = [];
+  for (const { where, text } of missing) {
+    if (groups.at(-1)?.where === where) groups.at(-1).texts.push(text);
+    else groups.push({ where, texts: [text] });
+  }
+  const blocks = groups.map(({ where, texts }) => {
+    const place = where === 'at the top level' ? 'at the end of the file' : `${where}, after its last key`;
+    const lines = texts.join('\n').split('\n').map((line) => `    ${line}`);
+    return `- ${place}:\n${lines.join('\n')}`;
+  });
+  return `In their own commit, add these lines to \`${settingsPath}\` as shown, then fill in their values:\n${blocks.join('\n')}`;
 }
