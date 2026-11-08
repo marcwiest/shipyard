@@ -45,7 +45,7 @@ test('init refuses an unknown module with exit 2', () => {
   assert.equal(status(cwd), '');
 });
 
-test('init stops on an uncommitted change to a file it would write', () => {
+test('init stops on an uncommitted file in .shipyard it would write', () => {
   const cwd = repo();
   put(cwd, { '.shipyard/core/plans.md': 'mine\n' });
   const { code, stderr } = run(cwd, ['init']);
