@@ -1,4 +1,4 @@
-// The AGENTS.md block and the `CLAUDE.md` beside it.
+// The AGENTS.md block.
 import { readFileSync } from 'node:fs';
 import { kitFile, sha256 } from './kit.js';
 
@@ -50,8 +50,4 @@ export function withoutBlock(text) {
   lines.splice(place.first, place.last - place.first + 1);
   const rest = lines.join('\n').replace(/\n{3,}/g, '\n\n');
   return rest.trim() ? `${rest.trimEnd()}\n` : null;
-}
-
-export function importsAgents(claude) {
-  return claude.split('\n').some((line) => line.trim() === '@AGENTS.md');
 }

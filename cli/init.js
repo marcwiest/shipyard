@@ -1,6 +1,6 @@
 // `init [module...]`: installs core and the named modules.
 import { readFileSync } from 'node:fs';
-import { blockChecksum, blockTemplate, importsAgents, withBlock } from './agents.js';
+import { blockChecksum, blockTemplate, withBlock } from './agents.js';
 import { kitFile, modules, needs, npx, ordered, partFiles, sha256, version } from './kit.js';
 import { Stop, apply, read, readRecord, recordPath, recordText, recordedParts, requireGit } from './repo.js';
 import { filterSettings, missingSettings, missingSettingsStep, settingsPath, settingsTemplate } from './settings.js';
@@ -106,14 +106,6 @@ export function init(args, { cwd }) {
   const agents = withBlock(read(cwd, 'AGENTS.md'), blockTemplate());
   writes.set('AGENTS.md', agents);
   report.push('Added the shipyard block to `AGENTS.md`.');
-
-  const claude = read(cwd, 'CLAUDE.md');
-  if (claude === null) {
-    writes.set('CLAUDE.md', '@AGENTS.md\n');
-    report.push('Wrote `CLAUDE.md`, holding `@AGENTS.md`.');
-  } else if (!importsAgents(claude)) {
-    next.push('Add a line holding only `@AGENTS.md` to `CLAUDE.md`, so Claude Code loads `AGENTS.md`.');
-  }
 
   const copied = [];
   const skipped = [];

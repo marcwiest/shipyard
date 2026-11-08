@@ -5,7 +5,7 @@ import { blockChecksum, withoutBlock } from './agents.js';
 import { npx } from './kit.js';
 import { Stop, apply, read, requireGit } from './repo.js';
 
-const repoOwned = ['CLAUDE.md', 'docs/product/index.md', 'docs/agents/index.md', 'docs/context.md'];
+const repoOwned = ['docs/product/index.md', 'docs/agents/index.md', 'docs/context.md'];
 
 export function remove(args, { cwd }) {
   if (args.length) {
@@ -34,9 +34,6 @@ export function remove(args, { cwd }) {
   if (left.length) report.push(`Left in place, as the repo's own: ${left.map((path) => `\`${path}\``).join(', ')}.`);
 
   const next = ['Commit what this removed, and nothing else, such as `chore: remove shipyard`.'];
-  if (rest === null && left.includes('CLAUDE.md')) {
-    next.push('`CLAUDE.md` loads `AGENTS.md`, which is gone: remove its `@AGENTS.md` line, or delete `CLAUDE.md` if nothing else is in it.');
-  }
   const pointing = left.filter((path) => read(cwd, path).includes('.shipyard/'));
   if (pointing.length) {
     next.push(`Remove the pointers to \`.shipyard/\` left in ${pointing.map((path) => `\`${path}\``).join(', ')}, such as the kit glossary in a reading order.`);
