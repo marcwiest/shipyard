@@ -44,3 +44,10 @@ On an existing install, `init` adds the named parts at the installed release:
 - Otherwise, or with `--force`, it replaces the installed parts' managed files, deletes those the new release dropped, replaces the block's contents and rewrites the version record. It never touches repo-owned files.
 - Its next steps after the commit are the settings lines the installed parts read that the file lacks, and the changelog's entries after the installed release up to the CLI's, oldest first: each entry's one-line summary and its "What a repo must do" list in full. With no release in the record, it prints every entry up to the CLI's. Each is done in its own commit, after the CLI's.
 - It reads a version record written by hand, with a commit and no release or block checksum.
+
+## remove
+
+`remove` takes shipyard out of the repo.
+
+- It deletes `.shipyard/`, the settings file with it, and the AGENTS.md block. It deletes AGENTS.md only when nothing else is left in it.
+- It leaves `CLAUDE.md` and the copied templates, which are repo-owned, and lists what it left. Its next steps name the files left that still point into `.shipyard/`.
