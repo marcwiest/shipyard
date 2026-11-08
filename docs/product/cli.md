@@ -8,7 +8,7 @@ The command that installs, updates and removes shipyard's parts in an adopting r
 - `--help` lists the commands and the modules. `--version` prints the release.
 - It exits 0 when done, 1 when it refused or stopped, and 2 for wrong arguments, such as an unknown command or module. It writes nothing in the last two cases.
 - When it exits 0 it prints to stdout; otherwise to stderr.
-- It refuses to write through a symlink, so nothing it writes lands outside the repo.
+- It refuses to write through a symlink, and refuses a version record that lists a path outside `.shipyard/`, so nothing it writes or deletes lands outside them.
 
 ## Next steps
 
