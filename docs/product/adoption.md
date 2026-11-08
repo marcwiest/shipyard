@@ -64,4 +64,4 @@ Each part of the kit has an index that says what the part holds and the modules 
 - Instructions for adopting shipyard live in the README and the guide.
 - Shipyard installs its own last release into `.shipyard/` like any adopting repo, and its agents follow that copy. A PR that edits `kit/` doesn't change the rules the agents working on it follow.
 
-**Today:** `0.1.0` is the first release, and the CLI installs it from npm; scenario runs passed before it. Shipyard doesn't install its own release yet, so its agents follow `kit/` as it stands on their branch.
+**Today:** `0.1.0` is the first release, and the CLI installs it from npm; scenario runs passed before it.
