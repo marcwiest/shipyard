@@ -1,7 +1,7 @@
 // Drives the CLI at its seam: arguments in; files, stdout, stderr and exit code out.
 import { execFileSync, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, realpathSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -63,7 +63,7 @@ export function files(cwd, dir) {
 }
 
 // A copy of the package whose version and changelog a test can change.
-export function packageCopy({ version: copyVersion, changelog } = {}) {
+export function packageCopy({ version: copyVersion, changelog, files: changes = {} } = {}) {
   const pkg = mkdtempSync(join(tmpdir(), 'shipyard-pkg-'));
   for (const path of ['cli', 'kit', 'package.json', 'CHANGELOG.md']) {
     if (existsSync(join(packageRoot, path))) cpSync(join(packageRoot, path), join(pkg, path), { recursive: true });
@@ -73,5 +73,9 @@ export function packageCopy({ version: copyVersion, changelog } = {}) {
     writeFileSync(join(pkg, 'package.json'), JSON.stringify({ ...manifest, version: copyVersion }));
   }
   if (changelog !== undefined) writeFileSync(join(pkg, 'CHANGELOG.md'), changelog);
-  return pkg;
+  for (const [path, content] of Object.entries(changes)) {
+    if (content === null) rmSync(join(pkg, path));
+    else put(pkg, { [path]: content });
+  }
+  return realpathSync(pkg);
 }
