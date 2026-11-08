@@ -46,18 +46,11 @@ test("init adds the block after AGENTS.md's own text and records its checksum", 
   assert.match(read(cwd, '.shipyard/version.yml'), new RegExp(`^agents-block: ${blockSha(agents)}$`, 'm'));
 });
 
-test('init creates AGENTS.md and CLAUDE.md when missing', () => {
+test('init creates AGENTS.md when missing, and no CLAUDE.md', () => {
   const cwd = repo();
   assert.equal(run(cwd, ['init']).code, 0);
   assert.match(read(cwd, 'AGENTS.md'), /^<!-- shipyard:start -->\nThis repo uses shipyard\./);
-  assert.equal(read(cwd, 'CLAUDE.md'), '@AGENTS.md\n');
-});
-
-test('init leaves a CLAUDE.md without the import and names it as a next step', () => {
-  const cwd = repo({ 'CLAUDE.md': 'Be brief.\n' });
-  const { stdout } = run(cwd, ['init']);
-  assert.equal(read(cwd, 'CLAUDE.md'), 'Be brief.\n');
-  assert.match(stdout, /\d\. Add a line holding only `@AGENTS\.md` to `CLAUDE\.md`/);
+  assert.equal(read(cwd, 'CLAUDE.md'), null);
 });
 
 test('init copies the templates only where no file exists, naming the skipped ones', () => {
