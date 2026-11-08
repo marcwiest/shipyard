@@ -8,8 +8,8 @@
 # description.
 roles:
   planning-agent:
-    tool: ""
-    start: ""
+    tool: Claude Code
+    start: claude
 
 # Folders, relative to the repo root.
 paths:
@@ -31,8 +31,9 @@ branches:
 commands:
   install: ""
   check: ""               # types, lint, build
-  test: ""
+  test: node --test cli/
 
 # Where tests touch the code, one short phrase each, such as "package exports",
 # "HTTP routes" or "the CLI: arguments in, stdout, stderr and exit code out".
-seams: []
+seams:
+  - "the CLI: arguments in; files, stdout, stderr and exit code out"
