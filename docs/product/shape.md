@@ -34,7 +34,7 @@ A plugin for one agent tool may later wrap the same files. It never becomes the 
 - `docs/product/` holds what shipyard is and what its own tooling does: what the kit contains, the CLI, the CI pieces, releases, principles and refusals.
 - Core holds what every workflow shares, such as the practices, the plan format and the PR shape fields. A new PR shape is one file in the module that produces it. A different approach to the same job is a sibling module that reuses core and never copies its text.
 
-**Today:** `.github/` and `CHANGELOG.md` don't exist yet, and the CLI has no release.
+**Today:** `.github/` doesn't exist yet, and the CLI has no release.
 
 ## Platform
 
@@ -58,9 +58,9 @@ Shipyard depends on no outside skill. A mechanic can define a skill's shape, suc
   - **Major**: an adopting repo must act, such as a renamed plan field, a changed PR comment header, or a renamed or split skill.
   - **Minor**: something new that nobody has to use, such as a new skill, PR shape or CI piece.
   - **Patch**: wording and fixes that change no behavior.
-- A changelog entry per release says what changed and whether an adopting repo must act.
+- `CHANGELOG.md` has one entry per release under a `## x.y.z` heading: a short summary and a "What a repo must do" list, empty when there's nothing. It ships in the package; the CLI prints the entries a repo's update spans, so nobody reads the whole file.
 - Each adopting repo keeps a version record naming the release its files came from (see [adoption](adoption.md)).
 - Before each release, a few short scenario runs pass in a small sample repo: fresh agents adopt the kit by the guide and plan a change. They stay small while shipyard is early; real use in adopting repos is the main test, and more checks come as that use shows where they are needed.
 - Before each release, an agent reads the kit, `docs/product/`, the guide and the README together for terms used without a glossary entry and rules with more than one home. The human examines its findings before tagging.
 
-**Today:** no release, no changelog, no scenario runs. Until `.github/` exists, the link check runs by hand before each release.
+**Today:** no release and no scenario runs; the changelog holds only an Unreleased entry. Until `.github/` exists, the link check runs by hand before each release.

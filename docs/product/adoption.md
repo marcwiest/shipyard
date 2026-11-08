@@ -51,7 +51,8 @@ Each part of the kit has an index that says what the part holds and the modules 
 ## Updates
 
 - An update replaces managed files and never touches repo-owned files.
-- The version record keeps a checksum per managed file. A managed file edited in the repo is flagged before it is overwritten.
+- The version record keeps a checksum per managed file. A managed file edited or deleted in the repo stops an update before it is overwritten, until the human decides whether the edit belongs in a repo-owned file.
+- An update refuses a version record naming a newer release. Going back means reverting the commit that updated shipyard, since the CLI can't undo a newer release's manual steps.
 - Template changes appear in the changelog as optional manual steps. A major release lists the actions a repo must take.
 
 ## Agent entry files

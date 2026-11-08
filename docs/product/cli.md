@@ -34,3 +34,13 @@ On an existing install, `init` adds the named parts at the installed release:
 - It refuses when the CLI's release differs from the version record's, with running `update` first as its next step.
 - It copies the new parts and adds their files to the version record.
 - It never edits the settings file. It prints as next steps the exact settings lines the new parts read that the file lacks, and where each goes.
+
+## update
+
+`update [--force]` brings the installed parts to the CLI's release.
+
+- It refuses when the version record names a release newer than the CLI's, naming the installed release. Its next step says that going back means reverting the commit that updated shipyard, since the CLI can't undo a newer release's manual steps.
+- It compares each managed file and the AGENTS.md block with the version record. Any that was edited or deleted stops it before any write. It lists each one with the path of its new version in the package, and its next step tells the agent to ask the human whether the change belongs in a repo-owned file, such as the agent rules, before rerunning with `--force`.
+- Otherwise, or with `--force`, it replaces the installed parts' managed files, deletes those the new release dropped, replaces the block's contents and rewrites the version record. It never touches repo-owned files.
+- Its next steps after the commit are the settings lines the installed parts read that the file lacks, and the changelog's entries after the installed release up to the CLI's, oldest first: each entry's one-line summary and its "What a repo must do" list in full. With no release in the record, it prints every entry up to the CLI's. Each is done in its own commit, after the CLI's.
+- It reads a version record written by hand, with a commit and no release or block checksum.
