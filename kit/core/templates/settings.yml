@@ -1,19 +1,22 @@
 # Shipyard settings for this repo. Repo-owned: edit freely.
 # Skills and CI pieces read this file. CI pieces read it from the default branch.
+# A key marked "# read by:" matters only to the parts it names. The CLI leaves
+# such a key out when the repo takes none of them; copied by hand, keep its
+# default or delete it.
 
 # Which tool fills each role, and how it is started: a shell command or a plain
-# description. Leave a role empty if no module this repo takes uses it.
+# description.
 roles:
   planning-agent:
     tool: ""
     start: ""
-  orchestrator-bot:
+  orchestrator-bot:   # read by: building, weekly-drift-check
     tool: ""
     start: ""
-  builder-bot:
+  builder-bot:        # read by: building
     tool: ""
     start: ""
-  reviewer-bot:
+  reviewer-bot:       # read by: building, weekly-drift-check
     tool: ""
     start: ""
 
@@ -24,20 +27,17 @@ paths:
   plans: docs/plans/
   glossary: docs/context.md
   north-star: ""          # optional, such as docs/north-star.md
-  sizing-log: ""          # read by the building module; empty: no Sizing log
-  verification-skill: ""  # the repo's verification skill, such as docs/agents/skills/verify/; empty: none
+  sizing-log: ""          # read by: building. Empty: no Sizing log
+  verification-skill: ""  # read by: verification. The repo's verification skill, such as docs/agents/skills/verify/; empty: none
   docs:                   # what counts as docs for a docs-only PR
     - "docs/**"
     - "**/*.md"
-
-# Settings no part this repo takes reads, such as drift-check or labels without
-# those modules, do nothing: keep their defaults or delete them.
 
 branches:
   default: main
   plan: plan/<slug>       # one branch per plan, holding the plan and its work
   hotfix: hotfix/<slug>
-  drift-check: drift/<date>   # read by the weekly drift check
+  drift-check: drift/<date>   # read by: weekly-drift-check
 
 # The repo's own commands. Leave one empty until it exists.
 commands:
@@ -50,20 +50,18 @@ commands:
 seams: []
 
 # The surfaces verification drives, such as web page, API, library or CLI.
-verification-surfaces: []
+verification-surfaces: []   # read by: verification
 
-# Read by the coverage floor CI piece: the least line coverage, in percent.
-# Empty: coverage is printed, never enforced.
-coverage-floor: ""
+# The least line coverage, in percent. Empty: coverage is printed, never enforced.
+coverage-floor: ""   # read by: coverage-floor
 
-# Read by the weekly drift check: who examines its findings.
-drift-check:
+# Who examines the weekly drift check's findings.
+drift-check:   # read by: weekly-drift-check
   human: ""
 
-# Read by the dispatch module.
-labels:
+labels:   # read by: dispatch
   prefix: "shipyard:"
   trigger-label-adders: []   # empty: anyone with write access
-notify: mention              # how the plan's human is told about a human step:
-                             # mention (the Human step comment's mention), or a plain
-                             # description of another channel the bots can reach
+notify: mention   # read by: dispatch. How the plan's human is told about a human step:
+                  # mention (the Human step comment's mention), or a plain
+                  # description of another channel the bots can reach
