@@ -35,9 +35,9 @@ Notes: a search of the tracked markdown for "no release", "Before that release" 
 Notes: a fresh agent reported 15 findings, each checked against the files; the list and the human's call on each are on the PR. Ten are fixed: one home for update rules, `remove` and the settings file, "release" kept for shipyard's, human steps and done conditions as workflow steps, the build workflow's label check, the dependency update PR's evidence, and glossary entries for surface, three PR shapes, the phase boxes and Notes line, and the repo's glossary. Five about bots and CI pieces that don't run yet are kept for a later plan. `node --test cli/` passes 29 tests after the fixes.
 
 ### Phase 4: the release commit · delivers Change 6 · about 0.5 h
-- [ ] Work: `package.json`'s version and the changelog's heading, in `chore: release 0.1.0`. Release metadata only; the CLI's tests read neither
+- [x] Work: `package.json`'s version and the changelog's heading, in `chore: release 0.1.0`. Release metadata only; the CLI's tests read neither
 
-Notes:
+Notes: `npm pack --dry-run` on the branch names `shipyard-kit` at `0.1.0` with 58 files: 10 in `cli/` without its tests, 44 in `kit/`, `CHANGELOG.md`, `README.md`, `LICENSE` and `package.json`. `npx --package <tarball> shipyard-kit --version` prints `0.1.0`. `node --test cli/` passes 29 tests. Change 6 stays open until Phase 5 prints the changelog slice in the update scenario.
 
 ### Phase 5: run the scenarios · delivers Change 1 · about 3 h
 - [ ] Work: the three scenarios, run by fresh agents from the tarball of the release commit, with the report on the PR and the friction the human accepts fixed. Runs and docs only, so no seam reaches it
