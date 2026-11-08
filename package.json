@@ -1,0 +1,26 @@
+{
+  "name": "shipyard-kit",
+  "version": "0.0.0",
+  "description": "Installs, updates and removes shipyard's workflow kit in a git repo.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcwiest/shipyard.git"
+  },
+  "type": "module",
+  "bin": {
+    "shipyard-kit": "cli/bin.js"
+  },
+  "files": [
+    "cli/",
+    "!cli/tests/",
+    "kit/",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test cli/"
+  }
+}
