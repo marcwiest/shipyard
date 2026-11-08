@@ -1,6 +1,6 @@
 # The CLI
 
-Status: draft
+Status: ready
 Human: marcwiest
 Goal: an adopter, usually through their agent, installs, updates and removes shipyard's parts with one pinned `npx shipyard-kit@x.y.z` command instead of copying files by hand, and each release can be published to npm.
 Specs touched: `docs/product/cli.md` (new), `docs/product/adoption.md`, `docs/product/agent-use.md`, `docs/product/shape.md`, `docs/product/index.md`
