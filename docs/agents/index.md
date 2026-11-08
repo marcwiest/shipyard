@@ -19,7 +19,6 @@ How agents work in this repo.
 - Before writing a rule, ask who carries it out. Agents or humans in an adopting repo: it goes in the kit. Shipyard's CLI or CI pieces: it goes in `docs/product/`. Each rule has one home.
 - Workflow terms go in the kit glossary; terms about shipyard itself go in `docs/context.md`.
 - `.github/` holds only shipyard's own CI. CI pieces live in `kit/`.
-- Every `AGENTS.md` has a sibling `CLAUDE.md` holding only `@AGENTS.md`, so Claude Code loads it.
 - This repo is public. Never name private orgs, repos, clients or products, local paths, or infrastructure hosts.
 - Working notes, trackers and run files go in the gitignored `.scratch/`. Tracked text never points into it, since a public reader can't follow it.
 - A done plan's file is deleted; its PR keeps the record. A done plan points to working notes and history a public reader can't see.
@@ -34,6 +33,10 @@ Shipyard's own git rules, for this repo only.
 - Outside a plan, a small change may be committed straight to `main`, but only when the human asks for that one commit. Small means one concern, checkable from the diff at a glance, that leaves the kit's meaning unchanged: typos, links, rewording, this file, README and guide fixes.
 - A change to what the kit means goes through a PR, as does a decision in `docs/product/`. The kit's meaning covers glossary definitions, workflow steps, PR shapes, practices, settings keys, CI pieces and skills.
 
+## Releases
+
+The human releases, following [the release steps](releasing.md).
+
 ## Commands
 
-None yet.
+- Test: `node --test cli/`. The CLI's seam: arguments in; files, stdout, stderr and exit code out.

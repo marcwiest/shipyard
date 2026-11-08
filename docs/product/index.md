@@ -1,6 +1,6 @@
 # shipyard
 
-Status: in design, with no release yet. Core can be copied by hand and planned with today; what doesn't exist yet is in each page's Today note.
+Status: in design, with no release yet. Core can be copied by hand and planned with today, and the CLI installs it from the first release; what doesn't exist yet is in each page's Today note.
 
 Who: a person who runs coding agents and bots on their repos and wants a repeatable way to plan, build, review and verify that work.
 
@@ -16,7 +16,8 @@ Promise: a workflow kit built around roles. It fits into any repo, agents can wo
 
 1. [Shape](shape.md)
 2. [Adoption](adoption.md)
-3. [Agent use](agent-use.md)
-4. [Later](later.md)
+3. [CLI](cli.md)
+4. [Agent use](agent-use.md)
+5. [Later](later.md)
 
 Workflow terms and the roles are defined in the kit, in [`kit/core/glossary.md`](../../kit/core/glossary.md) and [`kit/core/roles.md`](../../kit/core/roles.md). Terms about shipyard itself are in [`docs/context.md`](../context.md).

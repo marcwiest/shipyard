@@ -32,6 +32,7 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **Kit**: Shipyard's workflow files: core and the modules, each with its reference text, skills, templates and CI pieces. A repo keeps the parts it takes in `.shipyard/`.
 - **Core**: The part of the kit every adopting repo takes; it works with a human and a planning agent alone.
 - **Module**: An optional part of the kit, such as building, dispatch or verification. Its index names the modules and roles it needs.
+- **Part**: Core or one module. Each is a folder in the kit, and in `.shipyard/` once the repo takes it.
 - **Kit glossary**: This file: the managed file in core that defines the workflow terms.
 - **Skill**: Instructions an agent loads and runs, kept in a `SKILL.md` file.
 - **Discovery stub**: A small skill file in one tool's skills folder that points to the skill's single source file.
