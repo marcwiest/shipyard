@@ -1,12 +1,14 @@
 // Reads the arguments, runs one command and prints its output and next steps.
 import { modules, npx, version } from './kit.js';
 import { init } from './init.js';
+import { remove } from './remove.js';
 import { update } from './update.js';
 import { Stop } from './repo.js';
 
 const commands = {
   init: { usage: 'init [module...]', summary: 'Install core and the named modules, or add modules to an install.', run: init },
   update: { usage: 'update [--force]', summary: 'Update the installed parts to this release. --force overwrites edited managed files.', run: update },
+  remove: { usage: 'remove', summary: "Remove shipyard, leaving the files the repo owns.", run: remove },
 };
 
 function help() {
