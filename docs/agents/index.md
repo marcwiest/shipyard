@@ -36,4 +36,4 @@ Shipyard's own git rules, for this repo only.
 
 ## Commands
 
-None yet.
+- Test: `node --test cli/`. The CLI's seam: arguments in; files, stdout, stderr and exit code out.

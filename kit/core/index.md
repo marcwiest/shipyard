@@ -26,6 +26,7 @@ Roles: human, planning agent.
 
 ## How the kit is written
 
+- Each part's index has a Needs line, whose first sentence names the parts it needs by folder name, such as `core, dispatch.`, and a Roles line.
 - Each workflow names its trigger, its steps, the roles that take part and the PR shapes it produces.
 - Each PR shape fills the fields in [PR shapes](pr-shapes/index.md).
 - Kit text names roles, never tools, and uses only terms from the glossary.
