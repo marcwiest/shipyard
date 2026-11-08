@@ -26,7 +26,7 @@ Its output ends with next steps written for an agent, so you can ask your agent 
 | [`cli/`](cli/main.js), `package.json` | The CLI, published to npm as `shipyard-kit` |
 | [`CHANGELOG.md`](CHANGELOG.md) | What each release changed, and what a repo must do |
 | [`docs/product/`](docs/product/index.md) | Shipyard's own specs: what it is, what it ships and what it refuses |
-| [`docs/agents/`](docs/agents/index.md), [`AGENTS.md`](AGENTS.md), [`CLAUDE.md`](CLAUDE.md), [`docs/context.md`](docs/context.md) | How agents work on shipyard itself, and its own glossary |
+| [`docs/agents/`](docs/agents/index.md), [`AGENTS.md`](AGENTS.md), [`docs/context.md`](docs/context.md) | How agents work on shipyard itself, and its own glossary |
 | `docs/plans/` | Shipyard's own plans while they are built. A done plan is deleted; its PR keeps the record |
 
 The workflow terms are defined in the [kit glossary](kit/core/glossary.md).

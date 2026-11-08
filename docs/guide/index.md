@@ -38,7 +38,7 @@ The command it runs, naming the modules after `init`, or none for core alone:
 npx shipyard-kit@x.y.z init building dispatch
 ```
 
-It copies the parts into `.shipyard/`, writes the settings file with the keys those parts read, adds the block to `AGENTS.md`, adds `CLAUDE.md` if you have none, copies the spec index, agent rules index and glossary templates where you have none, and writes the version record. It stops before writing anything if a file it would write has uncommitted changes, so commit your own work first. Before committing what it wrote, check that your ignore rules keep the new files, as in [step 8 by hand](#8-commit-and-plan).
+It copies the parts into `.shipyard/`, writes the settings file with the keys those parts read, adds the block to `AGENTS.md`, copies the spec index, agent rules index and glossary templates where you have none, and writes the version record. It stops before writing anything if a file it would write has uncommitted changes, so commit your own work first. Before committing what it wrote, check that your ignore rules keep the new files, as in [step 8 by hand](#8-commit-and-plan).
 
 Then fill in what its next steps name, such as the settings file and the templates. Keep your own instructions in your agent rules and your opinions in their House rules section, which win over kit text; never edit `.shipyard/` other than `settings.yml`. In a repo that already has a default branch, commit on a branch and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
 
@@ -68,7 +68,7 @@ A repo that copied the kit by hand switches to the CLI the same way: `update` re
 npx shipyard-kit@x.y.z remove
 ```
 
-It deletes `.shipyard/`, your settings file with it, and the `AGENTS.md` block, and deletes `AGENTS.md` if nothing else is in it. It leaves `CLAUDE.md` and the templates it copied, which are yours, and lists them.
+It deletes `.shipyard/`, your settings file with it, and the `AGENTS.md` block, and deletes `AGENTS.md` if nothing else is in it. It leaves the templates it copied, which are yours, and lists them.
 
 ## Adopting by hand
 
@@ -117,8 +117,6 @@ Keys marked `# read by:` matter only to the parts they name: delete those of par
 ### 4. Point your agents at it
 
 Add the contents of `.shipyard/core/templates/agents-block.md` to your repo's `AGENTS.md`, creating the file if it's missing. Keep the marker lines. Fill in the trigger labels and skills lines; without dispatch or skills, both are "none".
-
-Beside `AGENTS.md`, add a `CLAUDE.md` holding only `@AGENTS.md`, since Claude Code doesn't read `AGENTS.md`. Do the same beside any other `AGENTS.md` in the repo.
 
 If another agent tool you use doesn't read `AGENTS.md`, add a one-line pointer to it in that tool's own entry file.
 
@@ -171,7 +169,7 @@ Write `.shipyard/version.yml`, naming what you copied from and a checksum per ma
 Before committing, check that your ignore rules keep the new files. Broad rules, such as `.*/` or `*.md`, drop them without a word. Use your settings file's paths in place of the `docs/` ones:
 
 ```sh
-git check-ignore .shipyard/settings.yml .shipyard/core/index.md AGENTS.md CLAUDE.md docs/product/index.md docs/agents/index.md docs/context.md
+git check-ignore .shipyard/settings.yml .shipyard/core/index.md AGENTS.md docs/product/index.md docs/agents/index.md docs/context.md
 ```
 
 Any path it prints is ignored, so change the rule that catches it.
@@ -183,4 +181,4 @@ Then open a session with your planning agent and ask it to plan a change. It rea
 ### Updating and removing by hand
 
 - To update, compare each managed file's checksum with `version.yml` first. A mismatch is a local edit that the copy would overwrite. Then copy the parts again and rewrite the version record. Never copy over your settings file or the templates you copied.
-- To remove shipyard, delete `.shipyard/` and the `AGENTS.md` block. `CLAUDE.md` and any other pointer from step 4 can stay; they only load `AGENTS.md`.
+- To remove shipyard, delete `.shipyard/` and the `AGENTS.md` block. Any pointer from step 4 can stay; it only loads `AGENTS.md`.
