@@ -118,3 +118,14 @@ test('update prints the changelog entries after the installed release, oldest fi
   );
   assert.doesNotMatch(stdout, /The first release|Adopt it/);
 });
+
+test('update refuses a record listing a path outside .shipyard', () => {
+  const cwd = install();
+  put(cwd, { 'keep.md': 'mine\n' });
+  put(cwd, { '.shipyard/version.yml': `${read(cwd, '.shipyard/version.yml')}  ../keep.md: 0\n` });
+  commit(cwd);
+  const { code, stderr } = run(cwd, ['update'], { pkg: v2 });
+  assert.equal(code, 1);
+  assert.match(stderr, /lists `\.\.\/keep\.md`, which isn't a path inside `\.shipyard\/`/);
+  assert.equal(read(cwd, 'keep.md'), 'mine\n');
+});
