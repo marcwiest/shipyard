@@ -63,7 +63,7 @@ test('update stops on an edited managed file and an edited block, and --force ov
   const forced = run(cwd, ['update', '--force'], { pkg: v2 });
   assert.equal(forced.code, 0);
   assert.equal(read(cwd, '.shipyard/core/plans.md'), '# Plans, rewritten\n');
-  assert.match(read(cwd, 'AGENTS.md'), /^Skills: none$/m);
+  assert.match(read(cwd, 'AGENTS.md'), /^- Skills: none$/m);
 });
 
 test('update stops on a deleted managed file', () => {

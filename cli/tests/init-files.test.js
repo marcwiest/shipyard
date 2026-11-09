@@ -42,7 +42,7 @@ test("init adds the block after AGENTS.md's own text and records its checksum", 
   assert.equal(run(cwd, ['init']).code, 0);
   const agents = read(cwd, 'AGENTS.md');
   assert.match(agents, /^# Agents\n\nOur own rules\.\n\n<!-- shipyard:start -->\n/);
-  assert.match(agents, /^Trigger labels: none\nSkills: none\n<!-- shipyard:end -->\n$/m);
+  assert.match(agents, /^- Trigger labels: none\n- Skills: none\n<!-- shipyard:end -->\n$/m);
   assert.match(read(cwd, '.shipyard/version.yml'), new RegExp(`^agents-block: ${blockSha(agents)}$`, 'm'));
 });
 
