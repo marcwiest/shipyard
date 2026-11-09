@@ -49,7 +49,7 @@ test("init adds the block after AGENTS.md's own text and records its checksum", 
 test('init creates AGENTS.md when missing, and no CLAUDE.md', () => {
   const cwd = repo();
   assert.equal(run(cwd, ['init']).code, 0);
-  assert.match(read(cwd, 'AGENTS.md'), /^<!-- shipyard:start -->\nThis repo uses shipyard\./);
+  assert.match(read(cwd, 'AGENTS.md'), /^<!-- shipyard:start -->\n\nThis repo uses shipyard\./);
   assert.equal(read(cwd, 'CLAUDE.md'), null);
 });
 
