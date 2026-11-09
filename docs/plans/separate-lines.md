@@ -1,6 +1,6 @@
 # Lines that stay separate
 
-Status: ready
+Status: in progress
 Human: marcwiest
 Goal: the plan's header, each part's Needs and Roles, and the AGENTS.md block's trigger labels and skills show as separate lines on GitHub and come through a markdown formatter unchanged, and the guide tells adopting repos to keep formatters off the files shipyard manages, for `0.1.1`.
 Specs touched: none
@@ -18,17 +18,18 @@ Out of scope: frontmatter for plans, until a script reads them; making every kit
 
 ## Phases
 
-Added before building starts, by whoever builds the plan. Until then, it holds only this note and the example below, which the phases replace. A phase that changes code a seam reaches has Tests and Code boxes; any other phase has one Work box, which says why no seam reaches any code it changes:
+### Phase 1: list items in the part indexes and the block · delivers Changes 2, 3 · about 1 h
+- [ ] Tests: the CLI: arguments in; files, stdout, stderr and exit code out: each part's needs, read from the kit's real indexes, are what their Needs items name; `init` writes the block's trigger labels and skills as list items
+- [ ] Code: the kit's part indexes and block template write those lines as list items, core's index says so, and the CLI reads the Needs item and fills the block's items
 
-```
-### Phase 1: <name> · delivers Change 1
-- [ ] Tests: <seam>: <behavior the tests assert>
-- [ ] Code: <what makes them pass>
+Notes:
 
-Notes: <added when the phase is done: verification line, deviations, blockers>
+### Phase 2: the plan header as a list · delivers Change 1 · about 0.5 h
+- [ ] Work: `kit/core/plans.md` and the plan template. Kit text only, which no seam reaches
 
-### Phase 2: <name> · delivers Change 2
-- [ ] Work: <what it changes, such as docs, config or content>
+Notes:
 
-Notes: <...>
-```
+### Phase 3: the guide and the changelog · delivers Changes 4, 5 · about 1 h
+- [ ] Work: `docs/guide/index.md` and `CHANGELOG.md`. Docs only, which no seam reaches
+
+Notes:
