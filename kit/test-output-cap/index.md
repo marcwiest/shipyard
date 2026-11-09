@@ -2,8 +2,8 @@
 
 A CI piece that runs the repo's tests and fails the CI run when their output exceeds a cap. Large output can crash the agent that reads it.
 
-Needs: core.
-Roles: none.
+- Needs: core.
+- Roles: none.
 
 ## What it checks
 

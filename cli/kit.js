@@ -27,7 +27,7 @@ export function modules() {
 // The parts a part needs: those its Needs line's first sentence names by folder name.
 export function needs(part) {
   const index = readFileSync(join(kitRoot, part, 'index.md'), 'utf8');
-  const line = index.match(/^Needs:\s*(.*)$/m);
+  const line = index.match(/^- Needs:\s*(.*)$/m);
   if (!line) return [];
   const firstSentence = line[1].split(/\.(?:\s|$)/)[0];
   return allParts().filter(

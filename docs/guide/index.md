@@ -38,7 +38,7 @@ The command it runs, naming the modules after `init`, or none for core alone:
 npx shipyard-kit@x.y.z init building dispatch
 ```
 
-It copies the parts into `.shipyard/`, writes the settings file with the keys those parts read, adds the block to `AGENTS.md`, copies the spec index, agent rules index and glossary templates where you have none, and writes the version record. It stops before writing anything if a file it would write has uncommitted changes, so commit your own work first. Before committing what it wrote, check that your ignore rules keep the new files, as in [step 8 by hand](#8-commit-and-plan).
+It copies the parts into `.shipyard/`, writes the settings file with the keys those parts read, adds the block to `AGENTS.md`, copies the spec index, agent rules index and glossary templates where you have none, and writes the version record. It stops before writing anything if a file it would write has uncommitted changes, so commit your own work first. Before committing what it wrote, check that your ignore rules keep the new files and that no formatter rewrites them, as in [step 8 by hand](#8-commit-and-plan).
 
 Then fill in what its next steps name, such as the settings file and the templates. Keep your own instructions in your agent rules and your opinions in their House rules section, which win over kit text; never edit `.shipyard/` other than `settings.yml`. In a repo that already has a default branch, commit on a branch, such as `chore/shipyard-x.y.z`, and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
 
@@ -58,7 +58,7 @@ It replaces the managed files and the `AGENTS.md` block, deletes the files the n
 
 As when adopting, commit on a branch, such as `chore/shipyard-x.y.z`, and merge it through a PR.
 
-If a managed file or the block was edited in your repo, it stops before writing and lists them. Move each edit to a file you own, such as your agent rules, then run it again with `--force` to overwrite them. It refuses to go back to an older release: to go back, revert the commit that updated shipyard.
+If a managed file or the block was edited in your repo, it stops before writing and lists them. A formatter's rewrite counts as an edit; keep it off them, as in [step 8 by hand](#8-commit-and-plan). Move each edit to a file you own, such as your agent rules, then run it again with `--force` to overwrite them. It refuses to go back to an older release: to go back, revert the commit that updated shipyard.
 
 A repo that copied the kit by hand switches to the CLI the same way: `update` reads the version record written by hand and rewrites it.
 
@@ -175,6 +175,8 @@ git check-ignore .shipyard/settings.yml .shipyard/core/index.md AGENTS.md docs/p
 ```
 
 Any path it prints is ignored, so change the rule that catches it.
+
+Keep any markdown formatter, such as a pre-commit hook or a CI format check, off `.shipyard/` and the `AGENTS.md` block: list `.shipyard/` in its ignore file, and put its ignore comments around the block, outside the markers. A formatter's rewrite reads to `update` as a local edit.
 
 Commit the files, such as `chore: adopt shipyard core`. In a repo that already has a default branch, do it on a branch, such as `chore/adopt-shipyard`, and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
 

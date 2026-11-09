@@ -28,6 +28,28 @@ test('init refuses a folder without .git and writes nothing', () => {
   assert.deepEqual(files(cwd, '.'), []);
 });
 
+test("init reads each module's needs from its Needs item in the kit", () => {
+  const needs = {
+    building: 'dispatch',
+    'coverage-floor': null,
+    dispatch: null,
+    'docs-index-check': null,
+    'docs-only-detection': null,
+    'test-output-cap': null,
+    verification: null,
+    'weekly-drift-check': 'dispatch',
+  };
+  for (const [module, missing] of Object.entries(needs)) {
+    const { code, stderr } = run(repo(), ['init', module]);
+    if (missing) {
+      assert.equal(code, 1, module);
+      assert.match(stderr, new RegExp(`${module} needs ${missing}, which isn't taken\\.`), module);
+    } else {
+      assert.equal(code, 0, `${module}: ${stderr}`);
+    }
+  }
+});
+
 test("init refuses a module whose Needs line names a part not taken, naming it", () => {
   const cwd = repo();
   const { code, stderr } = run(cwd, ['init', 'building']);

@@ -9,8 +9,8 @@ const end = '<!-- shipyard:end -->';
 export function blockTemplate() {
   return readFileSync(kitFile('core/templates/agents-block.md'), 'utf8')
     .trimEnd()
-    .replace(/^Trigger labels:.*$/m, 'Trigger labels: none')
-    .replace(/^Skills:.*$/m, 'Skills: none');
+    .replace(/^- Trigger labels:.*$/m, '- Trigger labels: none')
+    .replace(/^- Skills:.*$/m, '- Skills: none');
 }
 
 // The block's place in a file: the indexes of its marker lines, or null.
