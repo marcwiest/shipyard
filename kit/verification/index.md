@@ -2,8 +2,8 @@
 
 The shape of the repo's verification skill, its Feature Map, and the rules its runs follow.
 
-Needs: core.
-Roles: the agents that verify work, such as the builder bot, and the orchestrator bot when it reruns a verification.
+- Needs: core.
+- Roles: the agents that verify work, such as the builder bot, and the orchestrator bot when it reruns a verification.
 
 ## Contents
 

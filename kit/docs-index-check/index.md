@@ -2,8 +2,8 @@
 
 A CI piece that fails when the spec index and the spec folder disagree. It keeps core's rule that the spec index lists every spec file (see [spec writing](../core/spec-writing.md)).
 
-Needs: core.
-Roles: none.
+- Needs: core.
+- Roles: none.
 
 ## What it checks
 

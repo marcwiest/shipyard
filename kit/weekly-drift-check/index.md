@@ -2,9 +2,9 @@
 
 A weekly run that maintains the verification skill, flags specs, Feature Map files and agent rules that no longer match the code, and reviews dependency update PRs. The human examines its findings on a drift check PR.
 
-Needs: core, dispatch. With the verification module, it also maintains the verification skill; without it, it skips that step.
-Roles: human, orchestrator bot, reviewer bot.
-Trigger: a weekly schedule the repo sets up, such as a scheduled CI workflow that starts the orchestrator bot as the role mapping says. Its trigger label, `<prefix>drift-check`, marks the drift check PR so the dispatcher can resume it.
+- Needs: core, dispatch. With the verification module, it also maintains the verification skill; without it, it skips that step.
+- Roles: human, orchestrator bot, reviewer bot.
+- Trigger: a weekly schedule the repo sets up, such as a scheduled CI workflow that starts the orchestrator bot as the role mapping says. Its trigger label, `<prefix>drift-check`, marks the drift check PR so the dispatcher can resume it.
 
 ## Contents
 

@@ -2,8 +2,8 @@
 
 A CI piece that detects a PR whose diff touches only docs, so the repo's build and test jobs can report skipped. It serves the [docs-only PR](../core/pr-shapes/docs-only.md).
 
-Needs: core.
-Roles: none.
+- Needs: core.
+- Roles: none.
 
 ## What it checks
 

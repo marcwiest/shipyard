@@ -2,8 +2,8 @@
 
 Starts, holds and resumes a bot's work on a PR.
 
-Needs: core, and a CI workflow in the repo that runs the dispatcher on label events.
-Roles: human, and the bots the modules that use it name.
+- Needs: core, and a CI workflow in the repo that runs the dispatcher on label events.
+- Roles: human, and the bots the modules that use it name.
 
 ## Contents
 
