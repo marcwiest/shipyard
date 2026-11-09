@@ -1,6 +1,6 @@
 # Lines that stay separate
 
-Status: draft
+Status: ready
 Human: marcwiest
 Goal: the plan's header, each part's Needs and Roles, and the AGENTS.md block's trigger labels and skills show as separate lines on GitHub and come through a markdown formatter unchanged, and the guide tells adopting repos to keep formatters off the files shipyard manages, for `0.1.1`.
 Specs touched: none
