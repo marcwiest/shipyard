@@ -36,6 +36,12 @@ function pruneEmpty(cwd, paths) {
 
 const count = (n, noun) => `${n} ${noun}${n === 1 ? '' : 's'}`;
 
+// Names a file's new version by its path in the release, then its path in the package.
+function newVersion(path) {
+  const releasePath = ['kit', ...path.split('/')].join('/');
+  return `its new version is \`${releasePath}\` in \`shipyard-kit@${version}\`, at \`${kitFile(path)}\``;
+}
+
 export function update(args, { cwd }) {
   const unknown = args.filter((arg) => arg !== '--force');
   if (unknown.length) {
@@ -60,7 +66,7 @@ export function update(args, { cwd }) {
     const file = join(cwd, '.shipyard', ...path.split('/'));
     const state = !existsSync(file) ? 'deleted' : sha256(readFileSync(file)) !== sum ? 'edited' : null;
     if (!state) continue;
-    const now = path in files ? `its new version is \`${kitFile(path)}\`` : 'this release drops it';
+    const now = path in files ? newVersion(path) : 'this release drops it';
     changed.push(`- \`.shipyard/${path}\`: ${state}; ${now}.`);
   }
   const agentsText = read(cwd, 'AGENTS.md');
@@ -68,7 +74,7 @@ export function update(args, { cwd }) {
   if (record.agentsBlock && block !== record.agentsBlock) {
     const state = block === null ? 'deleted' : 'edited';
     changed.push(
-      `- The AGENTS.md block: ${state}; its new version is \`${kitFile('core/templates/agents-block.md')}\`, with trigger labels and skills "none".`,
+      `- The AGENTS.md block: ${state}; ${newVersion('core/templates/agents-block.md')}, with trigger labels and skills "none".`,
     );
   }
   if (changed.length && !force) {
