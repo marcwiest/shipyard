@@ -2,7 +2,7 @@
 
 One entry per release, newest first, under a `## x.y.z` heading: a short summary, then a "What a repo must do" list, empty when there's nothing. `npx shipyard-kit@x.y.z update` prints the entries after a repo's installed release.
 
-## Unreleased
+## 0.1.2
 
 The planning agent stops for an unmerged adoption before starting a plan's branch. It reads core's practices before drafting. `update`'s refusal names each new version by its path in the release, then its path in the package.
 
