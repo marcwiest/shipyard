@@ -17,17 +17,18 @@
 
 ## Phases
 
-Added before building starts, by whoever builds the plan. Until then, it holds only this note and the example below, which the phases replace. A phase that changes code a seam reaches has Tests and Code boxes; any other phase has one Work box, which says why no seam reaches any code it changes:
+### Phase 1: the refusal names the release path · delivers Change 3 · about 1.5 h
+- [ ] Tests: the CLI: arguments in; files, stdout, stderr and exit code out: `update`'s refusal names an edited managed file's new version as its path in the release, such as `kit/core/plans.md` in `shipyard-kit@<version>`, then its path in the package; the edited block's line does the same
+- [ ] Code: `cli/update.js` builds both lines from the release path, the version and the package path, and `docs/product/cli.md` says so
 
-```
-### Phase 1: <name> · delivers Change 1
-- [ ] Tests: <seam>: <behavior the tests assert>
-- [ ] Code: <what makes them pass>
+Notes:
 
-Notes: <added when the phase is done: verification line, deviations, blockers>
+### Phase 2: planning steps 1 and 2 · delivers Changes 1, 2 · about 1 h
+- [ ] Work: steps 1 and 2 of the planning workflow in `kit/core/plans.md`. Kit text only, which no seam reaches
 
-### Phase 2: <name> · delivers Change 2
-- [ ] Work: <what it changes, such as docs, config or content>
+Notes:
 
-Notes: <...>
-```
+### Phase 3: the changelog · delivers Change 4 · about 0.5 h
+- [ ] Work: an Unreleased entry in `CHANGELOG.md`. Docs only, which no seam reaches
+
+Notes:
