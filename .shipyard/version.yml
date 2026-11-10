@@ -1,5 +1,5 @@
 # Written by shipyard-kit. Managed: the CLI rewrites it on each install or update.
-release: 0.1.1
+release: 0.1.2
 agents-block: 7628819cd698a53c2ac14564e4c634a8769fee2108a6f60b20c5a4eac36601f7
 files:
   core/NOTICE.md: a578bb6a45e71d6b6f4807441ea22ffd711d59447259d6cf6f6baebe86a4690a
@@ -7,7 +7,7 @@ files:
   core/house-rules.md: 6550e13fc8fc70b8076f84787bfd244276b57044c30d0a1f1877c81e4cfb0d57
   core/human-steps.md: fc1195d18237e1b12dc70b468b0485c598ec846466aea9f50266667a19df6691
   core/index.md: e8b8632e40824ff0c96a0416b82510269696190c707661a7e7ee2c64f87874ac
-  core/plans.md: 51981c7563cc9f337a0add631fd1b69143b612e83655710f7416ff2fbff661ba
+  core/plans.md: 0b1bca41b15bbced9c30cce8517e06fe08980d9a7354f32302c21439dc20e8be
   core/pr-shapes/docs-only.md: 8819c1df6bcfdb271963cf4669b392e242bd1bdc253e92376550ff10b75388d5
   core/pr-shapes/hotfix.md: 066436a3938e11d5a5aa00245143aa5ee1c61686286f6a6fe4c2b00bf295aaf8
   core/pr-shapes/index.md: 2ab4b28397dad3dd33b8217a2c67e78b286ff9014a127031cc3fb197d7aa520e

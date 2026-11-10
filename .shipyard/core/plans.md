@@ -7,8 +7,8 @@ A plan states one piece of intended work. It is a file in the plans folder the s
 - Trigger: the human starts a session with the planning agent.
 - Roles: the human and the planning agent.
 - Steps:
-  1. The planning agent reads the specs, the kit glossary, the repo's glossary and the agent rules, and the north star where the repo has one.
-  2. The planning agent starts a branch for the plan from the default branch, named as the settings file says, and copies the plan template into the plans folder. Done condition: the draft plan file on that branch.
+  1. The planning agent reads the specs, the kit glossary, the repo's glossary and the agent rules, and the north star where the repo has one. It also reads core's practices: [git](practices/git.md), [testing](practices/testing.md) and [verification](practices/verification.md).
+  2. The planning agent checks that the default branch has the version record. Human step, only when it doesn't, such as while the PR that adopts shipyard is unmerged: the planning agent asks the human to merge that PR, and stops until it is merged. Then it starts a branch for the plan from the default branch, named as the settings file says, and copies the plan template into the plans folder. Done condition: the draft plan file on that branch.
   3. Human step, for the whole drafting: the human states the intent and answers the planning agent's questions; the planning agent writes it down as the Goal and the Changes. Questions still open when a session ends go in the plan's Open questions section, each with the planning agent's recommendation.
   4. The planning agent runs the plan check and fixes what it lists. Done condition: the check lists nothing missing.
   5. Human step: the human approves the plan by setting its Status to `ready`.
