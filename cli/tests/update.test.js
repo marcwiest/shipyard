@@ -55,8 +55,15 @@ test('update stops on an edited managed file and an edited block, and --force ov
   commit(cwd);
   const stopped = run(cwd, ['update'], { pkg: v2 });
   assert.equal(stopped.code, 1);
-  assert.ok(stopped.stderr.includes(`- \`.shipyard/core/plans.md\`: edited; its new version is \`${v2}/kit/core/plans.md\`.`));
-  assert.match(stopped.stderr, /- The AGENTS\.md block: edited;/);
+  const refusal = stopped.stderr.split('\n');
+  assert.equal(
+    refusal.find((line) => line.startsWith('- `.shipyard/core/plans.md`:')),
+    `- \`.shipyard/core/plans.md\`: edited; its new version is \`kit/core/plans.md\` in \`shipyard-kit@1.1.0\`, at \`${v2}/kit/core/plans.md\`.`,
+  );
+  assert.equal(
+    refusal.find((line) => line.startsWith('- The AGENTS.md block:')),
+    `- The AGENTS.md block: edited; its new version is \`kit/core/templates/agents-block.md\` in \`shipyard-kit@1.1.0\`, at \`${v2}/kit/core/templates/agents-block.md\`, with trigger labels and skills "none".`,
+  );
   assert.match(stopped.stderr, /1\. For each, ask the human whether the change belongs in a repo-owned file/);
   assert.equal(status(cwd), '');
 
