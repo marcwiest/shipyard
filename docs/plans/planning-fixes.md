@@ -1,6 +1,6 @@
 # Planning fixes
 
-- Status: draft
+- Status: ready
 - Human: marcwiest
 - Goal: the planning agent doesn't start a plan before the repo's adoption is merged, reads core's practices before drafting, and an `update` that stops on edited files names each new version by a path that works outside npx's cache, for `0.1.2`.
 - Specs touched: `docs/product/cli.md`
