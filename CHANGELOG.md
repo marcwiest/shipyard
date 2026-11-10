@@ -2,6 +2,12 @@
 
 One entry per release, newest first, under a `## x.y.z` heading: a short summary, then a "What a repo must do" list, empty when there's nothing. `npx shipyard-kit@x.y.z update` prints the entries after a repo's installed release.
 
+## Unreleased
+
+The planning agent stops for an unmerged adoption before starting a plan's branch. It reads core's practices before drafting. `update`'s refusal names each new version by its path in the release, then its path in the package.
+
+### What a repo must do
+
 ## 0.1.1
 
 Lines that markdown joined into one paragraph are list items now: a plan's header lines, each part's Needs and Roles lines, and the AGENTS.md block's trigger labels and skills lines. GitHub shows them as separate lines, and a markdown formatter such as prettier leaves them as written. The guide says to keep formatters off `.shipyard/` and the block.
