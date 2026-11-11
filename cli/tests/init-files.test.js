@@ -60,7 +60,20 @@ test('init copies the templates only where no file exists, naming the skipped on
   assert.match(read(cwd, 'docs/agents/index.md'), /^# Agents\n/);
   assert.match(read(cwd, 'docs/context.md'), /^# Context\n/);
   assert.match(stdout, /Skipped templates where a file exists: `docs\/product\/index\.md`\./);
-  assert.match(stdout, /\d\. Keep this repo's own instructions in its agent rules[^\n]*\n$/);
+  assert.ok(stdout.includes("3. Where a copied template duplicates a file the repo already keeps, such as a glossary at another path, delete the copy and set the repo's path under `paths` in `.shipyard/settings.yml`."));
+  assert.ok(stdout.endsWith("5. Keep this repo's own instructions in its agent rules, `docs/agents/index.md` by default, and its opinions in that file's House rules section, where they win over kit text. Never edit files in `.shipyard/` other than `settings.yml`: updates replace them.\n6. Run the adoption check in `.shipyard/core/adoption-check.md`: find where the repo's own agent instructions, glossary and tooling conflict with the parts installed, and ask the human to settle each one before this merges.\n"));
+});
+
+test('init prints no duplicate template step when every template already exists', () => {
+  const cwd = repo({
+    'docs/product/index.md': '# Ours\n',
+    'docs/agents/index.md': '# Ours\n',
+    'docs/context.md': '# Ours\n',
+  });
+  const { code, stdout } = run(cwd, ['init']);
+  assert.equal(code, 0);
+  assert.ok(!stdout.includes("Where a copied template duplicates a file the repo already keeps, such as a glossary at another path, delete the copy and set the repo's path under `paths` in `.shipyard/settings.yml`."));
+  assert.ok(stdout.endsWith("4. Run the adoption check in `.shipyard/core/adoption-check.md`: find where the repo's own agent instructions, glossary and tooling conflict with the parts installed, and ask the human to settle each one before this merges.\n"));
 });
 
 test('init stops on an uncommitted change to AGENTS.md and writes nothing', () => {

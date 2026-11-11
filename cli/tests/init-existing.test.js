@@ -22,6 +22,7 @@ test('init adds parts to an install, leaving the settings file alone', () => {
   assert.match(stdout, /- under `roles:`, after its last key:\n {9}orchestrator-bot: +# read by: building, weekly-drift-check\n/);
   assert.match(stdout, /- at the end of the file:\n {7}labels: +# read by: dispatch\n/);
   assert.doesNotMatch(stdout, /planning-agent|drift-check:/);
+  assert.ok(stdout.endsWith("3. Run the adoption check in `.shipyard/core/adoption-check.md`: find where the repo's own agent instructions, glossary and tooling conflict with the parts installed, and ask the human to settle each one before this merges.\n"));
 });
 
 test('init names nothing left when the parts are already installed', () => {

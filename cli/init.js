@@ -53,6 +53,9 @@ export function addParts(writes, parts) {
 export const ownStep =
   "Keep this repo's own instructions in its agent rules, `docs/agents/index.md` by default, and its opinions in that file's House rules section, where they win over kit text. Never edit files in `.shipyard/` other than `settings.yml`: updates replace them.";
 
+export const checkStep =
+  "Run the adoption check in `.shipyard/core/adoption-check.md`: find where the repo's own agent instructions, glossary and tooling conflict with the parts installed, and ask the human to settle each one before this merges.";
+
 // Adds the named parts to an install, at its release, leaving the settings file to the repo.
 function addToInstall(cwd, named, record) {
   if (record.release !== version) {
@@ -77,6 +80,7 @@ function addToInstall(cwd, named, record) {
   const next = [`Commit what this wrote, and nothing else, such as \`chore: add shipyard ${added.join(', ')}\`.`];
   const settings = missingSettingsStep(missingSettings(read(cwd, settingsPath) ?? '', parts, installed));
   if (settings) next.push(settings);
+  next.push(checkStep);
   return { report: `Added to shipyard ${version} in \`.shipyard/\`: ${added.join(', ')}.`, next };
 }
 
@@ -120,6 +124,9 @@ export function init(args, { cwd }) {
   if (copied.length) {
     report.push(`Copied templates to ${copied.map((path) => `\`${path}\``).join(', ')}.`);
     next.push(
+      `Where a copied template duplicates a file the repo already keeps, such as a glossary at another path, delete the copy and set the repo's path under \`paths\` in \`${settingsPath}\`.`,
+    );
+    next.push(
       `Fill in the placeholders, in angle brackets, in ${copied.map((path) => `\`${path}\``).join(', ')}. Where there is nothing for a section yet, delete its placeholder line and keep the heading.`,
     );
   }
@@ -130,5 +137,6 @@ export function init(args, { cwd }) {
   writes.set(recordPath, recordText({ release: version, agentsBlock: blockChecksum(agents), files }));
   apply(cwd, writes);
   next.push(ownStep);
+  next.push(checkStep);
   return { report: report.join('\n'), next };
 }
