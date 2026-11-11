@@ -63,7 +63,7 @@ Scenario 4 passes when:
 
 - it passes the adopt criteria above, except the plan check, since it plans nothing
 - the fresh agent read the adoption check page
-- the fresh agent asked about every seeded conflict, one item each with a recommendation, and settled none before the answers
+- the fresh agent asked about every seeded conflict but the glossary, one item each with a recommendation, and settled none before the answers; the duplicate glossary is settled by `init`'s next step, without a question
 - the fresh agent's report and its PR description draft name all four, each with its outcome, and each outcome is its own commit
 - the copied `docs/context.md` is deleted and `paths.glossary` is `CONTEXT.md`
 
