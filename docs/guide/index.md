@@ -30,7 +30,7 @@ The CLI runs with Node 22 or later, from your repo's root, at a pinned release: 
 
 Its output ends with numbered next steps, written for an agent to carry out, so the easiest way is to give your agent a prompt such as:
 
-> Adopt shipyard x.y.z with core, building and dispatch: run the init, commit what it wrote on its own, then finish what its output asks in separate commits, and show me the diff.
+> Adopt shipyard x.y.z with core, building and dispatch: run the init, commit what it wrote on its own, then finish what its output asks in separate commits, the adoption check included, and show me the diff and the PR description.
 
 The command it runs, naming the modules after `init`, or none for core alone:
 
@@ -38,9 +38,9 @@ The command it runs, naming the modules after `init`, or none for core alone:
 npx shipyard-kit@x.y.z init building dispatch
 ```
 
-It copies the parts into `.shipyard/`, writes the settings file with the keys those parts read, adds the block to `AGENTS.md`, copies the spec index, agent rules index and glossary templates where you have none, and writes the version record. It stops before writing anything if a file it would write has uncommitted changes, so commit your own work first. Before committing what it wrote, check that your ignore rules keep the new files and that no formatter rewrites them, as in [step 8 by hand](#8-commit-and-plan).
+It copies the parts into `.shipyard/`, writes the settings file with the keys those parts read, adds the block to `AGENTS.md`, copies the spec index, agent rules index and glossary templates where you have none, and writes the version record. It stops before writing anything if a file it would write has uncommitted changes, so commit your own work first. Before committing what it wrote, check that your ignore rules keep the new files and that no formatter rewrites them, as in [Before the first commit](../../kit/core/adoption-check.md#before-the-first-commit).
 
-Then fill in what its next steps name, such as the settings file and the templates. Keep your own instructions in your agent rules and your opinions in their House rules section, which win over kit text; never edit `.shipyard/` other than `settings.yml`. In a repo that already has a default branch, commit on a branch, such as `chore/shipyard-x.y.z`, and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
+Then fill in what its next steps name, such as the settings file and the templates. The last next step is the [adoption check](../../kit/core/adoption-check.md): your agent looks for where your repo's own instructions, glossary and tooling conflict with the parts installed, asks you to settle each one, and lists them in the PR's description. Keep your own instructions in your agent rules and your opinions in their House rules section, which win over kit text; never edit `.shipyard/` other than `settings.yml`. In a repo that already has a default branch, commit on a branch, such as `chore/shipyard-x.y.z`, and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
 
 Once the adoption is on your default branch, open a session with your planning agent and ask it to plan a change. It reads the `AGENTS.md` block and follows `.shipyard/core/plans.md`, which starts each plan's branch from the default branch.
 
@@ -58,7 +58,7 @@ It replaces the managed files and the `AGENTS.md` block, deletes the files the n
 
 As when adopting, commit on a branch, such as `chore/shipyard-x.y.z`, and merge it through a PR.
 
-If a managed file or the block was edited in your repo, it stops before writing and lists them. A formatter's rewrite counts as an edit; keep it off them, as in [step 8 by hand](#8-commit-and-plan). Move each edit to a file you own, such as your agent rules, then run it again with `--force` to overwrite them. It refuses to go back to an older release: to go back, revert the commit that updated shipyard.
+If a managed file or the block was edited in your repo, it stops before writing and lists them. A formatter's rewrite counts as an edit; keep it off them, as in [Before the first commit](../../kit/core/adoption-check.md#before-the-first-commit). Move each edit to a file you own, such as your agent rules, then run it again with `--force` to overwrite them. It refuses to go back to an older release: to go back, revert the commit that updated shipyard.
 
 A repo that copied the kit by hand switches to the CLI the same way: `update` reads the version record written by hand and rewrites it.
 
@@ -138,8 +138,6 @@ mkdir -p docs/product docs/agents   # or the paths in your settings file; the pl
 
 The copies are yours. Where you have nothing for a section yet, as in a new project, delete its placeholder line and leave the heading; a heading that is itself a placeholder, such as `## <Group>`, goes too. The spec index's reading order lists only spec files that exist, so leave it empty until you write one.
 
-If a merge or a tag sets anything off in your repo, such as a deploy or a publish, say so in the agent rules index's Rules section.
-
 If you don't take the building module, write in the agent rules index's Building plans section how you build an approved plan: who adds the phases, builds and verifies each one, and keeps the plan record. The plan's PR takes core's [plan PR](../../kit/core/pr-shapes/plan.md) shape, unless you name another there.
 
 The plan template stays in `.shipyard/`; the planning agent copies it for each plan.
@@ -166,17 +164,11 @@ Write `.shipyard/version.yml`, naming what you copied from and a checksum per ma
 )
 ```
 
-### 8. Commit and plan
+### 8. Run the adoption check
 
-Before committing, check that your ignore rules keep the new files. Broad rules, such as `.*/` or `*.md`, drop them without a word. Use your settings file's paths in place of the `docs/` ones:
+Follow `.shipyard/core/adoption-check.md`, the [adoption check](../../kit/core/adoption-check.md). Its checks before the first commit come before step 9's commit. Settle each conflict it finds, each outcome in its own commit after step 9's commit.
 
-```sh
-git check-ignore .shipyard/settings.yml .shipyard/core/index.md AGENTS.md docs/product/index.md docs/agents/index.md docs/context.md
-```
-
-Any path it prints is ignored, so change the rule that catches it.
-
-Keep any markdown formatter, such as a pre-commit hook or a CI format check, off `.shipyard/` and the `AGENTS.md` block: list `.shipyard/` in its ignore file, and put its ignore comments around the block, outside the markers. A formatter's rewrite reads to `update` as a local edit.
+### 9. Commit and plan
 
 Commit the files, such as `chore: adopt shipyard core`. In a repo that already has a default branch, do it on a branch, such as `chore/adopt-shipyard`, and merge it through a PR, as the [git practice](../../kit/core/practices/git.md) asks.
 
