@@ -18,17 +18,12 @@
 
 ## Phases
 
-Added before building starts, by whoever builds the plan. Until then, it holds only this note and the example below, which the phases replace. A phase that changes code a seam reaches has Tests and Code boxes; any other phase has one Work box, which says why no seam reaches any code it changes:
+### Phase 1: init's next steps · delivers Change 2 · about 1 h
+- [ ] Tests: the CLI: a fresh `init` that copied templates prints a next step to delete a copy that duplicates a file the repo already keeps and set its path under `paths`; a fresh `init` and an `init` that adds parts both end their next steps with running the adoption check, naming `.shipyard/core/adoption-check.md`
+- [ ] Code: `cli/init.js` adds both steps, and `docs/product/cli.md`'s init section says so
 
-```
-### Phase 1: <name> · delivers Change 1
-- [ ] Tests: <seam>: <behavior the tests assert>
-- [ ] Code: <what makes them pass>
+### Phase 2: the adoption check page and the guide · delivers Changes 1, 3 · about 2 h
+- [ ] Work: the new core page `kit/core/adoption-check.md`, its kit glossary entry and core index line, and the guide's adopt prompt, its by-hand step and its links to the page; kit text and docs, which no seam reaches
 
-Notes: <added when the phase is done: verification line, deviations, blockers>
-
-### Phase 2: <name> · delivers Change 2
-- [ ] Work: <what it changes, such as docs, config or content>
-
-Notes: <...>
-```
+### Phase 3: the fourth scenario and the changelog · delivers Changes 4, 5 · about 0.5 h
+- [ ] Work: scenario 4 in `docs/agents/scenario-runs.md` and the Unreleased entry in `CHANGELOG.md`; docs, which no seam reaches
