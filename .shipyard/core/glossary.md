@@ -29,6 +29,7 @@ The workflow terms. One entry per term, one or two sentences each. Kit text uses
 - **House rules**: Opinions a person or a repo layers on top of the workflows, kept in the repo's agent rules.
 - **Agent rules**: The repo's rules for how agents work in it, in the agent rules folder the settings file names.
 - **Adopting repo**: A repo that uses shipyard.
+- **Adoption check**: The check the planning agent runs once shipyard's files are written and before the adoption merges, for the repo's own agent instructions, glossary and tooling that conflict with the parts installed. The human settles each one.
 - **Kit**: Shipyard's workflow files: core and the modules, each with its reference text, skills, templates and CI pieces. A repo keeps the parts it takes in `.shipyard/`.
 - **Core**: The part of the kit every adopting repo takes; it works with a human and a planning agent alone.
 - **Module**: An optional part of the kit, such as building, dispatch or verification. Its index names the modules and roles it needs.
