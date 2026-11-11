@@ -1,6 +1,6 @@
 # Adoption fixes
 
-- Status: draft
+- Status: ready
 - Human: marcwiest
 - Goal: an agent adopting shipyard finds the repo's existing agent instructions, glossary and tooling that conflict with core, and the human settles each one before the adoption merges, for `0.1.3`.
 - Specs touched: `docs/product/cli.md`
