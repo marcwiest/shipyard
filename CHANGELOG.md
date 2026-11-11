@@ -2,7 +2,7 @@
 
 One entry per release, newest first, under a `## x.y.z` heading: a short summary, then a "What a repo must do" list, empty when there's nothing. `npx shipyard-kit@x.y.z update` prints the entries after a repo's installed release.
 
-## Unreleased
+## 0.1.3
 
 The adoption check is a new core page: the planning agent finds where a repo's own agent instructions, glossary and tooling conflict with the parts installed, and the human settles each one before the adoption merges. `init`'s next steps end with it, and say to delete a copied template that duplicates a file the repo keeps. A repo adopted earlier may run the check once.
 
