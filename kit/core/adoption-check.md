@@ -49,7 +49,7 @@ What each place says against what core says, one item each. The link names the k
 
 ## Settling each conflict
 
-Settling each conflict is a [human step](human-steps.md#human-steps). The planning agent asks about each conflict on its own: where the repo says it and what it says, what core says, the options, and a recommendation. It stops for the answer.
+Settling each conflict is a [human step](human-steps.md#human-steps). The planning agent lists every conflict it found in one message, one item each: where the repo says it and what it says, what core says, the options, and a recommendation. Then it stops, and settles nothing until the human has answered each item.
 
 Each conflict ends as one of three outcomes, each in its own commit with the prefix the [git practice](practices/git.md#commits) gives:
 
