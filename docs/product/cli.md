@@ -26,13 +26,15 @@ The command that installs, updates and removes shipyard's parts in an adopting r
 - It writes `.shipyard/settings.yml` from core's settings template, leaving out each key marked `# read by:` whose parts weren't taken. It never overwrites a settings file that exists.
 - It adds the AGENTS.md block from core's template, between its markers, at the end of AGENTS.md, creating the file if it's missing. Trigger labels and skills are "none" while the kit has no skills or dispatcher.
 - It copies the spec index, agent rules index and glossary templates once, to the settings template's default paths, skipping any that exist and saying which.
-- Its next steps end by saying where the repo's own instructions go: its agent rules and house rules, never `.shipyard/`.
+- Where it copied a template, a next step says to delete a copy that duplicates a file the repo already keeps, such as a glossary, and to set the repo's path under `paths`.
+- Its next steps then say where the repo's own instructions go, its agent rules and house rules, never `.shipyard/`, and end with running the adoption check, naming its page in `.shipyard/`.
 
 On an existing install, `init` adds the named parts at the installed release:
 
 - It refuses when the CLI's release differs from the version record's, with running `update` first as its next step.
 - It copies the new parts and adds their files to the version record.
 - It never edits the settings file. It prints as next steps the exact settings lines the new parts read that the file lacks, and where each goes.
+- Its next steps end with running the adoption check, as on a fresh install.
 
 ## update
 
