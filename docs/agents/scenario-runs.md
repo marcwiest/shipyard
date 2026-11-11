@@ -37,16 +37,37 @@ Before it starts, the sample repo gets core installed from the previous release 
 
 Prompt: the guide's update prompt, at the release.
 
+### 4. Adopt core in a repo with conflicts
+
+Before it starts, the sample repo gets these files, committed, so it has an `AGENTS.md`, unlike the sample repo's description:
+
+- an `AGENTS.md` saying agents commit only when the human asks
+- a `CLAUDE.md` saying one agent designs each change and another agent edits the files (a handover rule)
+- a commit lint config, such as `commitlint.config.js`, whose allowed types leave out `spec`
+- a glossary at the root, `CONTEXT.md`, with a term or two from the script
+
+Prompt: the guide's adopt prompt for core alone, at the release.
+
+The agent running the scenarios plays the human: it takes the fresh agent's recommendation on each conflict.
+
 ## When a scenario passes
 
-An adopt scenario passes when:
+An adopt scenario (scenarios 1 and 2) passes when:
 
 - the install matches the guide: core in `.shipyard/`, a filled settings file, the `AGENTS.md` block, the copied templates, and a version record whose checksums match the files
 - the CLI's writes are committed on their own
 - the plan passes the [plan check](../../kit/core/plans.md#plan-check)
 - the fresh agent asked nothing outside the human's steps and spec questions
 
-The update scenario passes when:
+Scenario 4 passes when:
+
+- it passes the adopt criteria above, except the plan check, since it plans nothing
+- the fresh agent opened `.shipyard/core/adoption-check.md` after `init`
+- the fresh agent asked about each seeded conflict on its own, with a recommendation
+- the fresh agent's report and its PR description draft name all four, each with its outcome, and each outcome is its own commit
+- the copied `docs/context.md` is deleted and `paths.glossary` is `CONTEXT.md`
+
+The update scenario (scenario 3) passes when:
 
 - the CLI's writes are committed on their own
 - each next step is done in its own commit
